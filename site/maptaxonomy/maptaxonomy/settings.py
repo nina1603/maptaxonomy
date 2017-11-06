@@ -77,7 +77,7 @@ WSGI_APPLICATION = 'maptaxonomy.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'influenza',
+        'NAME': 'maptaxonomy',
         'USER': 'postgres',
         'PASSWORD': 'qwerty',
         'HOST': 'localhost',

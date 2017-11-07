@@ -10,6 +10,7 @@
        - nginx
        - postgresql
        - python-pip
+       - supervisor
     - name: install django
       pip:
         name: django
@@ -30,8 +31,8 @@
     - name: clone site
       git: repo='https://github.com/fjdiod/maptaxonomy.git'
            version=django
-             dest='/srv/site'
+             dest='/srv/www/maptaxonomy'
     - name: migrate
       django_manage:
         command: migrate
-        app_path: '/srv/site/site/maptaxonomy/'
+        app_path: '/srv/www/maptaxonomy/site/maptaxonomy/'

@@ -1,0 +1,20 @@
+---
+- hosts: maptaxonomy
+  become: yes
+  become_user: root
+  become_method: sudo
+  tasks:
+    - name: create nginx config file link
+      file:
+        src: '/srv/www/maptaxonomy/site/maptaxonomy/map_taxonomy_nginx.conf'
+        dest: '/etc/nginx/sites-enabled/map_taxonomy_nginx.conf'
+        state: link
+    - name: start uswgi
+      supervisorctl:
+          name: uwsgi
+          state: restarted
+          config: '/srv/www/maptaxonomy/site/playbooks/supervisor.conf'
+    - name: restart nginx
+      service:
+          name: nginx
+          state: restarted

@@ -13,7 +13,7 @@
       supervisorctl:
           name: uwsgi
           state: restarted
-          config: '/srv/www/maptaxonomy/site/playbooks/supervisor.conf'
+          config: '/srv/www/maptaxonomy/site/maptaxonomy/supervisor.conf'
     - name: restart nginx
       service:
           name: nginx

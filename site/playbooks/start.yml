@@ -9,11 +9,6 @@
         src: '/srv/www/maptaxonomy/site/maptaxonomy/map_taxonomy_nginx.conf'
         dest: '/etc/nginx/sites-enabled/map_taxonomy_nginx.conf'
         state: link
-    - name: start supervisord
-      service:
-          name: supervisord
-          state: started
-          args: '-c /srv/www/maptaxonomy/site/maptaxonomy/supervisor.conf'
     - name: update supervisor
       supervisorctl: name=uwsgi-runner state=restarted
     - name: restart nginx

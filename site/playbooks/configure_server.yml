@@ -36,3 +36,11 @@
       django_manage:
         command: migrate
         app_path: '/srv/www/maptaxonomy/site/maptaxonomy/'
+    - name: create vassals dir
+      file: path='/etc/uwsgi/vassals' state=directory
+    - name: create symlink for uwsgi
+      file: src='/srv/www/maptaxonomy/site/playbooks/uwsgi_super.ini'
+            dest='/etc/uwsgi/vassals/uwsgi.ini'
+            state=link
+    - name: setup uwsgi in supervisor
+      file: src='/srv/www/maptaxonomy/site/playbooks/uwsgi_super.ini' dest='/etc/supervisor/conf.d/uwsgi-runner.conf' state=link

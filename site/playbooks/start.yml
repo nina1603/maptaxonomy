@@ -7,7 +7,7 @@
     - name: create nginx config file link
       file:
         src: '/srv/www/maptaxonomy/site/maptaxonomy/map_taxonomy_nginx.conf'
-        dest: '/etc/nginx/sites-enabled/map_taxonomy_nginx.conf'
+        dest: '/etc/nginx/sites-enabled/nginx.conf'
         state: link
     - name: update supervisor
       supervisorctl: name=uwsgi-runner state=restarted

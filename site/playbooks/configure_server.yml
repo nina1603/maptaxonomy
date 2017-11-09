@@ -39,7 +39,7 @@
     - name: create vassals dir
       file: path='/etc/uwsgi/vassals' state=directory
     - name: create symlink for uwsgi
-      file: src='/srv/www/maptaxonomy/site/playbooks/uwsgi_super.ini'
+      file: src='/srv/www/maptaxonomy/site/playbooks/uwsgi.ini'
             dest='/etc/uwsgi/vassals/uwsgi.ini'
             state=link
     - name: setup uwsgi in supervisor

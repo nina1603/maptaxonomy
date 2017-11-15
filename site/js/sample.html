@@ -14,6 +14,7 @@
     <script>
       function initMap() {
         var uluru = {lat: 55.700, lng: 37.600}; //lat: -25.363, lng: 131.044
+        var location = {lat: -25.363, lng: 131.044};
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 4,
           center: uluru
@@ -21,9 +22,16 @@
         var marker = new google.maps.Marker({
           position: uluru,
           map: map,
-          draggable:true,
+          draggable: true,
           animation: google.maps.Animation.DROP,
           title: 'Marker'
+        });
+        var marker2 = new google.maps.Marker({
+          position: location,
+          map: map,
+          draggable: true,
+          animation: google.maps.Animation.BOUNCE,
+          title: 'Second Marker'
         });
         var contentString = 'Hello! I am the Marker. Move me :)';
         var infowindow = new google.maps.InfoWindow({
@@ -31,6 +39,9 @@
         });
         marker.addListener('click', function() {
           infowindow.open(map, marker);
+       });
+        marker.addListener('click', function() {
+          infowindow.open(map, marker2);
        });
         console.log("Test");
         alert ("Hello! That's my map");

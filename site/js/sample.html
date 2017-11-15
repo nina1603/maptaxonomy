@@ -44,6 +44,10 @@
        });      
         console.log("Test");
         //alert ("Hello! That's my map");
+	      
+	google.maps.event.addListener(marker, 'position_changed', update);
+  	google.maps.event.addListener(marker2, 'position_changed', update);      
+	      
         var flightPlanCoordinates = [
        marker.getPosition(), 
        marker2.getPosition()

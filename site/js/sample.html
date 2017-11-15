@@ -61,11 +61,11 @@
       	strokeWeight: 2
     } );
 
-  flightPath.setMap(map);
-	      update();
+  	flightPath.setMap(map);
+	update();
   }
 function update() {
-  var path = [marker.getPosition(), marker2.getPosition()];
+  var path = [location, uluru];
   flightPath.setPath(path);
 }
 	    

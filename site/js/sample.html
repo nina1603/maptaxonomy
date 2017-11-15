@@ -41,14 +41,17 @@
        });
         console.log("Test");
         //alert ("Hello! That's my map");
-        var flightPlanCoordinates = [uluru, location];
+        var flightPlanCoordinates = [
+        {lat: 55.700, lng: 37.600}, 
+        {lat: -25.363, lng: 131.044}
+        ];
         var flightPath = new google.maps.Polyline({
         path: flightPlanCoordinates,
         geodesic: true,
-        strokeColor: '#FFABCD',
-    strokeOpacity: 1.0,
-    strokeWeight: 2
-  });
+        strokeColor: '#FF0000',
+      strokeOpacity: 1.0,
+      strokeWeight: 2
+    });
 
   flightPath.setMap(map);
 }

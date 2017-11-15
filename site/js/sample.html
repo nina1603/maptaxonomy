@@ -3,7 +3,7 @@
   <head>
     <style>
        #map {
-        height: 600px;
+        height: 800px;
         width: 100%;
        }
     </style>
@@ -24,6 +24,12 @@
           draggable:true,
           title: 'Marker'
         });
+        var infowindow = new google.maps.InfoWindow({
+          content: contentString
+        });
+        marker.addListener('click', function() {
+          infowindow.open(map, marker);
+       });
         console.log("Test");
         alert ("Hello! That's my map");
       }

@@ -1,0 +1,21 @@
+---
+- hosts: maptaxonomy
+  become: yes
+  become_user: root
+  become_method: sudo
+  tasks:
+    - name: create nginx config file link
+      file:
+        src: '/srv/www/maptaxonomy/site/maptaxonomy/map_taxonomy_nginx.conf'
+        dest: '/etc/nginx/sites-enabled/nginx.conf'
+        state: link
+    - name: update supervisor
+      supervisorctl: name=uwsgi-runner state=restarted
+    - name: delete nginx default conf
+      file: 
+        path: '/etc/nginx/sites-enabled/default'
+        state: absent
+    - name: restart nginx
+      service:
+          name: nginx
+          state: restarted

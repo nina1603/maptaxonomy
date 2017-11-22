@@ -70,6 +70,83 @@ function update() {
       }    
     </script> 
     
+	<script>
+    a = document.createElement("div");
+    a.innerHTML = "Wait, it's loading...");
+    a.style.position = "absolute";
+    a.style.top = "50%";
+    a.style.left = "50%";
+    a.style.zIndex = 15;
+    a.style.display = "none";
+      function loadTable()
+      {
+        var xhr = new XMLHttpRequest();
+        xhr.open('GET', '/maptaxonomy/sample_data/Table1.csv.json', true);
+        xhr.send();
+        xhr.onreadystatechange = function()
+        {
+          if ((xhr.readyState > 0) && (xhr.readyState < 4))
+              a.style.display = "block";
+			if (xhr.readyState == 4)
+				a.style.display = "none";
+          if (xhr.status != 200) 
+          {
+            // обработать ошибку
+            alert( xhr.status + ': ' + xhr.statusText );
+          }
+          else
+          {
+            try
+            {
+              var places = JSON.parse(xhr.responseText);
+            }
+            catch (e)
+            {
+              alert( "Некорректный ответ " + e.message);
+            }
+	  }
+            showTable(places);
+          }
+	}
+          
+      function showTable(places) 
+    {
+		headers = {};
+		for (place in places)
+		{
+			for (i in places[place])
+			{
+				headers[i] = 1;
+			}
+		}
+		t = document.createElement("table");
+		tr = document.createElement("tr");
+		for (header in headers)
+		{
+			th = document.createElement("th");
+			th.innerHTML = header;
+			tr.append(th);
+		}
+		t.append(tr);
+		for (place in places)
+		{
+				tr = document.createElement("tr");
+				for (header in headers)
+					{
+						td = document.createElement("td");
+						if (places[place].hasOwnProperty(header))
+							{
+								td.innerHTML = places[place][header];
+							}
+						tr.append(td);	
+					}
+				t.append(tr);	
+		}
+		document.body.append(t);
+	}
+       
+    </script>  
+	  
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDA6tIfdstDmqeKNMhA_tWYo4Xm0oYizc0&callback=initMap&&libraries=geometry">
     </script>

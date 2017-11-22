@@ -70,47 +70,6 @@ function update() {
       }    
     </script> 
     
-    <script>
-      function loadPlaces()
-      {
-        var xhr = new XMLHttpRequest();
-        xhr.open('GET', '/maptaxonomy/sample_data/Table1.csv.json', true);
-        xhr.send();
-        xhr.onreadystatechange = function()
-        {
-          if (xhr.readyState != 4)
-              return;
-              //button.parentNode.removeChild(button);
-          if (xhr.status != 200) 
-          {
-            // обработать ошибку
-            alert( xhr.status + ': ' + xhr.statusText );
-          }
-          else
-          {
-            try
-            {
-              var places = JSON.parse(xhr.responseText);
-            }
-            catch (e)
-            {
-              alert( "Некорректный ответ " + e.message );
-            }
-	  }
-            showPhones(phones);
-          }
-	}
-          
-      function showPhones(phones) 
-      {
-        places.forEach(function()
-        {
-          var li = list.appendChild(document.createElement('li'));
-          li.innerHTML = phone.name;
-        });
-	}
-       
-    </script>  
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDA6tIfdstDmqeKNMhA_tWYo4Xm0oYizc0&callback=initMap&&libraries=geometry">
     </script>

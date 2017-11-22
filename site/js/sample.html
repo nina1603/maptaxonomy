@@ -89,6 +89,7 @@ function update() {
           if ((xhr.readyState > 0) && (xhr.readyState < 4))
               a.style.display = "block";
 			if (xhr.readyState == 4)
+			{
 				a.style.display = "none";
           if (xhr.status != 200) 
           {
@@ -108,6 +109,7 @@ function update() {
 	    }
 	  }
             showTable(places);
+		}
           }
 	}
           

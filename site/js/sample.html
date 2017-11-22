@@ -102,8 +102,9 @@ function update() {
             }
             catch (e)
             {
-              alert( "Некорректный ответ " + e.message);
-            }
+              alert( "Некорректный ответ: " + e.message);
+		console.log(xhr.responseText);            
+	    }
 	  }
             showTable(places);
           }

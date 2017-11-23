@@ -26,7 +26,7 @@ def populate_db(fname='tmp'):
         for line in gen:
             date = process_date(line[5])
             try:
-                lat, lng = geocoder.location(line[4]).latlng
+                lat, lng = geocoder.google(line[4]).latlng
             except:
                 lat, lng = 0, 0
                 

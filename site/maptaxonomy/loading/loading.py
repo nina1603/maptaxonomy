@@ -2,6 +2,7 @@ from urllib.request import urlretrieve
 import gzip
 import datetime as dt
 from maps.models import Experiment, Strain
+import geocoder
 
 def load_file(url='ftp://ftp.ncbi.nih.gov/genomes/INFLUENZA/influenza_na.dat.gz', fname='tmp'):
     urlretrieve(url, fname)
@@ -24,7 +25,12 @@ def populate_db(fname='tmp'):
         gen = filter(lambda x: x[1]=='Human', gen)
         for line in gen:
             date = process_date(line[5])
-            exp = Experiment(position=line[4], date_conducted=date, genbank_id=line[0], longitude=0, latitude=0)
+            try:
+                lat, lng = geocoder.location(line[4]).latlng
+            except:
+                lat, lng = 0, 0
+                
+            exp = Experiment(position=line[4], date_conducted=date, genbank_id=line[0], longitude=lat, latitude=lng)
             exp.save()
             strain = Strain(experiment=exp, name=line[7])
             strain.save()

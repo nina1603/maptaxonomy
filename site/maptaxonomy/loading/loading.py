@@ -26,5 +26,5 @@ def populate_db(fname='tmp'):
             date = process_date(line[5])
             exp = Experiment(position=line[4], date_conducted=date, genbank_id=line[0], longitude=0, latitude=0)
             exp.save()
-            strain = Strain(experiment=exp, name=line[6])
+            strain = Strain(experiment=exp, name=line[7])
             strain.save()

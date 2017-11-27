@@ -13,7 +13,7 @@ def index(request):
         populate_db()
         return HttpResponse("Loaded")
     else:
-        return 'Not allowed'
+        return HttpResponse("Not allowed")
 
 
 class ExperimentViewSet(viewsets.ReadOnlyModelViewSet):

@@ -1,4 +1,4 @@
-from urllib.request import urlretrieve
+from urllib import urlretrieve
 import gzip
 import datetime as dt
 from maps.models import Experiment, Strain

@@ -22,11 +22,11 @@
         name: uwsgi
     - name: install python packages
       pip:
+        name={{ item.name }}
       with_items:
-       - geocoder
-       - django-filter
-       - gzip
-       - djangorestframework
+       - name: geocoder
+       - name: django-filter
+       - name: djangorestframework
     - name: create db
       become: true
       become_user: postgres

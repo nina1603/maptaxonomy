@@ -145,6 +145,7 @@ function update() {
 								if (header == 'Name')
 								{
 									var local = places[place][header].split('/');
+									arr[place] = {};
 									arr[place].city = local[2];
 								}
 								if (header == 'Country')

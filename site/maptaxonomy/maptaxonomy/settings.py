@@ -25,7 +25,7 @@ SECRET_KEY = '&i(q5j-cew526w5aa+%5*7nbt@gwtkyc*jydq2g%zw&pfiu)2t'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [ u'34.212.26.94', 'nina1603.github.io' ]
 
 
 # Application definition

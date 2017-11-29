@@ -145,7 +145,11 @@ function update() {
 								if (header == 'Name')
 								{
 									var local = places[place][header].split('/');
-									arr[place] = local[2];
+									arr[place].city = local[2];
+								}
+								if (header == 'Country')
+								{
+									arr[place].country = places[place][header];
 								}
 							}
 						tr.append(td);

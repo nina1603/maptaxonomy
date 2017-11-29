@@ -82,7 +82,7 @@ function update() {
       function loadTable()
       {
         var xhr = new XMLHttpRequest();
-        xhr.open('GET', 'http://104.154.77.126/api/v1/experiments/', true); ///maptaxonomy/sample_data/Table1.csv.json
+        xhr.open('GET', '/maptaxonomy/sample_data/Table1.csv.json', true); ///maptaxonomy/sample_data/Table1.csv.json
         xhr.send();
         xhr.onreadystatechange = function()
         {
@@ -149,7 +149,7 @@ function update() {
 		document.body.append(t);
 	}
        //Geocoder	
-		
+	
     </script>  
 	  
     <script async defer

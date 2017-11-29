@@ -144,8 +144,8 @@ function update() {
 								td.innerHTML = places[place][header];
 								if (header == 'Name')
 								{
-									arr[place] = places[place][header].split('/');
-									console.log(arr[place]);
+									var local = places[place][header].split('/');
+									arr[place] = local[2];
 								}
 							}
 						tr.append(td);

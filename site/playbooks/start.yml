@@ -15,7 +15,21 @@
       file: 
         path: '/etc/nginx/sites-enabled/default'
         state: absent
+    - name: create ssl dir
+      file: path='/etc/nginx/ssl' state=directory
+    - name: generate self signed keys
+      openssl_privatekey:
+          path: /etc/nginx/ssl/nginx.pem
+    - openssl_csr:
+          path: /etc/nginx/ssl/maptaxonomy.ru.csr
+          privatekey_path: /etc/nginx/ssl/nginx.pem
+          common_name: maptaxonomy.ru
+    - openssl_certificate:
+          path: /etc/nginx/ssl/maptaxonomy.ru.crt
+          privatekey_path: /etc/nginx/ssl/nginx.pem
+          csr_path: /etc/nginx/ssl/maptaxonomy.ru.csr
+          provider: selfsigned
     - name: restart nginx
       service:
           name: nginx
-          state: restarted
+          state: restarted 

@@ -17,6 +17,9 @@
     - name: install psycopg
       pip:
         name: psycopg2
+    - name: install pyOpenSSL
+      pip:
+        name: pyOpenSSL
     - name: install uwsgi
       pip:
         name: uwsgi
@@ -36,8 +39,8 @@
       become_user: postgres
       postgresql_user: db=maptaxonomy name=postgres password=qwerty
     - name: clone site
-      git: repo='https://github.com/fjdiod/maptaxonomy.git'
-           version=django
+      git: repo='https://github.com/mickvav/maptaxonomy.git'
+           version=master
              dest='/srv/www/maptaxonomy'
     - name: migrate
       django_manage:

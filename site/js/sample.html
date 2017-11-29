@@ -82,7 +82,7 @@ function update() {
       function loadTable()
       {
         var xhr = new XMLHttpRequest();
-        xhr.open('GET', '/maptaxonomy/sample_data/Table1.csv.json', true); ///maptaxonomy/sample_data/Table1.csv.json
+        xhr.open('GET', 'http://34.212.26.94/api/v1/experiments/?format=json&position=Alaska', true); ///maptaxonomy/sample_data/Table1.csv.json
         xhr.send();
         xhr.onreadystatechange = function()
         {

@@ -20,6 +20,13 @@
     - name: install uwsgi
       pip:
         name: uwsgi
+    - name: install python packages
+      pip:
+        name={{ item.name }}
+      with_items:
+       - name: geocoder
+       - name: django-filter
+       - name: djangorestframework
     - name: create db
       become: true
       become_user: postgres

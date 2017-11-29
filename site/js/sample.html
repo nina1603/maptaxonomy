@@ -115,7 +115,8 @@ function update() {
           
       function showTable(places) 
     {
-		headers = {};
+		var headers = {};
+	    	var arr = {};
 		for (place in places)
 		{
 			for (i in places[place])
@@ -141,8 +142,14 @@ function update() {
 						if (places[place].hasOwnProperty(header))
 							{
 								td.innerHTML = places[place][header];
+								if (header == 'Name')
+								{
+									arr[place] = places[place][header].split('/');
+									console.log(arr[place]);
+								}
 							}
-						tr.append(td);	
+						tr.append(td);
+							
 					}
 				t.append(tr);	
 		}

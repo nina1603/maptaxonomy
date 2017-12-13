@@ -82,6 +82,7 @@ function update() {
       function loadTable()
       {
         var xhr = new XMLHttpRequest();
+	var places;
         xhr.open('GET', 'https://maptaxonomy.ru/api/v1/experiments/?format=json', true); ///maptaxonomy/sample_data/Table1.csv.json
         xhr.send();
         xhr.onreadystatechange = function()
@@ -100,7 +101,8 @@ function update() {
           {
             try
             {
-              var places = JSON.parse(xhr.responseText);
+              var data = JSON.parse(xhr.responseText);
+              places = data.results;
             }
             catch (e)
             {

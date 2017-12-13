@@ -82,7 +82,7 @@ function update() {
       function loadTable()
       {
         var xhr = new XMLHttpRequest();
-        xhr.open('GET', 'http://maptaxonomy.ru/api/v1/experiments/?format=json', true); ///maptaxonomy/sample_data/Table1.csv.json
+        xhr.open('GET', 'https://maptaxonomy.ru/api/v1/experiments/?format=json', true); ///maptaxonomy/sample_data/Table1.csv.json
         xhr.send();
         xhr.onreadystatechange = function()
         {

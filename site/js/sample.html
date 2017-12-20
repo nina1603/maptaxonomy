@@ -103,6 +103,7 @@ function update() {
             {
               var data = JSON.parse(xhr.responseText);
               places = data.results;
+		
             }
             catch (e)
             {
@@ -158,12 +159,21 @@ function update() {
 								{
 									arr[place].country = places[place][header];
 								}
+								if (header == 'latitude')
+									var lat = places[place][header];
+								if (header == 'longitude')
+									var lng = places[place][header];
 							}
 						tr.append(td);	
 					}
 				t.append(tr);	
 		}
 	    console.log(arr);
+	    var marker3 = new google.maps.Marker({
+		    position: {lat, lng},
+		    map: map,
+		    title: 'Place'
+	    });
 		document.body.append(t);
 	}
        //Geocoder	

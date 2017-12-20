@@ -164,7 +164,7 @@ function update() {
 									var lng = places[place][header];
 								var loc = {lat: lat, lng: lng};
 								if (header == 'position')
-									var pos = placed[place][header];
+									var pos = places[place][header];
 							}
 						tr.append(td);	
 					}

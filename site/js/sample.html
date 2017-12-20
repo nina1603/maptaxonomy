@@ -14,13 +14,13 @@
     <a href = "#" onClick = "loadTable()"> Show me the table</a>	  
     <script>
 	var map;
-      function initMap() {
-        var location = {lat: 55.700, lng: 37.600};
-        var uluru = {lat: -25.363, lng: 131.044};
-        map = new google.maps.Map(document.getElementById('map'), {
-          zoom: 4,
-          center: location
-        });
+	function initMap() {
+        	var location = {lat: 55.700, lng: 37.600};
+        	var uluru = {lat: -25.363, lng: 131.044};
+        	map = new google.maps.Map(document.getElementById('map'), {
+        	  zoom: 4,
+       		  center: location
+        	});
         var marker = new google.maps.Marker({
           position: uluru,
           map: map,
@@ -174,6 +174,12 @@ function update() {
 		    map: map,
 		    title: 'Place'
 	    });
+	    var info = new google.maps.InfoWindow({
+          content: lat + ',' + lng
+        });
+	     marker3.addListener('click', function() {
+          info.open(map, marker3);
+       });
 		document.body.append(t);
 	}
        //Geocoder	

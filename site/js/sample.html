@@ -161,6 +161,7 @@ function update() {
 									var lat = places[place][header];
 								if (header == 'longitude')
 									var lng = places[place][header];
+								var loc = {lat: lat, lng: lng};
 							}
 						tr.append(td);	
 					}
@@ -168,7 +169,7 @@ function update() {
 		}
 	    //console.log(arr);
 	    var marker3 = new google.maps.Marker({
-		    position: {lat : lat, lng : lng},
+		    position: loc,
 		    map: map,
 		    title: 'Place'
 	    });

@@ -163,6 +163,8 @@ function update() {
 								if (header == 'longitude')
 									var lng = places[place][header];
 								var loc = {lat: lat, lng: lng};
+								if (header == 'position')
+									var pos = placed[place][header];
 							}
 						tr.append(td);	
 					}
@@ -175,7 +177,7 @@ function update() {
 		    title: 'Place'
 	    });
 	    var info = new google.maps.InfoWindow({
-          content: lat + ',' + lng
+          content: pos
         });
 	     marker3.addListener('click', function() {
           info.open(map, marker3);

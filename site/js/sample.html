@@ -178,8 +178,9 @@ function update() {
 		    map: map,
 		    title: 'Place'
 	    });
+	    var contentString = 'Position: ' + pos + '<br />' + 'Genbank: ' + 'https://www.ncbi.nlm.nih.gov/gquery/?term=';
 	    var info = new google.maps.InfoWindow({
-          content: pos
+          content: contentString
         });
 	     marker3.addListener('click', function() {
           info.open(map, marker3);

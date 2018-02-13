@@ -180,7 +180,7 @@ function update() {
 		    map: map,
 		    title: lat + ' ' + lng
 	    });
-	var contentString = 'Position: ' + pos + '<br />' + 'Genbank: ' + '<a href=”https://www.ncbi.nlm.nih.gov/” target=”_blank>ссылка</a>';
+	var contentString = 'Position: ' + pos + '<br />' + 'Genbank: ' + 'https://www.ncbi.nlm.nih.gov/gquery/?term=' + id;
 	    var info = new google.maps.InfoWindow({
           content: contentString
         });

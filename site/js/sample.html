@@ -129,11 +129,7 @@ function update() {
 			}
 		}
 	    	var columnHandlers = {};
-	    	for (header in headers)
-		{	console.log(header);
-			columnHandlers[header] = 1;
-		}
-    }		/*t = document.createElement("table");
+    		t = document.createElement("table");
 		tr = document.createElement("tr");
 		for (header in headers)
 		{
@@ -150,6 +146,7 @@ function update() {
 						td = document.createElement("td");
 						if (places[place].hasOwnProperty(header))
 							{
+								console.log("place = ", place);
 								td.innerHTML = places[place][header];
 								if (header == 'Name')
 								{
@@ -170,11 +167,11 @@ function update() {
 									var pos = places[place][header];
 								if (header == 'genbank_id')
 									var id = places[place][header];
-							}
+							} */
 						tr.append(td);	
 					}
 				t.append(tr);	
-		} */
+		}*/
 	    
 	    /*var marker3 = new google.maps.Marker({
 		    position: loc,

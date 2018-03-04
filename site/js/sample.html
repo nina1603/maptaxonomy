@@ -120,10 +120,6 @@ function update() {
       function showTable(places) 
     {
 		var headers = {};
-	    	/*function loc(city, country){
-			this.city = city;
-			this.country = country;
-		}*/
 	    	var arr = [];
 		for (place in places)
 		{
@@ -132,7 +128,12 @@ function update() {
 				headers[i] = 1;
 			}
 		}
-		t = document.createElement("table");
+	    	var columnHandlers = {};
+	    	for (header in headers)
+		{	console.log(header);
+			columnHandlers[header] = 1;
+		}
+		/*t = document.createElement("table");
 		tr = document.createElement("tr");
 		for (header in headers)
 		{
@@ -173,9 +174,9 @@ function update() {
 						tr.append(td);	
 					}
 				t.append(tr);	
-		}
-	    //console.log(arr);
-	    var marker3 = new google.maps.Marker({
+		} */
+	    
+	    /*var marker3 = new google.maps.Marker({
 		    position: loc,
 		    map: map,
 		    title: lat + ' ' + lng
@@ -189,8 +190,7 @@ function update() {
           info.open(map, marker3);
        });
 		document.body.append(t);
-	}
-       //Geocoder	
+	} */	
 	
     </script>  
 	  

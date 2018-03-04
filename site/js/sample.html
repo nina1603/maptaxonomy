@@ -157,7 +157,8 @@ function update() {
 		'<a  target=”_blank” href ="https://www.ncbi.nlm.nih.gov/gquery/?term=' + place[place]['genbank_id'] + '">ссылка</a>' },
 			'latitude' : places[place]['latitude']
 			}
-		console.log(columnHandlers);
+		for (index in columnHandlers)
+			console.log(index + '= ' + columnHandlers[index]);
 		}
 	    /*var loc = {lat: loc[place].lat, lng: loc[place].lng};
 	    var marker3 = new google.maps.Marker({

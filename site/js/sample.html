@@ -171,7 +171,7 @@ function update() {
 					}
 				t.append(tr);	
 		}
-	    var loc = {lat: loc[place].lat, lng: loc[place].lng};
+	    /*var loc = {lat: loc[place].lat, lng: loc[place].lng};
 	    var marker3 = new google.maps.Marker({
 		    position: loc,
 		    map: map,
@@ -181,10 +181,10 @@ function update() {
 	    '">ссылка</a>';
 	    var info = new google.maps.InfoWindow({
           content: contentString
-        });*/
+        });
 	     marker3.addListener('click', function() {
           info.open(map, marker3);
-       });
+       });*/
 		document.body.append(t);
 	} 
 	/* if (header == 'Name')

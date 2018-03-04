@@ -164,7 +164,7 @@ function update() {
 				t.append(tr);	
 		}
 	    var marker3 = new google.maps.Marker({
-		    position: {columnHandlers['latitude'], columnHandlers['longitude']},
+		    position: (columnHandlers['latitude'], columnHandlers['longitude']),
 		    map: map,
 		    //title: lat + ' ' + lng
 	    });

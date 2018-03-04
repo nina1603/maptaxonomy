@@ -140,13 +140,13 @@ function update() {
 		t.append(tr);
 		for (place in places)
 		{
+			console.log("place = ", place);
 				tr = document.createElement("tr");
 				for (header in headers)
 					{
 						td = document.createElement("td");
 						if (places[place].hasOwnProperty(header))
 							{
-								console.log("place = ", place);
 								td.innerHTML = places[place][header];
 								if (header == 'Name')
 								{

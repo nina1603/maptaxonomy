@@ -120,7 +120,7 @@ function update() {
       function showTable(places) 
     {
 		var headers = {};
-	    	var arr = [];
+	    	var loc = [];
 		for (place in places)
 		{
 			for (i in places[place])
@@ -140,6 +140,7 @@ function update() {
 		for (place in places)
 		{
 				var columnHandlers = {};
+				loc[place] = {};
 				tr = document.createElement("tr");
 				for (header in headers)
 					{
@@ -152,18 +153,24 @@ function update() {
 										return 'Genbank: ' + 
 			'<a  target=”_blank” href ="https://www.ncbi.nlm.nih.gov/gquery/?term=' + places[place][header] +'">ссылка</a>';
 									if (header == 'latitude')
-										return 'Latitude: ' + places[place][header];
+									{
+										loc[place].lat = places[place][header];
+										return;
+									}
 									if (header == 'longitude')
-										return 'Longitude' + places[place][header];
+									{
+										loc[place].lng = places[place][header];
+										return;
+									}
 									if (header == 'position')
-										return 'Pos: ' + places[place][header];
+										loc[place].pos = places[place][header];
 									else return places[place][header]; }
 							}
 						tr.append(td);	
 					}
 				t.append(tr);	
 		}
-	    var loc = {lat: columnHandlers['latitude'], lng: columnHandlers['longitude']};
+	    var loc = {lat: loc[place].lat, lng: loc[place].lng};
 	    var marker3 = new google.maps.Marker({
 		    position: loc,
 		    map: map,

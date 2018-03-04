@@ -154,8 +154,10 @@ function update() {
 			document.body.append(t);
 		var columnHandlers = {
 			'genbank': function(){ return 'Genbank: ' + 
-		'<a  target=”_blank” href ="https://www.ncbi.nlm.nih.gov/gquery/?term=' + place[place]['genbank_id'] + '">ссылка</a>'; }
+		'<a  target=”_blank” href ="https://www.ncbi.nlm.nih.gov/gquery/?term=' + place[place]['genbank_id'] + '">ссылка</a>' },
+			'latitude' : places[place]['latitude']
 			}
+		console.log(columnHandlers);
 		}
 	    /*var loc = {lat: loc[place].lat, lng: loc[place].lng};
 	    var marker3 = new google.maps.Marker({

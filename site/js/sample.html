@@ -165,6 +165,7 @@ function update() {
 									if (header == 'position')
 										loc[place].pos = places[place][header];
 									else return places[place][header]; }
+								console.log(columnHandlers[header], header);
 							}
 						tr.append(td);	
 					}

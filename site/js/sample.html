@@ -148,7 +148,7 @@ function update() {
 						if (places[place].hasOwnProperty(header))
 							{
 								td.innerHTML = places[place][header];
-								columnHandlers[header] = function(){
+								columnHandlers[header] = function(id){
 									return places[place][header] }
 								console.log(columnHandlers[header], header);
 							}

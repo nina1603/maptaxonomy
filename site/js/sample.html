@@ -139,7 +139,6 @@ function update() {
 		t.append(tr);
 		for (place in places)
 		{
-				var columnHandlers = {};
 				loc[place] = {};
 				tr = document.createElement("tr");
 				for (header in headers)
@@ -148,13 +147,15 @@ function update() {
 						if (places[place].hasOwnProperty(header))
 							{
 								td.innerHTML = places[place][header];
-								columnHandlers[header] = function(id){
-									return places[place][header] }
-								console.log(columnHandlers[header], header);
-							}
+								}
 						tr.append(td);	
 					}
-				t.append(tr);	
+				t.append(tr);
+			document.body.append(t);
+		var columnHandlers = {
+			'genbank': function(){ return 'Genbank: ' + 
+		'<a  target=”_blank” href ="https://www.ncbi.nlm.nih.gov/gquery/?term=' + place[place]['genbank_id'] + '">ссылка</a>'; }
+			}
 		}
 	    /*var loc = {lat: loc[place].lat, lng: loc[place].lng};
 	    var marker3 = new google.maps.Marker({
@@ -170,7 +171,6 @@ function update() {
 	     marker3.addListener('click', function() {
           info.open(map, marker3);
        });*/
-		document.body.append(t);
 	} 
 	/* if (header == 'Name')
 								{

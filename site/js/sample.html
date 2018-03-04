@@ -153,8 +153,8 @@ function update() {
 				t.append(tr);
 			document.body.append(t);
 		var columnHandlers = {
-			'genbank': function(){ return 'Genbank: ' + 
-		'<a  target=”_blank” href ="https://www.ncbi.nlm.nih.gov/gquery/?term=' + place[place]['genbank_id'] + '">ссылка</a>' },
+			'genbank': 'Genbank: ' + 
+		'<a  target=”_blank” href ="https://www.ncbi.nlm.nih.gov/gquery/?term=' + place[place]['genbank_id'] + '">ссылка</a>',
 			'latitude' : places[place]['latitude']
 			}
 		for (index in columnHandlers)

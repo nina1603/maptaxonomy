@@ -154,7 +154,7 @@ function update() {
 			document.body.append(t);
 		var columnHandlers = {
 			'genbank': 'Genbank: ' + 
-		'<a  target=”_blank” href ="https://www.ncbi.nlm.nih.gov/gquery/?term=' + place[place][genbank_id] + '">ссылка</a>',
+		'<a  target=”_blank” href ="https://www.ncbi.nlm.nih.gov/gquery/?term=' + places[place]['genbank_id'] + '">ссылка</a>',
 			'latitude' : places[place]['latitude']
 			}
 		for (index in columnHandlers)

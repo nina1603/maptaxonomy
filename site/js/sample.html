@@ -146,7 +146,7 @@ function update() {
 						td = document.createElement("td");
 						if (places[place].hasOwnProperty(header))
 							{
-								console.log("place = ", place);
+								//console.log("place = ", place);
 								td.innerHTML = places[place][header];
 								if (header == 'Name')
 								{
@@ -172,7 +172,6 @@ function update() {
 					}
 				t.append(tr);	
 		}
-    }
 	    /*var marker3 = new google.maps.Marker({
 		    position: loc,
 		    map: map,
@@ -185,9 +184,9 @@ function update() {
         });
 	     marker3.addListener('click', function() {
           info.open(map, marker3);
-       });
+       });*/
 		document.body.append(t);
-	} */	
+	} 
 	
     </script>  
 	  

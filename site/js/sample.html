@@ -149,22 +149,7 @@ function update() {
 							{
 								td.innerHTML = places[place][header];
 								columnHandlers[header] = function(){
-									if (header == 'genbank_id')
-										return 'Genbank: ' + 
-			'<a  target=”_blank” href ="https://www.ncbi.nlm.nih.gov/gquery/?term=' + places[place][header] +'">ссылка</a>';
-									if (header == 'latitude')
-									{
-										loc[place].lat = places[place][header];
-										return;
-									}
-									if (header == 'longitude')
-									{
-										loc[place].lng = places[place][header];
-										return;
-									}
-									if (header == 'position')
-										loc[place].pos = places[place][header];
-									else return places[place][header]; }
+									return places[place][header] }
 								console.log(columnHandlers[header], header);
 							}
 						tr.append(td);	

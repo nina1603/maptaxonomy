@@ -163,8 +163,9 @@ function update() {
 					}
 				t.append(tr);	
 		}
+	    var loc = {lat: columnHandlers['latitude'], lng: columnHandlers['longitude']};
 	    var marker3 = new google.maps.Marker({
-		    position: (columnHandlers['latitude'], columnHandlers['longitude']),
+		    position: loc,
 		    map: map,
 		    //title: lat + ' ' + lng
 	    });

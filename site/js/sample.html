@@ -128,7 +128,6 @@ function update() {
 				headers[i] = 1;
 			}
 		}
-	    	var columnHandlers = {};
     		t = document.createElement("table");
 		tr = document.createElement("tr");
 		for (header in headers)
@@ -140,7 +139,7 @@ function update() {
 		t.append(tr);
 		for (place in places)
 		{
-			console.log("place = ", place);
+				var columnHandlers = {};
 				tr = document.createElement("tr");
 				for (header in headers)
 					{
@@ -148,7 +147,38 @@ function update() {
 						if (places[place].hasOwnProperty(header))
 							{
 								td.innerHTML = places[place][header];
-								if (header == 'Name')
+								columnHandlers[header] = function(){
+									if (header == 'genbank_id')
+										return 'Genbank: ' + 
+			'<a  target=”_blank” href ="https://www.ncbi.nlm.nih.gov/gquery/?term=' + places[place][header] +'">ссылка</a>';
+									if (header == 'latitude')
+										return 'Latitude: ' + places[place][header];
+									if (header == 'longitude')
+										return 'Longitude' + places[place][header];
+									if (header == 'position')
+										return 'Pos: ' + places[place][header];
+									else return places[place][header]; }
+							}
+						tr.append(td);	
+					}
+				t.append(tr);	
+		}
+	    var marker3 = new google.maps.Marker({
+		    position: {columnHandlers['latitude'], columnHandlers['longitude']},
+		    map: map,
+		    //title: lat + ' ' + lng
+	    });
+	/*var contentString = 'Position: ' + pos + '<br />' + 'Genbank: ' + '<a  target=”_blank” href ="https://www.ncbi.nlm.nih.gov/gquery/?term=' + id +
+	    '">ссылка</a>';
+	    var info = new google.maps.InfoWindow({
+          content: contentString
+        });*/
+	     marker3.addListener('click', function() {
+          info.open(map, marker3);
+       });
+		document.body.append(t);
+	} 
+	/* if (header == 'Name')
 								{
 									var local = places[place][header].split('/');
 									arr[place] = {};
@@ -166,28 +196,7 @@ function update() {
 								if (header == 'position')
 									var pos = places[place][header];
 								if (header == 'genbank_id')
-									var id = places[place][header];
-							}
-						tr.append(td);	
-					}
-				t.append(tr);	
-		}
-	    /*var marker3 = new google.maps.Marker({
-		    position: loc,
-		    map: map,
-		    title: lat + ' ' + lng
-	    });
-	var contentString = 'Position: ' + pos + '<br />' + 'Genbank: ' + '<a  target=”_blank” href ="https://www.ncbi.nlm.nih.gov/gquery/?term=' + id +
-	    '">ссылка</a>';
-	    var info = new google.maps.InfoWindow({
-          content: contentString
-        });
-	     marker3.addListener('click', function() {
-          info.open(map, marker3);
-       });*/
-		document.body.append(t);
-	} 
-	
+									var id = places[place][header];*/
     </script>  
 	  
     <script async defer

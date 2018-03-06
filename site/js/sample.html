@@ -174,8 +174,8 @@ function update() {
 		    map: map,
 		    title: 'not yet'
 	    });
-		contentString[place] = columnHandler['genbank'](places[place]['genbank_id']) + 
-			columnHandler['position'](places[place]['position']);
+		contentString[place] = columnHandlers['genbank'](places[place]['genbank_id']) + 
+			columnHandlers['position'](places[place]['position']);
 	    	info = new google.maps.InfoWindow({
           content: contentString[place]
         });

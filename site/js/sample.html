@@ -115,8 +115,9 @@ function update() {
             showTable(places);
 		}
           }
-      }
-          
+      }	
+	 var columnHandlers = {};    
+	 
       function showTable(places) 
     {
 		var headers = {};
@@ -139,18 +140,17 @@ function update() {
 		t.append(tr);
 		for (place in places)
 		{
-			var columnHandlers = {};
 			loc[place] = {};
 			tr = document.createElement("tr");
 			for (header in headers)
 				{
 					td = document.createElement("td");
 					var columnHandlers = {
-				'genbank': 'Genbank: ' + 
+				'genbank': function(places[place]['genbank_id']( return 'Genbank: ' + 
 	'<a  target=”_blank” href ="https://www.ncbi.nlm.nih.gov/gquery/?term=' + places[place]['genbank_id'] + '">ссылка</a>',
 				'latitude' : places[place]['latitude'],
 				'longitude' : places[place]['longitude'],
-				'position': places[place]['position']
+				'position': function(places[place]['position']) {return 'Position: ' + places[place]['position'] + '.'}
 			}
 					if (places[place].hasOwnProperty(header))
 						{

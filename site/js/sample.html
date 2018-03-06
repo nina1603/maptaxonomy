@@ -148,8 +148,8 @@ function update() {
 					var columnHandlers = {
 				'genbank': function(x) {return 'Genbank: ' + 
 	'<a  target=”_blank” href ="https://www.ncbi.nlm.nih.gov/gquery/?term=' + x + '">ссылка</a>'; },
-				'latitude' : places[place]['latitude'],
-				'longitude' : places[place]['longitude'],
+				'latitude' : function(x) {return x},
+				'longitude' : function(y) {return y},
 				'position': function(x) {return 'Position: ' + x + '.'; }
 			}
 					if (places[place].hasOwnProperty(header))
@@ -165,21 +165,24 @@ function update() {
 		for (index in columnHandlers)
 			console.log(index + '= ' + columnHandlers[index]);
 		}
-	    var loc = {lat: columnHandlers['latitude'], lng: columnHandlers['longitude']};
-	    var marker3 = new google.maps.Marker({
-		    position: loc,
+	    //var loc = {lat: columnHandlers['latitude'], lng: columnHandlers['longitude']};
+	    var contentString = {}, info = {}, marker = {};
+	for (place in places)
+	{
+		marker[place] = new google.maps.Marker({
+		    position: {lat: places[place]['latitude'], lng: places[place]['longitude']},
 		    map: map,
-		    title: loc.lat + ' ' + loc.lng
+		    title: 'not yet'
 	    });
-	var contentString = 'Position: ' + columnHandlers['position'];
-	    //+ '<br />' + 'Genbank: ' + 
-	//'<a  target=”_blank” href ="https://www.ncbi.nlm.nih.gov/gquery/?term=' + id +'">ссылка</a>';
-	    var info = new google.maps.InfoWindow({
-          content: contentString
+		contentString[place] = columnHandler['genbank'](places[place]['genbank_id']) + 
+			columnHandler['position'](places[place]['position']);
+	    	info = new google.maps.InfoWindow({
+          content: contentString[place]
         });
-	     marker3.addListener('click', function() {
-          info.open(map, marker3);
+	     marker[place].addListener('click', function() {
+          info[place].open(map, marker[place]);
        });
+	}
 	} 
 	/* if (header == 'Name')
 								{

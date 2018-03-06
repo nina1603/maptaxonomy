@@ -174,11 +174,12 @@ function update() {
 	    });
 		contentString[place] = columnHandlers['genbank'](places[place]['genbank_id']) +  '<br>' +
 			columnHandlers['position'](places[place]['position'], marker[place]);
-	    	info[place] = new google.maps.InfoWindow({
+	    	infowindow = new google.maps.InfoWindow({
           content: contentString[place]
         });
+		marker[place].infowindow = infowindow[place];
 	     marker[place].addListener('click', function() {
-          info[place].open(map, marker[place]);
+          return this.infowindow.open(map, this);
        });
 	}
 	} 

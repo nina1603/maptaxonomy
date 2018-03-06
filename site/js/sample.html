@@ -116,7 +116,14 @@ function update() {
 		}
           }
       }	
-	 var columnHandlers = {};    
+	 
+	 var columnHandlers = {
+				'genbank': function(x) {return 'Genbank: ' + 
+	'<a  target=”_blank” href ="https://www.ncbi.nlm.nih.gov/gquery/?term=' + x + '">ссылка</a>'; },
+				'latitude' : function(x) {return x},
+				'longitude' : function(y) {return y},
+				'position': function(x) {return 'Position: ' + x + '.'; }
+			}
 	 
       function showTable(places) 
     {
@@ -145,13 +152,6 @@ function update() {
 			for (header in headers)
 				{
 					td = document.createElement("td");
-					var columnHandlers = {
-				'genbank': function(x) {return 'Genbank: ' + 
-	'<a  target=”_blank” href ="https://www.ncbi.nlm.nih.gov/gquery/?term=' + x + '">ссылка</a>'; },
-				'latitude' : function(x) {return x},
-				'longitude' : function(y) {return y},
-				'position': function(x) {return 'Position: ' + x + '.'; }
-			}
 					if (places[place].hasOwnProperty(header))
 						{
 							td.innerHTML = places[place][header];
@@ -170,7 +170,8 @@ function update() {
 	for (place in places)
 	{
 		marker[place] = new google.maps.Marker({
-		    position: {lat: places[place]['latitude'], lng: places[place]['longitude']},
+		    position: {lat:columnHandlers['latitude'](places[place]['latitude']), 
+			       lng: columnHandlers['longitude'](places[place]['longitude'])},
 		    map: map,
 		    title: 'not yet'
 	    });

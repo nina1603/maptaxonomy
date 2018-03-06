@@ -122,7 +122,7 @@ function update() {
 	'<a  target=”_blank” href ="https://www.ncbi.nlm.nih.gov/gquery/?term=' + x + '">ссылка</a>'; },
 				'latitude' : function(x) {return x},
 				'longitude' : function(y) {return y},
-				'position': function(x) {return 'Position: ' + x + '.'; }
+				'position': function(x, y) {return 'Position: ' + x + '.'}
 			}
 	 
       function showTable(places) 
@@ -176,7 +176,7 @@ function update() {
 		    title: 'not yet'
 	    });
 		contentString[place] = columnHandlers['genbank'](places[place]['genbank_id']) +  '<br>' +
-			columnHandlers['position'](places[place]['position']);
+			columnHandlers['position'](places[place]['position'], marker[place]);
 	    	info[place] = new google.maps.InfoWindow({
           content: contentString[place]
         });

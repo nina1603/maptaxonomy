@@ -1,0 +1,59 @@
+---
+- hosts: maptaxonomy
+  become: yes
+  become_user: root
+  become_method: sudo
+  tasks:
+    - name: install required packages
+      apt: pkg='{{item}}' state=installed update_cache=true
+      with_items:
+       - nginx
+       - postgresql
+       - python-pip
+       - supervisor
+    - name: install django
+      pip:
+        name: django
+    - name: install psycopg
+      pip:
+        name: psycopg2
+    - name: install pyOpenSSL
+      pip:
+        name: pyOpenSSL
+    - name: install django-cors-headers
+      pip:
+        name: django-cors-headers
+    - name: install uwsgi
+      pip:
+        name: uwsgi
+    - name: install python packages
+      pip:
+        name={{ item.name }}
+      with_items:
+       - name: geocoder
+       - name: django-filter
+       - name: djangorestframework
+    - name: create db
+      become: true
+      become_user: postgres
+      postgresql_db: name=maptaxonomy
+    - name: alter user
+      become: true
+      become_user: postgres
+      postgresql_user: db=maptaxonomy name=postgres password=qwerty
+    - name: clone site
+      git: repo='https://github.com/mickvav/maptaxonomy.git'
+           version=master
+             dest='/srv/www/maptaxonomy'
+    - name: migrate
+      django_manage:
+        command: migrate
+        app_path: '/srv/www/maptaxonomy/site/maptaxonomy/'
+    - name: create vassals dir
+      file: path='/etc/uwsgi/vassals' state=directory
+    - name: create symlink for uwsgi
+      file: src='/srv/www/maptaxonomy/site/playbooks/uwsgi.ini'
+            dest='/etc/uwsgi/vassals/uwsgi.ini'
+            state=link
+    - name: setup uwsgi in supervisor
+      file: src='/srv/www/maptaxonomy/site/playbooks/uwsgi_super.ini' dest='/etc/supervisor/conf.d/uwsgi-runner.conf' state=link

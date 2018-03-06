@@ -1,0 +1,35 @@
+---
+- hosts: maptaxonomy
+  become: yes
+  become_user: root
+  become_method: sudo
+  tasks:
+    - name: create nginx config file link
+      file:
+        src: '/srv/www/maptaxonomy/site/maptaxonomy/map_taxonomy_nginx.conf'
+        dest: '/etc/nginx/sites-enabled/nginx.conf'
+        state: link
+    - name: update supervisor
+      supervisorctl: name=uwsgi-runner state=restarted
+    - name: delete nginx default conf
+      file: 
+        path: '/etc/nginx/sites-enabled/default'
+        state: absent
+    - name: create ssl dir
+      file: path='/etc/nginx/ssl' state=directory
+    - name: generate self signed keys
+      openssl_privatekey:
+          path: /etc/nginx/ssl/nginx.pem
+    - openssl_csr:
+          path: /etc/nginx/ssl/maptaxonomy.ru.csr
+          privatekey_path: /etc/nginx/ssl/nginx.pem
+          common_name: maptaxonomy.ru
+    - openssl_certificate:
+          path: /etc/nginx/ssl/maptaxonomy.ru.crt
+          privatekey_path: /etc/nginx/ssl/nginx.pem
+          csr_path: /etc/nginx/ssl/maptaxonomy.ru.csr
+          provider: selfsigned
+    - name: restart nginx
+      service:
+          name: nginx
+          state: restarted 

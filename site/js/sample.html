@@ -174,7 +174,7 @@ function update() {
 	    });
 		contentString[place] = columnHandlers['genbank'](places[place]['genbank_id']) +  '<br>' +
 			columnHandlers['position'](places[place]['position'], marker[place]);
-	    	var infowindow;
+	    	var infowindow = {};
 		infowindow[place] = new google.maps.InfoWindow({
           content: contentString[place]
         });

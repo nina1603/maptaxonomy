@@ -13,27 +13,27 @@ function loadTable() {
     xhr.open('GET', 'https://maptaxonomy.ru/api/v1/experiments/?format=json', true); ///maptaxonomy/sample_data/Table1.csv.json
     xhr.send();
     xhr.onreadystatechange = function() {
-        if ((xhr.readyState > 0) && (xhr.readyState < 4)) {
+        if ((xhr.readyState > 0) && (xhr.readyState < 4))
             a.style.display = "block";
-            if (xhr.readyState == 4) {
-                a.style.display = "none";
-                if (xhr.status != 200) {
-                    // обработать ошибку
-                    alert(xhr.status + ': ' + xhr.statusText);
-                } else {
-                    try {
-                        var data = JSON.parse(xhr.responseText);
-                        places = data.results;
-                    } catch (e) {
-                        alert("Некорректный ответ: " + e.message);
-                        console.log(xhr.responseText);
-                    }
+        if (xhr.readyState == 4) {
+            a.style.display = "none";
+            if (xhr.status != 200) {
+                // обработать ошибку
+                alert(xhr.status + ': ' + xhr.statusText);
+            } else {
+                try {
+                    var data = JSON.parse(xhr.responseText);
+                    places = data.results;
+                } catch (e) {
+                    alert("Некорректный ответ: " + e.message);
+                    console.log(xhr.responseText);
                 }
-                showTable(places);
             }
+            showTable(places);
         }
     }
 }
+
 
 var columnHandlers = {
     'genbank': function(x) {

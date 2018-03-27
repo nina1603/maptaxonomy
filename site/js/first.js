@@ -88,8 +88,8 @@ function loadTable()
 			t.append(tr);
 		document.body.append(t);
 		
-		for (index in columnHandlers)
-			console.log(index + '= ' + columnHandlers[index]);
+		//for (index in columnHandlers)
+		//	console.log(index + '= ' + columnHandlers[index]);
 		}
 	    //var loc = {lat: columnHandlers['latitude'], lng: columnHandlers['longitude']};
 	    var contentString = {}, info = {}, marker = {};
@@ -99,18 +99,18 @@ function loadTable()
 		    position: {lat:columnHandlers['latitude'](places[place]['latitude']), 
 			       lng: columnHandlers['longitude'](places[place]['longitude'])},
 		    map: map,
-		    title: 'not yet'
+		    title: 'Location №' + place
 	    });
 		contentString[place] = columnHandlers['genbank'](places[place]['genbank_id']) +  '<br>' +
 			columnHandlers['position'](places[place]['position'], marker[place]);
 	    	var infowindow = {};
 		infowindow[place] = new google.maps.InfoWindow({
           content: contentString[place]
+       });
         });
 		marker[place].infowindow = infowindow[place];
 	     marker[place].addListener('click', function() {
           return this.infowindow.open(map, this);
-       });
 	}
 	} 
 	

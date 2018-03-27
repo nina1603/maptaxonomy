@@ -107,7 +107,7 @@ function loadTable()
 		infowindow[place] = new google.maps.InfoWindow({
           content: contentString[place]
        });
-        });
+        };
 		marker[place].infowindow = infowindow[place];
 	     marker[place].addListener('click', function() {
           return this.infowindow.open(map, this);

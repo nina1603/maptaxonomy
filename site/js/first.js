@@ -111,5 +111,5 @@ function loadTable()
      };
 		marker[place].infowindow = infowindow[place];
 	     	marker[place].addListener('click', function() {
-          	return this.infowindow.open(map, this); }
+          	return this.infowindow.open(map, this) }
 	}

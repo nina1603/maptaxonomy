@@ -66,10 +66,35 @@ function update() {
   var path = [marker.getPosition(), marker2.getPosition()];
   flightPath.setPath(path);
 }
-      } 
-	  </script>
+      }
+</script>
+	
+<input type = "text" id = "tableId"></input>
+<script>
+	var v = document.getElementById("tableId");
+	function listMajors() {
+        gapi.client.sheets.spreadsheets.values.get({
+        	spreadsheetId: v.value,
+        	range: 'Class Data!A2:E',
+        }).then(function(response) {
+        	var range = response.result;
+        if (range.values.length > 0) {
+        	appendPre('Name, Major:');
+        for (i = 0; i < range.values.length; i++) {
+        	var row = range.values[i];
+         	// Print columns A and E, which correspond to indices 0 and 4.
+              	appendPre(row[0] + ', ' + row[4]);
+       		}
+          } else {
+            appendPre('No data found.');
+          }
+        }, function(response) {
+          appendPre('Error: ' + response.result.error.message);
+        });
+      }	
+</script>
 	  
- <script type = "application/javascript" src = "first.js"> 
+ <script type = "application/javascript" src = "first.js">
     </script>  
 	  
     <script async defer

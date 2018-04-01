@@ -7,7 +7,6 @@ a.style.zIndex = 15;
 a.style.display = "none";
 
 function loadTable() {
-    alert("This is loadTable");
     var xhr = new XMLHttpRequest();
     var places;
     xhr.open('GET', 'https://maptaxonomy.ru/api/v1/experiments/?format=json', true); ///maptaxonomy/sample_data/Table1.csv.json
@@ -52,7 +51,6 @@ var columnHandlers = {
 }
 
 function showTable(places) {
-    alert("This is showTable");
     var headers = {};
     var loc = [];
     for (place in places) {

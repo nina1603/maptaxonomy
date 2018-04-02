@@ -11,12 +11,22 @@
   <body>
     <h3>My Google Maps Demo</h3>
     <div id="map"></div>
+	  
+    <!--Add buttons to initiate auth sequence and sign out-->
+    <button id="authorize-button" style="display: none;">Authorize</button>
+    <button id="signout-button" style="display: none;">Sign Out</button>
+    <pre id="content"></pre>
+	  
     <a href = "#" onClick = "loadTable()"> Show me the table</a>
 	  
 <script type = "application/javascript" src = "init.js">
-</script>
+	</script>
+	  
+<input type = "text" id = "tableId"></input>	 
+<script type = "application/javascript" src = "sheetsDesign.js">
+	  </script>
 	
-<input type = "text" id = "tableId"></input>
+
 <script>
 	var v = document.getElementById("tableId");
 	function listMajors() {
@@ -46,6 +56,10 @@
 	  
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDA6tIfdstDmqeKNMhA_tWYo4Xm0oYizc0&callback=initMap&&libraries=geometry">
+    </script>
+	
+<script async defer src="https://apis.google.com/js/api.js" onload="this.onload=function(){};handleClientLoad()"
+      onreadystatechange="if (this.readyState === 'complete') this.onload()">
     </script>
   </body>
 </html>

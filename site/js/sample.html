@@ -30,7 +30,6 @@
     <input type="text" id="tableId"></input>
 
     <script type="text/javascript">
-        var v = document.getElementById("tableId");
 	
 	// Client ID and API key from the Developer Console
 	var CLIENT_ID = '858139403726-0ru9uicbkoo5o3i98idspa9onocbhi5n.apps.googleusercontent.com';
@@ -110,17 +109,18 @@
        		* https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
        		*/
         	function listMajors() {
+			var v = document.getElementById("tableId");
             		gapi.client.sheets.spreadsheets.values.get({
-                	spreadsheetId: '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms', //v.value
-                	range: 'Class Data!A2:E',
+                	spreadsheetId: '1VGtk-r63ctHvnv2rNckq_Ptx41b2HAXBp7AmFOsdjPI'//'1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms', //v.value
+                	range: 'Class Data!A2:G',
            	}).then(function(response) {
                 	var range = response.result;
                 	if (range.values.length > 0) {
-                    		appendPre('Name, Major:');
+                    		appendPre('genbank_id, name:');
                     		for (i = 0; i < range.values.length; i++) {
                         		var row = range.values[i];
                         		// Print columns A and E, which correspond to indices 0 and 4.
-                        		appendPre(row[0] + ', ' + row[4]);
+                        		appendPre(row[4] + ', ' + row[6]);
                     		}
                		 } else {
                     	appendPre('No data found.');

@@ -3,6 +3,7 @@ var sendBut = document.getElementById("SendButton");
 var marker = {};
 var infowindow = {};
 var contentString = {};
+var places;
 
 var CLIENT_ID = '858139403726-0ru9uicbkoo5o3i98idspa9onocbhi5n.apps.googleusercontent.com';
 var API_KEY = 'AIzaSyBqxSOO8-ABdeDtEapbKXWC_7j7g57HC18';
@@ -64,7 +65,7 @@ function initClient() {
 
 		function handleInputClick(event) {
 			var address = v.value;
-			listMajors(address);
+			listPlaces(address);
 		}
       		/* Append a pre element to the body containing the given message
        		* as its text node. Used to display the results of the API call.
@@ -80,26 +81,27 @@ function initClient() {
 	    	/* Print the names and majors of students in a sample spreadsheet:
        		* https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
        		*/
-        	function listMajors(address) {
+        	function listPlaces(address) {
             		gapi.client.sheets.spreadsheets.values.get({
                 	spreadsheetId: address, //'1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms',
-                	range: 'Map!A2:G',
+                	range: 'Map!A1:G',
            	}).then(function(response) {
                 	var range = response.result;
                 	if (range.values.length > 0) {
-                    		appendPre('genbank_id, name:');
-                    		for (i = 0; i < range.values.length; i++) {
+				var mainStr = range.values[0];
+                    		for (i = 1; i < range.values.length; i++) {
                         		var row = range.values[i];
-                        		appendPre(row[4] + ', ' + row[6]);
+                        		appendPre(row[parser(mainStr, 'genbank_id')] + ', ' + row[parser(mainStr, 'name')]);
 					marker[i] = new google.maps.Marker({
             					position: {
-                					lat: Number.parseInt(row[1]),
-                					lng: Number.parseInt(row[2])
+                					lat: Number.parseInt(row[parser(mainStr, 'latitude')]),
+                					lng: Number.parseInt(row[parser(mainStr, 'longitude')])
             					},
             					map: map,
             					title: 'Location №' + i
         					});
-					contentString[i] = 'genbank: ' + row[4] + '<br>' + 'Position:' + row[3];
+					contentString[i] = 'genbank: ' + row[parser(mainStr, 'genbank_id')]
+						+ '<br>' + 'Position:' + row[parser(mainStr, 'position')];
         				infowindow[i]= new google.maps.InfoWindow({
             					content: contentString[i]
         				});
@@ -116,3 +118,11 @@ function initClient() {
                 appendPre('Error: ' + response.result.error.message);
             	});
         	}
+
+		function parser(str, name) {
+			for (i = 0; i < str.length; i++) {
+				if (str[i] == name)
+					return i;
+			}
+			return -1;
+		}

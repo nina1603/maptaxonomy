@@ -91,6 +91,7 @@ function initClient() {
 				var mainStr = range.values[0];
                     		for (i = 1; i < range.values.length; i++) {
                         		var row = range.values[i];
+					alert (parser(mainStr, 'genbank_id'));
                         		appendPre(row[parser(mainStr, 'genbank_id')] + ', ' + row[parser(mainStr, 'name')]);
 					marker[i] = new google.maps.Marker({
             					position: {

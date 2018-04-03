@@ -91,7 +91,7 @@ function listPlaces(address) {
             var mainStr = range.values[0];
             for (i = 1; i < range.values.length; i++) {
                 var row = range.values[i];
-                appendPre(row[parser(mainStr, 'genbank_id')] + ', ' + row[parser(mainStr, 'name')] + row[parser(mainStr, 'position')]);
+                appendPre(row[parser(mainStr, 'genbank_id')] + ', ' + row[parser(mainStr, 'name')]);
                 marker[i] = new google.maps.Marker({
                     position: {
                         lat: Number.parseInt(row[parser(mainStr, 'latitude')]),

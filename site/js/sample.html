@@ -115,7 +115,7 @@
         	function listMajors() {
             		gapi.client.sheets.spreadsheets.values.get({
                 	spreadsheetId: '1VGtk-r63ctHvnv2rNckq_Ptx41b2HAXBp7AmFOsdjPI',//'1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms', //v.value
-                	range: 'Class Data!A2:G',
+                	range: 'Map!A2:G',
            	}).then(function(response) {
                 	var range = response.result;
                 	if (range.values.length > 0) {

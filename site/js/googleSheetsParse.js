@@ -91,7 +91,6 @@ function initClient() {
 				var mainStr = range.values[0];
                     		for (i = 1; i < range.values.length; i++) {
                         		var row = range.values[i];
-					alert (parser(mainStr, 'genbank_id'));
                         		appendPre(row[parser(mainStr, 'genbank_id')] + ', ' + row[parser(mainStr, 'name')]);
 					marker[i] = new google.maps.Marker({
             					position: {
@@ -101,8 +100,7 @@ function initClient() {
             					map: map,
             					title: 'Location №' + i
         					});
-					contentString[i] = 'genbank: ' + row[parser(mainStr, 'genbank_id')]
-						+ '<br>' + 'Position:' + row[parser(mainStr, 'position')];
+				contentString[i] = 'genbank: ' + row[parser(mainStr, 'genbank_id')] + '<br>' + 'Position:' + row[parser(mainStr, 'position')];
         				infowindow[i]= new google.maps.InfoWindow({
             					content: contentString[i]
         				});

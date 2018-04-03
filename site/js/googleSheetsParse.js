@@ -123,5 +123,5 @@ function parser(str, name) {
         if (str[i] == name)
             return i;
     }
-    return -1;
+    return 0;
 }

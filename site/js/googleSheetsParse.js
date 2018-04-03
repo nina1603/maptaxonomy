@@ -89,7 +89,7 @@ function listPlaces(address) {
         var range = response.result;
         if (range.values.length > 0) {
             var mainStr = range.values[0];
-            for (i = 1; i < range.values.length; i++) {
+            for (var i = 1; i < range.values.length; i++) {
                 var row = range.values[i];
                 appendPre(row[parser(mainStr, 'genbank_id')] + ', ' + row[parser(mainStr, 'name')]);
                 marker[i] = new google.maps.Marker({
@@ -119,7 +119,7 @@ function listPlaces(address) {
 }
 
 function parser(str, name) {
-    for (i = 0; i < str.length; i++) {
+    for (var i = 0; i < str.length; i++) {
         if (str[i] == name)
             return i;
     }

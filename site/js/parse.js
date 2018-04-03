@@ -1,11 +1,11 @@
-a = document.createElement("div");
+/*a = document.createElement("div");
 a.innerHTML = "Wait, it's loading...";
 a.style.position = "absolute";
 a.style.top = "50%";
 a.style.left = "50%";
 a.style.zIndex = 15;
 a.style.display = "none";
-
+*/
 function loadTable() {
     var xhr = new XMLHttpRequest();
     var places;

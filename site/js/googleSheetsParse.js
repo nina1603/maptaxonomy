@@ -64,7 +64,7 @@ function initClient() {
 
 		function handleInputClick(event) {
 			var address = v.value;
-			listMajors();
+			listMajors(address);
 		}
       		/* Append a pre element to the body containing the given message
        		* as its text node. Used to display the results of the API call.
@@ -80,7 +80,7 @@ function initClient() {
 	    	/* Print the names and majors of students in a sample spreadsheet:
        		* https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
        		*/
-        	function listMajors() {
+        	function listMajors(address) {
             		gapi.client.sheets.spreadsheets.values.get({
                 	spreadsheetId: address, //'1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms',
                 	range: 'Map!A2:G',

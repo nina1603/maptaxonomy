@@ -2,6 +2,7 @@ var v = document.getElementById("tableId");
 	var sendBut = document.getElementById("SendButton");
 	var marker = {};
 	var infowindow = {};
+	var contentString = {};
 
 	var CLIENT_ID = '858139403726-0ru9uicbkoo5o3i98idspa9onocbhi5n.apps.googleusercontent.com';
 	var API_KEY = 'AIzaSyBqxSOO8-ABdeDtEapbKXWC_7j7g57HC18';

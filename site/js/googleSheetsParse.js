@@ -89,8 +89,8 @@ var v = document.getElementById("tableId");
                         		appendPre(row[4] + ', ' + row[6]);
 					marker[i] = new google.maps.Marker({
             					position: {
-                					lat: row[1],
-                					lng: row[2]
+                					lat: Number.parseInt(row[1]),
+                					lng: Number.parseInt(row[2])
             					},
             					map: map,
             					title: 'Location №' + i

@@ -23,15 +23,14 @@
     <pre id="content"></pre>
 
     <a href="#" onClick="loadTable()"> Show me the table</a>
-
+    <input type="text" id="tableId"></input>
+	
     <script type="application/javascript" src="init.js">
     </script>
 
-    <input type="text" id="tableId"></input>
-
     <script type="text/javascript">
-	
-	// Client ID and API key from the Developer Console
+	var v = document.getElementById("tableId");
+	alert(v + 'is your value');
 	var CLIENT_ID = '858139403726-0ru9uicbkoo5o3i98idspa9onocbhi5n.apps.googleusercontent.com';
 	var API_KEY = 'AIzaSyBqxSOO8-ABdeDtEapbKXWC_7j7g57HC18';
 	// Array of API discovery doc URLs for APIs used by the quickstart
@@ -109,7 +108,6 @@
        		* https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
        		*/
         	function listMajors() {
-			var v = document.getElementById("tableId");
             		gapi.client.sheets.spreadsheets.values.get({
                 	spreadsheetId: '1VGtk-r63ctHvnv2rNckq_Ptx41b2HAXBp7AmFOsdjPI'//'1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms', //v.value
                 	range: 'Class Data!A2:G',

@@ -24,13 +24,14 @@
 
     <a href="#" onClick="loadTable()"> Show me the table</a>
     <input type="text" id="tableId" style="display: none;"></input>
-	<input type="submit" value="Send" style="display: none;"></input>
+	<input type="submit" id = "SendButton" value="Send" style="display: none;"></input>
 	
     <script type="application/javascript" src="init.js">
     </script>
 
     <script type="text/javascript">
 	var v = document.getElementById("tableId");
+	var sendBut = document.getElementById("SendButton");
 	alert(v + 'is your value');
 	var CLIENT_ID = '858139403726-0ru9uicbkoo5o3i98idspa9onocbhi5n.apps.googleusercontent.com';
 	var API_KEY = 'AIzaSyBqxSOO8-ABdeDtEapbKXWC_7j7g57HC18';
@@ -75,6 +76,8 @@
         		if (isSignedIn) {
           			authorizeButton.style.display = 'none';
           			signoutButton.style.display = 'block';
+				v.style.display = 'block';
+				sendBut.style.display = 'block';
           			listMajors();
         		} else {
           			authorizeButton.style.display = 'block';

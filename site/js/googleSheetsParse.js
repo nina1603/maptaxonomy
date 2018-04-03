@@ -1,7 +1,8 @@
 var v = document.getElementById("tableId");
 	var sendBut = document.getElementById("SendButton");
-	//alert(v + 'is your value');
-	    console.log("Hello, it's working");
+	var marker = {};
+	var infowindow = {};
+
 	var CLIENT_ID = '858139403726-0ru9uicbkoo5o3i98idspa9onocbhi5n.apps.googleusercontent.com';
 	var API_KEY = 'AIzaSyBqxSOO8-ABdeDtEapbKXWC_7j7g57HC18';
 	// Array of API discovery doc URLs for APIs used by the quickstart
@@ -84,8 +85,24 @@ var v = document.getElementById("tableId");
                     		appendPre('genbank_id, name:');
                     		for (i = 0; i < range.values.length; i++) {
                         		var row = range.values[i];
-                        		// Print columns A and E, which correspond to indices 0 and 4.
                         		appendPre(row[4] + ', ' + row[6]);
+					marker[i] = new google.maps.Marker({
+            					position: {
+                					lat: row[1],
+                					lng: row[2]
+            					},
+            					map: map,
+            					title: 'Location №' + i
+        					});
+					contentString[i] = 'genbank: ' + row[4] + '<br>' + 'Position:' + row[3];
+        				infowindow[i]= new google.maps.InfoWindow({
+            					content: contentString[i]
+        				});
+        				marker[i].infowindow = infowindow[i];
+        				marker[i].addListener('click', function() {
+            					return this.infowindow.open(map, this);
+        				});
+						
                     		}
                		 } else {
                     	appendPre('No data found.');

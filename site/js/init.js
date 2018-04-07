@@ -6,7 +6,7 @@ var map;
         	  zoom: 4,
        		  center: location
         	});
-        var marker = new google.maps.Marker({
+        /*var marker = new google.maps.Marker({
           position: uluru,
           map: map,
           draggable: true,
@@ -51,4 +51,4 @@ function update() {
   var path = [marker.getPosition(), marker2.getPosition()];
   flightPath.setPath(path);
 }
-      }
+      }*/

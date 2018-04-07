@@ -89,18 +89,24 @@ function listPlaces(address) {
         var range = response.result;
         if (range.values.length > 0) {
             var mainStr = range.values[0];
+            var gen_id = parser(mainStr, 'genbank_id');
+            var name_id = parser(mainStr, 'name');
+            var lat = parser(mainStr, 'latitude');
+            var lng = parser(mainStr, 'longitude');
+            var pos_id = parser(mainStr, 'position');
+            
             for (var i = 1; i < range.values.length; i++) {
                 var row = range.values[i];
-                appendPre(row[parser(mainStr, 'genbank_id')] + ', ' + row[parser(mainStr, 'name')]);
+                appendPre(row[gen_id] + ', ' + row[name_id]);
                 marker[i] = new google.maps.Marker({
                     position: {
-                        lat: Number.parseInt(row[parser(mainStr, 'latitude')]),
-                        lng: Number.parseInt(row[parser(mainStr, 'longitude')])
+                        lat: Number.parseInt(row[lat]),
+                        lng: Number.parseInt(row[lng])
                     },
                     map: map,
                     title: 'Location №' + i
                 });
-                contentString[i] = 'genbank: ' + row[parser(mainStr, 'genbank_id')] + '<br>' + 'Position: ' + row[parser(mainStr, 'position')];
+                contentString[i] = 'genbank: ' + row[gen_id] + '<br>' + 'Position: ' + row[pos_id];
                 infowindow[i] = new google.maps.InfoWindow({
                     content: contentString[i]
                 });

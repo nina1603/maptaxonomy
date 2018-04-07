@@ -6,6 +6,7 @@ var map;
         	  zoom: 4,
        		  center: location
         	});
+	}
         /*var marker = new google.maps.Marker({
           position: uluru,
           map: map,

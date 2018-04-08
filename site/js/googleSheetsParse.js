@@ -84,9 +84,11 @@ function appendPre(message) {
 function listPlaces(address) {
     address.replace('//', '/');
     var ref = address.split('/');
-    console.log(ref[4]);
+    for (var j = 0; j < 6; j++) {
+        console.log(j + ref[j]);
+    }
     gapi.client.sheets.spreadsheets.values.get({
-        spreadsheetId: ref[4], //'1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms',
+        spreadsheetId: ref[5], //'1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms',
         range: 'Map!A1:G',
     }).then(function(response) {
         var range = response.result;

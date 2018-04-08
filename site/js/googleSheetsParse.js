@@ -85,10 +85,11 @@ function listPlaces(address) {
     address.replace('//', '/');
     var ref = address.split('/');
     for (var j = 0; j < 6; j++) {
-        console.log(j + ref[j]);
+        if (ref[j] == 'd')
+            var num = j + 1;
     }
     gapi.client.sheets.spreadsheets.values.get({
-        spreadsheetId: ref[5], //'1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms',
+        spreadsheetId: ref[num], //'1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms',
         range: 'Map!A1:G',
     }).then(function(response) {
         var range = response.result;

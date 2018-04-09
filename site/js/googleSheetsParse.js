@@ -107,7 +107,7 @@ function listPlaces(address, pAddress) {
             
             for (var i = 1; i < range.values.length; i++) {
                 var row = range.values[i];
-                appendPre(row[gen_id] + ', ' + row[name_id]);
+                //appendPre(row[gen_id] + ', ' + row[name_id]);
                 marker[i] = new google.maps.Marker({
                     position: {
                         lat: Number.parseInt(row[lat]),

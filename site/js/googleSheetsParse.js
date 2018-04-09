@@ -1,4 +1,5 @@
 var v = document.getElementById("tableId");
+var p = document.getElementById("pageId");
 var sendBut = document.getElementById("SendButton");
 var marker = {};
 var infowindow = {};
@@ -46,11 +47,13 @@ function updateSigninStatus(isSignedIn) {
         authorizeButton.style.display = 'none';
         signoutButton.style.display = 'block';
         v.style.display = 'block';
+        p.style.display = 'block';
         sendBut.style.display = 'block';
     } else {
         authorizeButton.style.display = 'block';
         signoutButton.style.display = 'none';
         v.style.display = 'none';
+        p.style.display = 'none';
         sendBut.style.display = 'none';
     }
 }
@@ -65,7 +68,8 @@ function handleSignoutClick(event) {
 
 function handleInputClick(event) {
     var address = v.value;
-    listPlaces(address);
+    var pAddress = p.value;
+    listPlaces(address, pAddress);
 }
 /* Append a pre element to the body containing the given message
  * as its text node. Used to display the results of the API call.
@@ -81,7 +85,7 @@ function appendPre(message) {
 /* Print the names and majors of students in a sample spreadsheet:
  * https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
  */
-function listPlaces(address) {
+function listPlaces(address, pAddress) {
     address.replace('//', '/');
     var ref = address.split('/');
     for (var j = 0; j < 6; j++) {
@@ -90,7 +94,7 @@ function listPlaces(address) {
     }
     gapi.client.sheets.spreadsheets.values.get({
         spreadsheetId: ref[num], //'1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms',
-        range: 'Map!A1:G',
+        range: pAddress,//'Map!A1:G',
     }).then(function(response) {
         var range = response.result;
         if (range.values.length > 0) {

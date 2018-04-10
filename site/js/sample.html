@@ -15,6 +15,12 @@
 		top: 3%;
 		position: absolute;
 	    }
+	#inputs {
+		left: 2%;
+		top: 8%;
+		position: fixed;
+		display: none;
+		    
     </style>
 </head>
 
@@ -32,9 +38,11 @@
        title = "First time use? Press here to find out how to do it">Help</a>
 	</div>
     <!-- <a href="#" onClick="loadTable()"> Show me the table</a> -->
-    <br>Enter the address: <input type="text" id="tableId" style="display: none;"></input>
-    Enter page name and range: <input type = "text" id = "pageId" style = "display: none;"></input>
-    <input type="submit" id = "SendButton" value="Send" style="display: none;"></input>
+    <div id = "inputs">
+	    	<br>Enter the address: <input type = "text" id = "tableId"></input>
+    		Enter page name and range: <input type = "text" id = "pageId"></input>
+    		<input type="submit" id = "SendButton" value="Send"></input>
+	</div>
  
 	
     <script type="application/javascript" src="init.js">

@@ -1,5 +1,6 @@
 var v = document.getElementById("tableId");
 var p = document.getElementById("pageId");
+var inputs = document.getElementById("inputs");
 var sendBut = document.getElementById("SendButton");
 var marker = {};
 var infowindow = {};
@@ -46,15 +47,11 @@ function updateSigninStatus(isSignedIn) {
     if (isSignedIn) {
         authorizeButton.style.display = 'none';
         signoutButton.style.display = 'block';
-        v.style.display = 'block';
-        p.style.display = 'block';
-        sendBut.style.display = 'block';
+        inputs.style.display = 'block';
     } else {
         authorizeButton.style.display = 'block';
         signoutButton.style.display = 'none';
-        v.style.display = 'none';
-        p.style.display = 'none';
-        sendBut.style.display = 'none';
+        inputs.style.display = 'none';
     }
 }
 

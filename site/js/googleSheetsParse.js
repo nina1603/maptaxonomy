@@ -1,7 +1,9 @@
 var v = document.getElementById("tableId");
 var p = document.getElementById("pageId");
-var inputs = document.getElementById("inputs");
+var inputs = document.getElementById("leftWindow");
 var sendBut = document.getElementById("SendButton");
+var authorizeButton = document.getElementById('authorize-button');
+var signoutButton = document.getElementById('signout-button');
 var marker = {};
 var infowindow = {};
 var contentString = {};
@@ -15,8 +17,6 @@ var DISCOVERY_DOCS = ["https://sheets.googleapis.com/$discovery/rest?version=v4"
 // included, separated by spaces.
 var SCOPES = "https://www.googleapis.com/auth/spreadsheets.readonly";
 
-var authorizeButton = document.getElementById('authorize-button');
-var signoutButton = document.getElementById('signout-button');
 /* On load, called to load the auth2 library and API client library.
  */
 function handleClientLoad() {

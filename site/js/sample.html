@@ -22,6 +22,11 @@
 		position: fixed;
 		display: none;
 	    }
+	#AuthButtons {
+		right: 3%;
+		top: 3%;
+		position: fixed;
+	    }
 		    
     </style>
 </head>
@@ -30,8 +35,10 @@
     <!--<h3>My Google Maps Demo</h3>-->
     <div id="map"></div>
 
-    <!--Add buttons to initiate auth sequence and sign out-->
-    
+    <div id = "AuthButtons">
+    <button id="authorize-button" style="display: none;">Authorize</button>
+    <button id="signout-button" style="display: none;">Sign Out</button>
+	</div>
    <!-- <pre id="content"></pre> -->
 
     
@@ -41,8 +48,7 @@
 	    <a href="https://nina1603.github.io/maptaxonomy/site/js/helppage/help.html" target = "_blank"
        title = "First time use? Press here to find out how to do it">Help</a>
 	</div>
-	    	<button id="authorize-button" style="display: none;">Authorize</button>
-    		<button id="signout-button" style="display: none;">Sign Out</button>
+	    	
 	    	<br>Enter the address of site: <input type = "text" id = "tableId"></input>
     		<br>Enter page name + range: <input type = "text" id = "pageId"></input>
     		<input type="submit" id = "SendButton" value="Send"></input>

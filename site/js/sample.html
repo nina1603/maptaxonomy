@@ -31,16 +31,18 @@
     <div id="map"></div>
 
     <!--Add buttons to initiate auth sequence and sign out-->
-    <button id="authorize-button" style="display: none;">Authorize</button>
-    <button id="signout-button" style="display: none;">Sign Out</button>
-    <pre id="content"></pre>
+    
+   <!-- <pre id="content"></pre> -->
 
-    <div id = "help">
+    
+    <!-- <a href="#" onClick="loadTable()"> Show me the table</a> -->
+    <div id = "inputs">
+	    <div id = "help">
 	    <a href="https://nina1603.github.io/maptaxonomy/site/js/helppage/help.html" target = "_blank"
        title = "First time use? Press here to find out how to do it">Help</a>
 	</div>
-    <!-- <a href="#" onClick="loadTable()"> Show me the table</a> -->
-    <div id = "inputs">
+	    	<button id="authorize-button" style="display: none;">Authorize</button>
+    		<button id="signout-button" style="display: none;">Sign Out</button>
 	    	<br>Enter the address of site: <input type = "text" id = "tableId"></input>
     		<br>Enter page name + range: <input type = "text" id = "pageId"></input>
     		<input type="submit" id = "SendButton" value="Send"></input>

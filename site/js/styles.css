@@ -26,13 +26,13 @@
 	    	}
 		#tableId {
 			text-indent:4vh;
-			position: fixed;
-			width: 13%;
+			position: relative;
+			width: 85%;
 		}
 		#pageId {
 			text-indent:4vh;
-			position: fixed;
-			width: 13%;
+			position: relative;
+			width: 85%;
 		}
 		#SendButton {
 			text-indent:1vh;

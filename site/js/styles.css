@@ -22,6 +22,7 @@
 		}
 		#help {
 			position: static;
+			display: block !important;
 			margin: 3%;
 	    	}
 		#tableId {

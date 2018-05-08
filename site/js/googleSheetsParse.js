@@ -1,9 +1,12 @@
 var v = document.getElementById("tableId");
 var p = document.getElementById("pageId");
 var inputs = document.getElementById("leftWindow");
+var help = document.getElementById("help");
 var sendBut = document.getElementById("SendButton");
 var authorizeButton = document.getElementById('authorize-button');
 var signoutButton = document.getElementById('signout-button');
+var down = document.getElementById("downTriangle");
+var up = document.getElementById("upTriangle");
 var marker = {};
 var infowindow = {};
 var contentString = {};
@@ -52,6 +55,7 @@ function updateSigninStatus(isSignedIn) {
         authorizeButton.style.display = 'block';
         signoutButton.style.display = 'none';
         inputs.style.display = 'none';
+        help.style.display = 'block';
     }
 }
 

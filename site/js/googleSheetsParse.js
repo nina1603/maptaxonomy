@@ -1,12 +1,9 @@
 var v = document.getElementById("tableId");
 var p = document.getElementById("pageId");
 var inputs = document.getElementById("leftWindow");
-var help = document.getElementById("help");
 var sendBut = document.getElementById("SendButton");
 var authorizeButton = document.getElementById('authorize-button');
 var signoutButton = document.getElementById('signout-button');
-var down = document.getElementById("downTriangle");
-var up = document.getElementById("upTriangle");
 var marker = {};
 var infowindow = {};
 var contentString = {};
@@ -43,9 +40,7 @@ function initClient() {
         signoutButton.onclick = handleSignoutClick;
     });
 }
-/* Called when the signed in status changes, to update the UI
- *  appropriately. After a sign-in, the API is called.
- */
+
 function updateSigninStatus(isSignedIn) {
     if (isSignedIn) {
         authorizeButton.style.display = 'none';
@@ -55,7 +50,6 @@ function updateSigninStatus(isSignedIn) {
         authorizeButton.style.display = 'block';
         signoutButton.style.display = 'none';
         inputs.style.display = 'none';
-        help.style.display = 'block';
     }
 }
 

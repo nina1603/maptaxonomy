@@ -47,7 +47,18 @@
 			text-indent:1vh;
 			position: relative;
 			margin: 2%;
-	
+		}
+		#downTriangle {
+			display: block;
+			position: relative;
+			width: 10%;
+			height: 8%;
+		}
+		#upTriangle {
+			display: none;
+			position: relative;
+			width: 10%;
+			height: 8%;
 		}
 	    }    
     </style>
@@ -74,7 +85,11 @@
 	    <br><input placeholder = "web address" type = "text" id = "tableId"></input>
     	<br> <input placeholder = "page name + range" type = "text" id = "pageId"></input>
     	<br><br><input type="submit" id = "SendButton" value="Send"></input>
+	<div id = "icons">
+		<img src = "down.png" id = "downTriangle">
+		<img src = "up.jpg" id = "upTriangle">
 	</div>
+</div>
  
 	
     <script type="application/javascript" src="init.js">

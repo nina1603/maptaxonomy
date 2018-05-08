@@ -21,7 +21,8 @@
 			position: fixed;
 		}
 		#help {
-			position: relative;
+			position: static;
+			display: block;
 			margin: 3%;
 	    	}
 		#tableId {

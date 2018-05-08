@@ -55,4 +55,10 @@
 			width: 9%;
 			height: 7%;
 		}
+		#hidden {
+			display: none;
+			position: relative;
+			margin: 1%;
+			width: 85%;
+			height: 60%;
 	    }    

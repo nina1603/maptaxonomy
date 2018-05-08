@@ -1,0 +1,54 @@
+#map {
+	    position: fixed;
+            height: 100vh;
+            width: 100vw;
+        }
+	@media screen and (min-width: 600px) {
+		
+		#leftWindow {
+			left: 1%;
+			top: 6%;
+			width: 15%;
+			background-color: rgb(255,255,255);
+			border: 2px solid black; /* Параметры границы */
+			position: fixed;
+			display: none;
+	    	}
+		#AuthButtons {
+			right: 2%;
+			top: 3%;
+			font-size: 100px;
+			position: fixed;
+		}
+		#help {
+			position: relative;
+			margin: 3%;
+	    	}
+		#tableId {
+			text-indent:4vh;
+			position: fixed;
+			width: 13%;
+		}
+		#pageId {
+			text-indent:4vh;
+			position: fixed;
+			width: 13%;
+		}
+		#SendButton {
+			text-indent:1vh;
+			position: relative;
+			margin: 2%;
+		}
+		#downTriangle {
+			display: block;
+			position: relative;
+			width: 10%;
+			height: 8%;
+		}
+		#upTriangle {
+			display: none;
+			position: relative;
+			width: 10%;
+			height: 8%;
+		}
+	    }    

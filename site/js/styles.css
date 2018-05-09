@@ -61,4 +61,13 @@
 			margin: 1%;
 			width: 85%;
 			height: 60%;
+		}
+		#fromDate {
+			width: 40%;
+			height: 8%;
+		}
+		#toDate {
+			width: 40%;
+			height: 8%;
+		}
 	    }    

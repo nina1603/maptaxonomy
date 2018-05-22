@@ -24,7 +24,6 @@ map = document.getElementById('map');
 google.maps.event.addDomListener(map, 'click', function() {
     removeMarkers();
   });
-}
 
 /* On load, called to load the auth2 library and API client library.
  */

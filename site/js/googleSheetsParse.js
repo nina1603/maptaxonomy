@@ -13,11 +13,11 @@ var map;
        		  center: location
         	});
 		map.addListener('click', function(e) {
-       		removeMarkers();
-   });
-}
+       			removeMarkers();
+   		});
+	}
 
-var marker = {};
+var marker = [];
 var infowindow = {};
 var contentString = {};
 var places;
@@ -117,7 +117,7 @@ function listPlaces(address, pAddress) {
             for (var i = 1; i < range.values.length; i++) {
                 var row = range.values[i];
                 //appendPre(row[gen_id] + ', ' + row[name_id]);
-                marker[i] = new google.maps.Marker({
+                marker[i - 1] = new google.maps.Marker({
                     position: {
                         lat: Number.parseInt(row[lat]),
                         lng: Number.parseInt(row[lng])
@@ -129,8 +129,8 @@ function listPlaces(address, pAddress) {
                 infowindow[i] = new google.maps.InfoWindow({
                     content: contentString[i]
                 });
-                marker[i].infowindow = infowindow[i];
-                marker[i].addListener('click', function() {
+                marker[i - 1].infowindow = infowindow[i];
+                marker[i - 1].addListener('click', function() {
                     return this.infowindow.open(map, this);
                 });
 
@@ -144,17 +144,17 @@ function listPlaces(address, pAddress) {
 }
 
 /*google.maps.event.addDomListener(map, 'click', function() {
-    alert("Cleaning markers!");
     removeMarkers();
   });
 */
+
 function removeMarkers() 
 {
 if (marker) {
   for (i = 0; i < marker.length; i++) {
     marker[i].setMap(null);
  }
-  marker = {};
+  marker = [];
 }
 }
     

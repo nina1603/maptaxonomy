@@ -12,7 +12,7 @@ var map;
         	  zoom: 4,
        		  center: location
         	});
-		map.addListener('click', function(e) {
+		authorizeButton.addListener('click', function(e) {
        			removeMarkers();
    		});
 	}

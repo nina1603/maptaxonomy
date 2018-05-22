@@ -4,23 +4,49 @@ var inputs = document.getElementById("leftWindow");
 var sendBut = document.getElementById("SendButton");
 var authorizeButton = document.getElementById('authorize-button');
 var signoutButton = document.getElementById('signout-button');
-var map;
-	function initMap() {
-        	var location = {lat: 55.700, lng: 37.600};
-        	var uluru = {lat: -25.363, lng: 131.044};
-        	map = new google.maps.Map(document.getElementById('map'), {
-        	  zoom: 4,
-       		  center: location
-        	});
-		sendBut.addListener('click', function(e) {
-       			removeMarkers();
-   		});
-	}
+var down = document.getElementById("downTriangle");
+var up = document.getElementById("upTriangle");
+var hidden = document.getElementById("hidden");
+var fromDate = document.getElementById("fromDate");
+var toDate = document.getElementById("toDate");
+var fromPos = document.getElementById("fromPos");
+var toPos = document.getElementById("toPos");
 
 var marker = [];
 var infowindow = {};
 var contentString = {};
 var places;
+var map;
+
+function initMap() {
+        var location = {lat: 55.700, lng: 37.600};
+        var uluru = {lat: -25.363, lng: 131.044};
+        map = new google.maps.Map(document.getElementById('map'), {
+       		zoom: 4,
+       		center: location
+        });
+	//map.addListener('', function(e) {
+       	//	removeMarkers();
+   	//});
+}
+
+down.onclick = openExtraField;
+up.onclick = closeExtraField;
+
+function openExtraField(event)
+{
+  up.style.display = 'block';
+  down.style.display = 'none';
+  hidden.style.display = 'block';
+  }
+  
+  function closeExtraField(event)
+{
+  down.style.display = 'block';
+  up.style.display = 'none';
+  hidden.style.display = 'none';
+  }
+
 
 var CLIENT_ID = '858139403726-0ru9uicbkoo5o3i98idspa9onocbhi5n.apps.googleusercontent.com';
 var API_KEY = 'AIzaSyBqxSOO8-ABdeDtEapbKXWC_7j7g57HC18';
@@ -30,9 +56,7 @@ var DISCOVERY_DOCS = ["https://sheets.googleapis.com/$discovery/rest?version=v4"
 // included, separated by spaces.
 var SCOPES = "https://www.googleapis.com/auth/spreadsheets.readonly";
 
-
-/* On load, called to load the auth2 library and API client library.
- */
+/* On load, called to load the auth2 library and API client library. */
 function handleClientLoad() {
     gapi.load('client:auth2', initClient);
 }

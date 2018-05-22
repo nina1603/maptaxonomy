@@ -7,10 +7,6 @@ var signoutButton = document.getElementById('signout-button');
 var down = document.getElementById("downTriangle");
 var up = document.getElementById("upTriangle");
 var hidden = document.getElementById("hidden");
-var fromDate = document.getElementById("fromDate");
-var toDate = document.getElementById("toDate");
-var fromPos = document.getElementById("fromPos");
-var toPos = document.getElementById("toPos");
 
 var marker = [];
 var infowindow = {};
@@ -19,33 +15,37 @@ var places;
 var map;
 
 function initMap() {
-        var location = {lat: 55.700, lng: 37.600};
-        var uluru = {lat: -25.363, lng: 131.044};
-        map = new google.maps.Map(document.getElementById('map'), {
-       		zoom: 4,
-       		center: location
-        });
-	//map.addListener('', function(e) {
-       	//	removeMarkers();
-   	//});
+    var location = {
+        lat: 55.700,
+        lng: 37.600
+    };
+    var uluru = {
+        lat: -25.363,
+        lng: 131.044
+    };
+    map = new google.maps.Map(document.getElementById('map'), {
+        zoom: 4,
+        center: location
+    });
+    //map.addListener('', function(e) {
+    //	removeMarkers();
+    //});
 }
 
 down.onclick = openExtraField;
 up.onclick = closeExtraField;
 
-function openExtraField(event)
-{
-  up.style.display = 'block';
-  down.style.display = 'none';
-  hidden.style.display = 'block';
-  }
-  
-  function closeExtraField(event)
-{
-  down.style.display = 'block';
-  up.style.display = 'none';
-  hidden.style.display = 'none';
-  }
+function openExtraField(event) {
+    up.style.display = 'block';
+    down.style.display = 'none';
+    hidden.style.display = 'block';
+}
+
+function closeExtraField(event) {
+    down.style.display = 'block';
+    up.style.display = 'none';
+    hidden.style.display = 'none';
+}
 
 
 var CLIENT_ID = '858139403726-0ru9uicbkoo5o3i98idspa9onocbhi5n.apps.googleusercontent.com';
@@ -127,17 +127,17 @@ function listPlaces(address, pAddress) {
     }
     gapi.client.sheets.spreadsheets.values.get({
         spreadsheetId: ref[num], //'1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms',
-        range: pAddress,//'Map!A1:G',
+        range: pAddress, //'Map!A1:G',
     }).then(function(response) {
         var range = response.result;
         if (range.values.length > 0) {
             var mainStr = range.values[0];
-            var gen_id = parser(mainStr, 'genbank_id');
+            var gen_id = parser(mainStr, 'genbank');
             var name_id = parser(mainStr, 'name');
             var lat = parser(mainStr, 'latitude');
             var lng = parser(mainStr, 'longitude');
-            var pos_id = parser(mainStr, 'position');
-            
+            var pos_id = parser(mainStr, 'pos');
+		console.log(gen_id, name_id, lng, lat, pos_id);
             for (var i = 1; i < range.values.length; i++) {
                 var row = range.values[i];
                 //appendPre(row[gen_id] + ', ' + row[name_id]);
@@ -172,19 +172,18 @@ function listPlaces(address, pAddress) {
   });
 */
 
-function removeMarkers() 
-{
-if (marker) {
-  for (i = 0; i < marker.length; i++) {
-    marker[i].setMap(null);
- }
-  marker = [];
+function removeMarkers() {
+    if (marker) {
+        for (i = 0; i < marker.length; i++) {
+            marker[i].setMap(null);
+        }
+        marker = [];
+    }
 }
-}
-    
+
 function parser(str, name) {
     for (var i = 0; i < str.length; i++) {
-        if (str[i] == name)
+        if (str[i].search(name) != -1)
             return i;
     }
     return -1;

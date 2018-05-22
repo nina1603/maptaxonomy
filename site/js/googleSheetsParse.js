@@ -4,6 +4,8 @@ var inputs = document.getElementById("leftWindow");
 var sendBut = document.getElementById("SendButton");
 var authorizeButton = document.getElementById('authorize-button');
 var signoutButton = document.getElementById('signout-button');
+var map = document.getElementById('map');
+
 var marker = {};
 var infowindow = {};
 var contentString = {};
@@ -17,7 +19,6 @@ var DISCOVERY_DOCS = ["https://sheets.googleapis.com/$discovery/rest?version=v4"
 // included, separated by spaces.
 var SCOPES = "https://www.googleapis.com/auth/spreadsheets.readonly";
 
-//var map = document.getElementById('map');
 map.addListener('click', function(e) {
        removeMarkers();
    });

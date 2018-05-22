@@ -18,9 +18,9 @@ var DISCOVERY_DOCS = ["https://sheets.googleapis.com/$discovery/rest?version=v4"
 var SCOPES = "https://www.googleapis.com/auth/spreadsheets.readonly";
 
 //var map = document.getElementById('map');
-//map.addListener('click', function(e) {
-  //      removeMarkers();
-   // });
+map.addListener('click', function(e) {
+       removeMarkers();
+   });
 
 /* On load, called to load the auth2 library and API client library.
  */
@@ -134,17 +134,17 @@ function listPlaces(address, pAddress) {
     });
 }
 
-google.maps.event.addDomListener(map, 'click', function() {
+/*google.maps.event.addDomListener(map, 'click', function() {
     alert("Cleaning markers!");
     removeMarkers();
   });
-
+*/
 function removeMarkers() 
 {
   for (i = 0; i < marker.length; i++) {
     marker[i].setMap(null);
  }
-  marker = [];
+  marker = {};
 }
     
 function parser(str, name) {

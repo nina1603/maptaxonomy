@@ -155,7 +155,7 @@ function listPlaces(address, pAddress) {
 	names[7] = 'float';
 	columns[names[7]] = parser(mainStr, 'float');
 		
-	t = document.createElement("table");
+	var t = document.getElementById("table");
        	for (var j = 0; j < names.length; j++)
 	{
 		if (columns[names[j]] != -1)

@@ -156,17 +156,18 @@ function listPlaces(address, pAddress) {
 	columns[names[7]] = parser(mainStr, 'float');
 		
 	var t = document.getElementById("table");
+	t =  document.createElement("table");
        	for (var j = 0; j < names.length; j++)
 	{
 		if (columns[names[j]] != -1)
 		{	
-			tr = document.createElement("tr");
-			th = document.createElement("th");
+			var tr = document.createElement("tr");
+			var th = document.createElement("th");
 			th.innerHTML = names[j];
 			document.body.append(th);
 			tr.append(th);
-			td1 = document.createElement("td");
-			td2 = document.createElement("td");
+			var td1 = document.createElement("td");
+			var td2 = document.createElement("td");
 			var from = document.createElement('input');
 			var to = document.createElement('input');
 			from.placeholder = "from:";

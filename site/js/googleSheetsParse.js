@@ -178,6 +178,7 @@ function listPlaces(address, pAddress) {
 			t.append(tr);
 		}
 	}
+	 document.body.append(t);
 	 
 /* <table>
 			<tr> <td> Date </td> <td><input placeholder = "From:" type = "text" id = "fromDate"></input> </td>

@@ -17,7 +17,7 @@ var DISCOVERY_DOCS = ["https://sheets.googleapis.com/$discovery/rest?version=v4"
 // included, separated by spaces.
 var SCOPES = "https://www.googleapis.com/auth/spreadsheets.readonly";
 
-map = document.getElementById('map');
+var map = document.getElementById('map');
 //map.addListener('click', function(e) {
   //      removeMarkers();
    // });

@@ -155,7 +155,7 @@ function listPlaces(address, pAddress) {
 	names[7] = 'float';
 	columns[names[7]] = parser(mainStr, 'float');
 		
-	var t = document.getElementById("table");
+	//var t = document.getElementById("table");
 	t =  document.createElement("table");
        	for (var j = 0; j < names.length; j++)
 	{
@@ -164,7 +164,6 @@ function listPlaces(address, pAddress) {
 			var tr = document.createElement("tr");
 			var th = document.createElement("th");
 			th.innerHTML = names[j];
-			document.body.append(th);
 			tr.append(th);
 			var td1 = document.createElement("td");
 			var td2 = document.createElement("td");
@@ -174,12 +173,14 @@ function listPlaces(address, pAddress) {
 			to.placeholder = "to:";
 			from.type = "text";
 			to.type = "text";
+			td1.append(from);
+			td2.append(to);
 			tr.append(td1);
 			tr.append(td2);
 			t.append(tr);
 		}
 	}
-	document.body.append(t);
+	document.getElementById('table').appendChild(t);
 	 
 /* <table>
 			<tr> <td> Date </td> <td><input placeholder = "From:" type = "text" id = "fromDate"></input> </td>

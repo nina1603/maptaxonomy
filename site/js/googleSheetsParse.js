@@ -13,6 +13,8 @@ var infowindow = {};
 var contentString = {};
 var places;
 var map;
+var columns = {};
+var names = [];
 
 function initMap() {
     var location = {
@@ -115,9 +117,13 @@ function appendPre(message) {
     pre.appendChild(textContent);
 }
 
-/* Print the names and majors of students in a sample spreadsheet:
- * https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
- */
+
+
+
+
+
+
+
 function listPlaces(address, pAddress) {
     address.replace('//', '/');
     var ref = address.split('/');
@@ -132,12 +138,71 @@ function listPlaces(address, pAddress) {
         var range = response.result;
         if (range.values.length > 0) {
             var mainStr = range.values[0];
-            var gen_id = parser(mainStr, 'genbank');
-            var name_id = parser(mainStr, 'name');
-            var lat = parser(mainStr, 'latitude');
-            var lng = parser(mainStr, 'longitude');
-            var pos_id = parser(mainStr, 'pos');
-		console.log(gen_id, name_id, lng, lat, pos_id);
+	names[0] = 'genbank';
+	columns[names[0]] = parser(mainStr, 'genbank');
+        names[1] = 'name';
+	columns[names[1]] = parser(mainStr, 'name');
+        names[2] = 'lat';
+	columns[names[2]] = parser(mainStr, 'latitude');
+	names[3] = 'lng';
+	columns[names[3]] = parser(mainStr, 'longitude');
+	names[4] = 'pos';
+	columns[names[4]] = parser(mainStr, 'pos');
+	names[5] = 'date';
+	columns[names[5]] = parser(mainStr, 'date');
+	names[6] = 'int';
+	columns[names[6]] = parser(mainStr, 'int');
+	names[7] = 'float';
+	columns[names[7]] = parser(mainStr, 'float');
+		
+	t = document.createElement("table");
+       	for (int j = 0; j < names.length; j++)
+	{
+		if (columns[names[j]] != -1)
+		{	
+			tr = document.createElement("tr");
+			th = document.createElement("th");
+			th.innerHTML = names[j];
+			document.body.append(th);
+			tr.append(th);
+			td1 = document.createElement("td");
+			td2 = document.createElement("td");
+			var from = document.createElement('input');
+			var to = document.createElement('input');
+			from.placeholder = "from:";
+			to.placeholder = "to:";
+			from.type = "text";
+			to.type = "text";
+			tr.append(td1);
+			tr.append(td2);
+			t.append(tr);
+		}
+	}
+	 
+/* <table>
+			<tr> <td> Date </td> <td><input placeholder = "From:" type = "text" id = "fromDate"></input> </td>
+		<td><input placeholder = "To:" type = "text" id = "toDate"></input> </td> </tr>
+			<tr> <td>Pos </td>  <td> <input placeholder = "From:" type = "text" id = "fromPos"></input> </td>
+		<td> <input placeholder = "To:" type = "text" id = "toPos"></input> </td> </tr>
+	</table> */
+/*
+    t.append(tr);
+    for (place in places) {
+        loc[place] = {};
+        tr = document.createElement("tr");
+        for (header in headers) {
+            td = document.createElement("td");
+            if (places[place].hasOwnProperty(header)) {
+                td.innerHTML = places[place][header];
+
+            }
+            tr.append(td);
+        }
+        t.append(tr);
+	*/
+		
+		
+	    
             for (var i = 1; i < range.values.length; i++) {
                 var row = range.values[i];
                 //appendPre(row[gen_id] + ', ' + row[name_id]);

@@ -68,12 +68,12 @@
 		}
 		.from {
 			position: relative;
-			width: 40%;
+			width: 100%;
 			height: 8%;
 		}
 		.to {
 			position: relative;
-			width: 40%;
+			width: 100%;
 			height: 8%;
 		}
 	    }    

@@ -166,13 +166,13 @@ function listPlaces(address, pAddress) {
 			th.innerHTML = names[j];
 			tr.append(th);
 			var td1 = document.createElement("td");
-			td1.className = "from";
 			var td2 = document.createElement("td");
-			td2.className = "to";
 			var from = document.createElement('input');
 			var to = document.createElement('input');
 			from.placeholder = "from:";
+			from.className="from";
 			to.placeholder = "to:";
+			to.className="to";
 			from.type = "text";
 			to.type = "text";
 			td1.append(from);

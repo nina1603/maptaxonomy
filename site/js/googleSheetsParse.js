@@ -208,13 +208,13 @@ function listPlaces(address, pAddress) {
                 //appendPre(row[gen_id] + ', ' + row[name_id]);
                 marker[i - 1] = new google.maps.Marker({
                     position: {
-                        lat: Number.parseInt(row[lat]),
-                        lng: Number.parseInt(row[lng])
+                        lat: Number.parseInt(row[columns['lat']]),
+                        lng: Number.parseInt(row[columns['lng']])
                     },
                     map: map,
                     title: 'Location №' + i
                 });
-                contentString[i] = 'genbank: ' + row[gen_id] + '<br>' + 'Position: ' + row[pos_id];
+                contentString[i] = 'genbank: ' + row[columns['genbank']] + '<br>' + 'Position: ' + row[columns['pos']];
                 infowindow[i] = new google.maps.InfoWindow({
                     content: contentString[i]
                 });

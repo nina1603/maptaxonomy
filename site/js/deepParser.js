@@ -19,3 +19,9 @@ function openExtraField(event)
   up.style.display = 'none';
   hidden.style.display = 'none';
   }
+
+function parseMarkers()
+{ 
+      alert("Hello!");  
+}
+

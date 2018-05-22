@@ -18,9 +18,13 @@ var DISCOVERY_DOCS = ["https://sheets.googleapis.com/$discovery/rest?version=v4"
 var SCOPES = "https://www.googleapis.com/auth/spreadsheets.readonly";
 
 map = document.getElementById('map');
-map.addListener('click', function(e) {
-        removeMarkers();
-    });
+//map.addListener('click', function(e) {
+  //      removeMarkers();
+   // });
+google.maps.event.addDomListener(map, 'click', function() {
+    removeMarkers();
+  });
+}
 
 /* On load, called to load the auth2 library and API client library.
  */

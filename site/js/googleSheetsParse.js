@@ -4,7 +4,15 @@ var inputs = document.getElementById("leftWindow");
 var sendBut = document.getElementById("SendButton");
 var authorizeButton = document.getElementById('authorize-button');
 var signoutButton = document.getElementById('signout-button');
-var map = document.getElementById('map');
+var map;
+	function initMap() {
+        	var location = {lat: 55.700, lng: 37.600};
+        	var uluru = {lat: -25.363, lng: 131.044};
+        	map = new google.maps.Map(document.getElementById('map'), {
+        	  zoom: 4,
+       		  center: location
+        	});
+	}
 
 var marker = {};
 var infowindow = {};

@@ -62,19 +62,13 @@
 			width: 85%;
 			height: 60%;
 		}
-		#fromDate {
+		.from {
+			position: relative;
 			width: 90%;
 			height: 8%;
 		}
-		#toDate {
-			width: 90%;
-			height: 8%;
-		}
-		#fromPos {
-			width: 90%;
-			height: 8%;
-		}
-		#toPos {
+		.to {
+			position: relative;
 			width: 90%;
 			height: 8%;
 		}

@@ -62,7 +62,10 @@
 			width: 85%;
 			height: 60%;
 		}
-
+		#table {
+			position: relative;
+			width: 100%;
+		}
 		.from {
 			position: relative;
 			width: 40%;

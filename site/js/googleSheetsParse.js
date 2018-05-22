@@ -178,7 +178,7 @@ function listPlaces(address, pAddress) {
 			t.append(tr);
 		}
 	}
-	 document.body.append(t);
+	document.body.append(t);
 	 
 /* <table>
 			<tr> <td> Date </td> <td><input placeholder = "From:" type = "text" id = "fromDate"></input> </td>
@@ -186,21 +186,6 @@ function listPlaces(address, pAddress) {
 			<tr> <td>Pos </td>  <td> <input placeholder = "From:" type = "text" id = "fromPos"></input> </td>
 		<td> <input placeholder = "To:" type = "text" id = "toPos"></input> </td> </tr>
 	</table> */
-/*
-    t.append(tr);
-    for (place in places) {
-        loc[place] = {};
-        tr = document.createElement("tr");
-        for (header in headers) {
-            td = document.createElement("td");
-            if (places[place].hasOwnProperty(header)) {
-                td.innerHTML = places[place][header];
-
-            }
-            tr.append(td);
-        }
-        t.append(tr);
-	*/
 		
 		
 	    

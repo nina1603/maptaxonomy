@@ -22,6 +22,7 @@ map = document.getElementById('map');
   //      removeMarkers();
    // });
 google.maps.event.addDomListener(map, 'click', function() {
+    alert("Cleaning markers!");
     removeMarkers();
   });
 

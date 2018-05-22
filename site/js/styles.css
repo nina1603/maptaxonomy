@@ -63,19 +63,19 @@
 			height: 60%;
 		}
 		#fromDate {
-			width: 40%;
+			width: 80%;
 			height: 8%;
 		}
 		#toDate {
-			width: 40%;
+			width: 80%;
 			height: 8%;
 		}
 		#fromPos {
-			width: 40%;
+			width: 80%;
 			height: 8%;
 		}
 		#toPos {
-			width: 40%;
+			width: 80%;
 			height: 8%;
 		}
 	    }    

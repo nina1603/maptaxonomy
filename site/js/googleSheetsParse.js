@@ -27,7 +27,7 @@ var DISCOVERY_DOCS = ["https://sheets.googleapis.com/$discovery/rest?version=v4"
 // included, separated by spaces.
 var SCOPES = "https://www.googleapis.com/auth/spreadsheets.readonly";
 
-map.addListener('click', function(e) {
+map.addEventListener('click', function(e) {
        removeMarkers();
    });
 
@@ -150,10 +150,12 @@ function listPlaces(address, pAddress) {
 */
 function removeMarkers() 
 {
+if (marker) {
   for (i = 0; i < marker.length; i++) {
     marker[i].setMap(null);
  }
   marker = {};
+}
 }
     
 function parser(str, name) {

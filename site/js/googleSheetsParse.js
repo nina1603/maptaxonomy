@@ -36,6 +36,10 @@ function initMap() {
 
 down.onclick = openExtraField;
 up.onclick = closeExtraField;
+var counter = 0;
+sendBut.onclick = function() {
+        counter += 1;
+    }
 
 function openExtraField(event) {
     up.style.display = 'block';
@@ -137,7 +141,7 @@ function listPlaces(address, pAddress) {
     }).then(function(response) {
         var range = response.result;
         if (range.values.length > 0) {
-            var mainStr = range.values[0];
+            var mainStr = range.values[0];         
 	names[0] = 'genbank';
 	columns[names[0]] = parser(mainStr, 'genbank');
         names[1] = 'name';
@@ -159,7 +163,7 @@ function listPlaces(address, pAddress) {
 	t =  document.createElement("table");
        	for (var j = 0; j < names.length; j++)
 	{
-		if (columns[names[j]] != -1)
+		if ((columns[names[j]] != -1) and (counter == 1))
 		{	
 			var tr = document.createElement("tr");
 			var th = document.createElement("th");
@@ -183,14 +187,6 @@ function listPlaces(address, pAddress) {
 		}
 	}
 	document.getElementById('table').appendChild(t);
-	 
-/* <table>
-			<tr> <td> Date </td> <td><input placeholder = "From:" type = "text" id = "fromDate"></input> </td>
-		<td><input placeholder = "To:" type = "text" id = "toDate"></input> </td> </tr>
-			<tr> <td>Pos </td>  <td> <input placeholder = "From:" type = "text" id = "fromPos"></input> </td>
-		<td> <input placeholder = "To:" type = "text" id = "toPos"></input> </td> </tr>
-	</table> */
-		
 		
 	    
             for (var i = 1; i < range.values.length; i++) {
@@ -221,11 +217,6 @@ function listPlaces(address, pAddress) {
         appendPre('Error: ' + response.result.error.message);
     });
 }
-
-/*google.maps.event.addDomListener(map, 'click', function() {
-    removeMarkers();
-  });
-*/
 
 function removeMarkers() {
     if (marker) {

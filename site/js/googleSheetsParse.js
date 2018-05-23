@@ -36,10 +36,6 @@ function initMap() {
 
 down.onclick = openExtraField;
 up.onclick = closeExtraField;
-var counter = 0;
-sendBut.onclick = function() {
-        counter += 1;
-    }
 
 function openExtraField(event) {
     up.style.display = 'block';
@@ -163,7 +159,7 @@ function listPlaces(address, pAddress) {
 	t =  document.createElement("table");
        	for (var j = 0; j < names.length; j++)
 	{
-		if ((columns[names[j]] != -1) && (counter <= 1))
+		if (columns[names[j]] != -1)
 		{	
 			var tr = document.createElement("tr");
 			var th = document.createElement("th");

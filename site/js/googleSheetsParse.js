@@ -163,7 +163,7 @@ function listPlaces(address, pAddress) {
 	t =  document.createElement("table");
        	for (var j = 0; j < names.length; j++)
 	{
-		if ((columns[names[j]] != -1) and (counter == 1))
+		if ((columns[names[j]] != -1) && (counter == 1))
 		{	
 			var tr = document.createElement("tr");
 			var th = document.createElement("th");

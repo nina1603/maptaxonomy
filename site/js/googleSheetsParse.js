@@ -8,6 +8,7 @@ var down = document.getElementById("downTriangle");
 var up = document.getElementById("upTriangle");
 var hidden = document.getElementById("hidden");
 
+
 var marker = [];
 var infowindow = {};
 var contentString = {};
@@ -41,6 +42,7 @@ function openExtraField(event) {
     up.style.display = 'block';
     down.style.display = 'none';
     hidden.style.display = 'block';
+	
 }
 
 function closeExtraField(event) {
@@ -183,8 +185,7 @@ function listPlaces(address, pAddress) {
 		}
 	}
 	document.getElementById('table').appendChild(t);
-		
-	    
+	
             for (var i = 1; i < range.values.length; i++) {
                 var row = range.values[i];
                 //appendPre(row[gen_id] + ', ' + row[name_id]);
@@ -212,6 +213,10 @@ function listPlaces(address, pAddress) {
     }, function(response) {
         appendPre('Error: ' + response.result.error.message);
     });
+}
+
+function parseMarkers() {
+	                
 }
 
 function removeMarkers() {

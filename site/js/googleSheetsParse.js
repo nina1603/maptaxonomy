@@ -7,7 +7,7 @@ var signoutButton = document.getElementById('signout-button');
 var down = document.getElementById("downTriangle");
 var up = document.getElementById("upTriangle");
 var hidden = document.getElementById("hidden");
-
+var map = document.getElementById("map");
 
 var marker = [];
 var infowindow = {};

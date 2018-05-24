@@ -8,6 +8,7 @@ var down = document.getElementById("downTriangle");
 var up = document.getElementById("upTriangle");
 var hidden = document.getElementById("hidden");
 var map = document.getElementById("map");
+var t =  document.createElement("table");
 
 var marker = [];
 var infowindow = {};
@@ -110,6 +111,7 @@ function clearAll(event) {
     removeMarkers();
 	v.value = [];
 	p.value = [];
+	t = [];
 }
 
 
@@ -149,7 +151,6 @@ function listPlaces(address, pAddress) {
 	columns[names[7]] = parser(mainStr, 'float');
 		
 	//var t = document.getElementById("table");
-	t =  document.createElement("table");
        	for (var j = 0; j < names.length; j++)
 	{
 		if (columns[names[j]] != -1)

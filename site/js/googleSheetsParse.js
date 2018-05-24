@@ -89,8 +89,8 @@ function handleSignoutClick(event) {
 function handleInputClick(event) {
 	counter += 1;
 	var address = v.value;
+	var pAddress = p.value;
 	listPlaces(address, pAddress);
-    var pAddress = p.value;
 	if (counter > 1) {
 		clearAll();
 	}

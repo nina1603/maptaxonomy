@@ -23,8 +23,7 @@ up.onclick = closeExtraField;
 function openExtraField(event) {
     up.style.display = 'block';
     down.style.display = 'none';
-    hidden.style.display = 'block';
-	
+    hidden.style.display = 'block';	
 }
 
 function closeExtraField(event) {
@@ -86,6 +85,7 @@ function handleSignoutClick(event) {
 }
 
 function handleInputClick(event) {
+	clearAll();
     var address = v.value;
     var pAddress = p.value;
     listPlaces(address, pAddress);
@@ -101,7 +101,11 @@ function appendPre(message) {
     pre.appendChild(textContent);
 }
 
-
+function clearAll(event) {
+    removeMarkers();
+	v.value = [];
+	p.value = [];
+}
 
 
 

@@ -16,6 +16,8 @@ var places;
 var map;
 var columns = {};
 var names = [];
+var counter = 0;
+
 
 down.onclick = openExtraField;
 up.onclick = closeExtraField;
@@ -85,10 +87,13 @@ function handleSignoutClick(event) {
 }
 
 function handleInputClick(event) {
-	clearAll();
-    var address = v.value;
+	counter += 1;
+	var address = v.value;
+	listPlaces(address, pAddress);
     var pAddress = p.value;
-    listPlaces(address, pAddress);
+	if (counter > 1) {
+		clearAll();
+	}
 }
 /* Append a pre element to the body containing the given message
  * as its text node. Used to display the results of the API call.

@@ -1,3 +1,4 @@
+var map;
 function initMap() {
     var location = {
         lat: 55.700,

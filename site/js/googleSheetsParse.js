@@ -220,7 +220,7 @@ function removeMarkers() {
 
 function parser(str, name1, name2) {
     for (var i = 0; i < str.length; i++) {
-        if ((str[i].search(name1) != -1) or (str[i].search(name2) != -1))
+        if ((str[i].search(name1) != -1) || (str[i].search(name2) != -1))
             return i;
     }
     return -1;

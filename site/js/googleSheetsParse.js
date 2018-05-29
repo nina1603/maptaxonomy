@@ -132,21 +132,21 @@ function listPlaces(address, pAddress) {
         if (range.values.length > 0) {
             var mainStr = range.values[0];         
 	names[0] = 'genbank';
-	columns[names[0]] = parser(mainStr, 'genbank');
+	columns[names[0]] = parser(mainStr, 'genbank', 'Genbank');
         names[1] = 'name';
-	columns[names[1]] = parser(mainStr, 'name');
+	columns[names[1]] = parser(mainStr, 'name', 'Name');
         names[2] = 'lat';
-	columns[names[2]] = parser(mainStr, 'latitude');
+	columns[names[2]] = parser(mainStr, 'latitude', 'Latitude');
 	names[3] = 'lng';
-	columns[names[3]] = parser(mainStr, 'longitude');
+	columns[names[3]] = parser(mainStr, 'longitude', 'Longitude');
 	names[4] = 'pos';
-	columns[names[4]] = parser(mainStr, 'pos');
+	columns[names[4]] = parser(mainStr, 'pos', 'Pos');
 	names[5] = 'date';
-	columns[names[5]] = parser(mainStr, 'date');
+	columns[names[5]] = parser(mainStr, 'date', 'Date');
 	names[6] = 'int';
-	columns[names[6]] = parser(mainStr, 'int');
+	columns[names[6]] = parser(mainStr, 'int', 'Int');
 	names[7] = 'float';
-	columns[names[7]] = parser(mainStr, 'float');
+	columns[names[7]] = parser(mainStr, 'float', 'Float');
 		
 	//var t = document.getElementById("table");
        	for (var j = 0; j < names.length; j++)
@@ -218,9 +218,9 @@ function removeMarkers() {
     }
 }
 
-function parser(str, name) {
+function parser(str, name1, name2) {
     for (var i = 0; i < str.length; i++) {
-        if (str[i].search(name) != -1)
+        if ((str[i].search(name1) != -1) or (str[i].search(name2) != -1))
             return i;
     }
     return -1;

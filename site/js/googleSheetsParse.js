@@ -179,13 +179,13 @@ function listPlaces(address, pAddress) {
                 //appendPre(row[gen_id] + ', ' + row[name_id]);
                 marker[i - 1] = new google.maps.Marker({
                     position: {
-                        lat: Number.parseInt(row[names[i-1].search("atitude")]),
-                        lng: Number.parseInt(row[names[i-1].search('ongitude')])
+                        lat: Number.parseInt(row[names.search("atitude")]),
+                        lng: Number.parseInt(row[names.search('ongitude')])
                     },
                     map: map,
                     title: 'Location №' + i
                 });
-                contentString[i] = 'genbank: ' + row[names[i-1].search('bank')] + '<br>' + 'Position: ' + row[names[i-1].search('pos')];
+                contentString[i] = 'genbank: ' + row[names.search('bank')] + '<br>' + 'Position: ' + row[names.search('pos')];
                 infowindow[i] = new google.maps.InfoWindow({
                     content: contentString[i]
                 });

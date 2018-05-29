@@ -109,9 +109,7 @@ function appendPre(message) {
 
 function clearAll(event) {
     removeMarkers();
-	v.value = [];
-	p.value = [];
-	t = [];
+	t.remove();
 }
 
 

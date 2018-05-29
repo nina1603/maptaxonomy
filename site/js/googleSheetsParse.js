@@ -15,7 +15,7 @@ var infowindow = {};
 var contentString = {};
 var places;
 var map;
-var columns = {};
+
 var names = [];
 var counter = 0;
 
@@ -94,7 +94,6 @@ function handleInputClick(event) {
 	if (counter > 1) {
 		clearAll();
 	}
-	console.log(address, pAddress);
 	listPlaces(address, pAddress);
 }
 /* Append a pre element to the body containing the given message
@@ -131,8 +130,9 @@ function listPlaces(address, pAddress) {
     }).then(function(response) {
         var range = response.result;
         if (range.values.length > 0) {
-            var mainStr = range.values[0];         
-	names[0] = 'genbank';
+            var mainStr = range.values[0];
+	mainStr.forEach(function(e, i) { names[i] = e; })
+	/*names[0] = 'genbank';
 	columns[names[0]] = parser(mainStr, 'genbank', 'Genbank');
         names[1] = 'name';
 	columns[names[1]] = parser(mainStr, 'name', 'Name');
@@ -148,12 +148,10 @@ function listPlaces(address, pAddress) {
 	columns[names[6]] = parser(mainStr, 'int', 'Int');
 	names[7] = 'float';
 	columns[names[7]] = parser(mainStr, 'float', 'Float');
-		
+	*/	
 	//var t = document.getElementById("table");
        	for (var j = 0; j < names.length; j++)
-	{
-		if (columns[names[j]] != -1)
-		{	
+	{	
 			var tr = document.createElement("tr");
 			var th = document.createElement("th");
 			th.innerHTML = names[j];
@@ -173,7 +171,6 @@ function listPlaces(address, pAddress) {
 			tr.append(td1);
 			tr.append(td2);
 			t.append(tr);
-		}
 	}
 	document.getElementById('table').appendChild(t);
 	
@@ -182,13 +179,13 @@ function listPlaces(address, pAddress) {
                 //appendPre(row[gen_id] + ', ' + row[name_id]);
                 marker[i - 1] = new google.maps.Marker({
                     position: {
-                        lat: Number.parseInt(row[columns['lat']]),
-                        lng: Number.parseInt(row[columns['lng']])
+                        lat: Number.parseInt(row[names[i-1].search("atitude"),
+                        lng: Number.parseInt(row[names[i-1].search['ongitude']])
                     },
                     map: map,
                     title: 'Location №' + i
                 });
-                contentString[i] = 'genbank: ' + row[columns['genbank']] + '<br>' + 'Position: ' + row[columns['pos']];
+                contentString[i] = 'genbank: ' + row[names[i-1].search('bank') + '<br>' + 'Position: ' + row[names[i-1].search('pos')];
                 infowindow[i] = new google.maps.InfoWindow({
                     content: contentString[i]
                 });

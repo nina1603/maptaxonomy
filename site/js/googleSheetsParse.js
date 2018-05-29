@@ -110,7 +110,7 @@ function appendPre(message) {
 
 function clearAll(event) {
     removeMarkers();
-	t.removeChild();
+	t.innerHTML = [];
 }
 
 

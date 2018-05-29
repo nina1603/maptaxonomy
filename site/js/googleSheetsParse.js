@@ -179,8 +179,8 @@ function listPlaces(address, pAddress) {
                 //appendPre(row[gen_id] + ', ' + row[name_id]);
                 marker[i - 1] = new google.maps.Marker({
                     position: {
-                        lat: Number.parseInt(row[names[i-1].search("atitude"),
-                        lng: Number.parseInt(row[names[i-1].search['ongitude']])
+                        lat: Number.parseInt(row[names[i-1].search("atitude")]),
+                        lng: Number.parseInt(row[names[i-1].search('ongitude')])
                     },
                     map: map,
                     title: 'Location №' + i

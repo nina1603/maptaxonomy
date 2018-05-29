@@ -91,10 +91,10 @@ function handleInputClick(event) {
 	counter += 1;
 	var address = v.value;
 	var pAddress = p.value;
-	listPlaces(address, pAddress);
 	if (counter > 1) {
 		clearAll();
 	}
+	listPlaces(address, pAddress);
 }
 /* Append a pre element to the body containing the given message
  * as its text node. Used to display the results of the API call.

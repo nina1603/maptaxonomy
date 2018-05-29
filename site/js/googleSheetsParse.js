@@ -94,6 +94,7 @@ function handleInputClick(event) {
 	if (counter > 1) {
 		clearAll();
 	}
+	console.log(address, pAddress);
 	listPlaces(address, pAddress);
 }
 /* Append a pre element to the body containing the given message

@@ -17,6 +17,7 @@ var places;
 var map;
 
 var names = [];
+var columns = {};
 var counter = 0;
 
 

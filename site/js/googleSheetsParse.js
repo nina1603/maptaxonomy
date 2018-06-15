@@ -185,7 +185,7 @@ function listPlaces(address, pAddress) {
                     map: map,
                     title: 'Location №' + i
                 });
-                contentString[i] = 'genbank: ' + row[parser(names, 'gen', 'bank')] + '<br>' + 'Position: ' + row[parser(names. 'pos', 'Pos')];
+                contentString[i] = 'genbank: ' + row[parser(names, 'gen', 'bank')] + '<br>' + 'Position: ' + row[parser(names, 'pos', 'Pos')];
                 infowindow[i] = new google.maps.InfoWindow({
                     content: contentString[i]
                 });

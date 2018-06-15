@@ -131,8 +131,8 @@ function listPlaces(address, pAddress) {
         var range = response.result;
         if (range.values.length > 0) {
             var mainStr = range.values[0];
-	mainStr.forEach(function(e, i) { names[i] = e; })
-	/*names[0] = 'genbank';
+	//mainStr.forEach(function(e, i) { names[i] = e; })
+	names[0] = 'genbank';
 	columns[names[0]] = parser(mainStr, 'genbank', 'Genbank');
         names[1] = 'name';
 	columns[names[1]] = parser(mainStr, 'name', 'Name');
@@ -148,7 +148,7 @@ function listPlaces(address, pAddress) {
 	columns[names[6]] = parser(mainStr, 'int', 'Int');
 	names[7] = 'float';
 	columns[names[7]] = parser(mainStr, 'float', 'Float');
-	*/	
+		
 	//var t = document.getElementById("table");
        	for (var j = 0; j < names.length; j++)
 	{	

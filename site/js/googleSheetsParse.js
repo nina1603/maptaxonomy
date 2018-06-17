@@ -10,15 +10,15 @@ var hidden = document.getElementById("hidden");
 var map = document.getElementById("map");
 var t =  document.createElement("table");
 
+var places;
+var map;
+var counter = 0;
+
 var marker = [];
 var infowindow = {};
 var contentString = {};
-var places;
-var map;
-
 var names = [];
 var columns = {};
-var counter = 0;
 
 
 down.onclick = openExtraField;
@@ -41,8 +41,7 @@ var CLIENT_ID = '858139403726-0ru9uicbkoo5o3i98idspa9onocbhi5n.apps.googleuserco
 var API_KEY = 'AIzaSyBqxSOO8-ABdeDtEapbKXWC_7j7g57HC18';
 // Array of API discovery doc URLs for APIs used by the quickstart
 var DISCOVERY_DOCS = ["https://sheets.googleapis.com/$discovery/rest?version=v4"];
-// Authorization scopes required by the API; multiple scopes can be
-// included, separated by spaces.
+// Authorization scopes required by the API; multiple scopes can be included, separated by spaces.
 var SCOPES = "https://www.googleapis.com/auth/spreadsheets.readonly";
 
 /* On load, called to load the auth2 library and API client library. */
@@ -83,10 +82,10 @@ function updateSigninStatus(isSignedIn) {
 function handleAuthClick(event) {
     gapi.auth2.getAuthInstance().signIn();
 }
-
 function handleSignoutClick(event) {
     gapi.auth2.getAuthInstance().signOut();
 }
+
 
 function handleInputClick(event) {
 	counter += 1;
@@ -99,9 +98,9 @@ function handleInputClick(event) {
 }
 /* Append a pre element to the body containing the given message
  * as its text node. Used to display the results of the API call.
- *
  * @param {string} message Text to be placed in pre element.
  */
+
 function appendPre(message) {
     var pre = document.getElementById('content');
     var textContent = document.createTextNode(message + '\n');

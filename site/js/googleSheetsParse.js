@@ -4,6 +4,7 @@ var inputs = document.getElementById("leftWindow");
 var sendBut = document.getElementById("SendButton");
 var authorizeButton = document.getElementById('authorize-button');
 var signoutButton = document.getElementById('signout-button');
+var apply = document.getElementById('ApplyButton');
 var down = document.getElementById("downTriangle");
 var up = document.getElementById("upTriangle");
 var hidden = document.getElementById("hidden");
@@ -19,10 +20,12 @@ var infowindow = {};
 var contentString = {};
 var names = [];
 var columns = {};
-
+var froms = [];
+var tos = [];
 
 down.onclick = openExtraField;
 up.onclick = closeExtraField;
+apply.onClick = parseMarkers();
 
 function openExtraField(event) {
     up.style.display = 'block';
@@ -111,7 +114,6 @@ function clearAll(event) {
     removeMarkers();
 	t.innerHTML = [];
 }
-
 
 
 

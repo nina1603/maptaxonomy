@@ -161,7 +161,9 @@ function listPlaces(address, pAddress) {
 			var td1 = document.createElement("td");
 			var td2 = document.createElement("td");
 			var from = document.createElement('input');
+			froms[j] = from.value;
 			var to = document.createElement('input');
+			tos[j] = to.value;
 			from.placeholder = "from:";
 			from.className="from";
 			to.placeholder = "to:";
@@ -175,6 +177,7 @@ function listPlaces(address, pAddress) {
 			t.append(tr);
 	}
 	document.getElementById('table').appendChild(t);
+		console.log(froms, tos);
 	
             for (var i = 1; i < range.values.length; i++) {
                 var row = range.values[i];

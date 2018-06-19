@@ -243,11 +243,11 @@ function parseMarkers() {
 			    										&& (froms[j].value != '')) {
 				if (froms[j].value != row[j]) {
 					bool = 0;
-					console.log(j + ': ' + bool);
+					console.log(j+ ': ' + bool);
 				}
 			}
 			else {
-				console.log(j + 'is here!");
+				console.log(i + 'column' + j + "is here!");
 			}
 		}
                 if (bool == 1)

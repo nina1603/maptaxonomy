@@ -37,7 +37,8 @@ var types = [['genbank', 'gen', 'Genbank'],
 	     ['lng', 'Lng', 'longitude', 'Longitude'],
 	     ['date', 'Date'],
 	     ['int', 'Int', 'Num', 'num'],
-	     ['float', 'Float', 'double', 'Double']];
+	     ['float', 'Float', 'double', 'Double'],
+	     ['str']];
 
 down.onclick = openExtraField;
 up.onclick = closeExtraField;
@@ -300,5 +301,5 @@ function getDatatype(str) {
 		}
 		if (counter > 0) return types[k][0];
 	}
-	return str;
+	return types[types.length - 1][0];
 }

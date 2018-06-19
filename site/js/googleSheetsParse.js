@@ -156,10 +156,11 @@ function listPlaces(address, pAddress) {
 		if (names[j] == 'lng') {
 			lngCoords = j;
 			lngCounter += 1;
+		}
 		if (names[j] == 'date') dateCoords = j;
 		if (names[j] == 'name') nameCoords = j;
 	}
-	if (latCoords == -1 || lngCoords == -1)
+	if ((latCoords == -1) || (lngCoords == -1))
 		alert("Coordinates haven't been given! Cannot print markers");
 	if ((latCounter > 1) || (lngCounter > 1))
 		alert("More than one coordinate has been given! Only the last one will be used!");

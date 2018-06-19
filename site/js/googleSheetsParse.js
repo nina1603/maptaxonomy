@@ -232,7 +232,8 @@ function listPlaces(address, pAddress) {
 	
 
 function parseMarkers() {
-	removeMarkers();
+	if (marker)
+		removeMarkers();
 	
 	 for (var i = 1; i < range.values.length; i++) {
                 var row = range.values[i];
@@ -240,7 +241,7 @@ function parseMarkers() {
 		{
 			if (((names[j] == 'genbank') || (names[j] == 'name') || (names[j] == 'position') || (names[j] == 'str'))
 			    											&& (froms[j] != '')) {
-				if (froms[j] != row[j]) {
+				if (froms[j].value != row[j]) {
 					bool = 0;
 					console.log(j + ': ' + bool);
 				}

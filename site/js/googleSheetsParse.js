@@ -233,19 +233,16 @@ function listPlaces(address, pAddress) {
 
 function parseMarkers() {
 	removeMarkers();
-	for (var j = 0; j < names.length; j++)
-	{
-		console.log(froms[j].value, tos[j].value);
-	}
 	
 	 for (var i = 1; i < range.values.length; i++) {
                 var row = range.values[i];
  		for (var j = 0; j < names.length; j++)
 		{
 			if (((names[j] == 'genbank') || (names[j] == 'name') || (names[j] == 'position')) && (names[j] != '')) {
-				if (froms[j] != row[j])
+				if (froms[j] != row[j]) {
 					bool = 0;
-				console.log(j + ': ' + bool);
+					console.log(j + ': ' + bool);
+				}
 			}
 			else {
 			}

@@ -107,6 +107,7 @@ function handleSignoutClick(event) {
 
 
 function handleInputClick(event) {
+	sendBut.disabled = true;
 	counter += 1;
 	var address = v.value;
 	var pAddress = p.value;
@@ -247,7 +248,7 @@ function parseMarkers() {
 				}
 			}
 			else {
-				console.log(i + 'column' + j + "is here!");
+				console.log(i + 'clumn' + j + "is here!");
 			}
 		}
                 if (bool == 1)

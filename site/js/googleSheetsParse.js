@@ -247,6 +247,7 @@ function parseMarkers() {
 				}
 			}
 			else {
+				console.log('Here!");
 			}
 		}
                 if (bool == 1)

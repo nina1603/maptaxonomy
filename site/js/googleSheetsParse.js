@@ -11,6 +11,7 @@ var hidden = document.getElementById("hidden");
 var map = document.getElementById("map");
 var t =  document.createElement("table");
 
+
 var places;
 var map;
 var counter = 0;
@@ -160,10 +161,12 @@ function listPlaces(address, pAddress) {
 			tr.append(th);
 			var td1 = document.createElement("td");
 			var td2 = document.createElement("td");
-			var from = document.createElement('input');
-			froms[j] = from.value;
-			var to = document.createElement('input');
-			tos[j] = to.value;
+			//var from = document.createElement('input');
+			froms[j] = document.createElement('input');
+			var from = froms[j];
+			//var to = document.createElement('input');
+			tos[j] = document.createElement('input');
+			var to = tos[j];
 			from.placeholder = "from:";
 			from.className="from";
 			to.placeholder = "to:";
@@ -209,7 +212,10 @@ function listPlaces(address, pAddress) {
 }
 
 function parseMarkers() {
-	                
+	for (var j = 0; j < names.length; j++)
+	{
+		console.log(froms[j], tos[j]);
+	}
 }
 
 function removeMarkers() {

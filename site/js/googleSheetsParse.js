@@ -17,7 +17,9 @@ var map;
 var counter = 0;
 var latCoords = -1;
 var lngCoords = -1;
-var posCoords, dateCoords;
+var nameCoords = -1;
+var dateCoords = -1;
+
 var marker = [];
 var infowindow = {};
 var contentString = {};
@@ -148,13 +150,11 @@ function listPlaces(address, pAddress) {
 		names[j] = getDatatype(mainStr[j]);
 		if (names[j] == 'lat') latCoords = j;
 		if (names[j] == 'lng') lngCoords = j;
+		if (names[j] == 'date') dateCoords = j;
+		if (names[j] == 'name') nameCoords = j;
 	}
 	if (latCoords == -1 || lngCoords == -1)
-		alert("Coords haven't been given! Cannot print");
-		
-	/*names[0] = 'genbank';
-	columns[names[0]] = parser(mainStr, 'genbank', 'Genbank');
-	*/
+		alert("Coordinates haven't been given! Cannot print markers");
 
        	for (var j = 0; j < names.length; j++)
 	{	
@@ -189,13 +189,13 @@ function listPlaces(address, pAddress) {
                 //appendPre(row[gen_id] + ', ' + row[name_id]);
                 marker[i - 1] = new google.maps.Marker({
                     position: {
-                        lat: Number.parseInt(row[columns['lat']]),
-                        lng: Number.parseInt(row[columns['lng']])
+                        lat: Number.parseInt(row[latCoords]),
+                        lng: Number.parseInt(row[lngCoords])
                     },
                     map: map,
                     title: 'Location №' + i
                 });
-                contentString[i] = 'genbank: ' + row[columns['genbank']] + '<br>' + 'Position: ' + row[columns['pos']];
+                contentString[i] = 'name:' + row[nameCoords] + '<br>' + 'date:' + row[dateCoords];
                 infowindow[i] = new google.maps.InfoWindow({
                     content: contentString[i]
                 });
@@ -214,7 +214,8 @@ function listPlaces(address, pAddress) {
 }
 
 
-	    
+	
+
 function parseMarkers() {
 	for (var j = 0; j < names.length; j++)
 	{
@@ -241,16 +242,15 @@ function removeMarkers() {
 }*/
 
 function getDatatype(str) {
-	var latCounter = 0;
-	var lngCounter = 0;
+	var counter = 0;
 	for (var k = 0; k < types.length; k++) {
 		for (var h = 0; h < types[k].length; h++) {
-			if (str.search(types[k][h]) != -1)
-				if (k == 3) latCounter += 1;
-				if (k == 4) lngCounter += 1;
-				if ((latCounter > 1) || (lngCounter > 1))
+			if (str.search(types[k][h]) != -1) {
+				counter += 1;
+				if ((counter > 1) && ((k == 3) || (k == 4)))
 					alert("More than one coordinate has been given. Only the last one will be used!");
-				return types[k][0];
+			}
 		}
+		if (counter > 0) return types[k][0];
 	}
 }

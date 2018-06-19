@@ -115,6 +115,7 @@ function handleInputClick(event) {
 		clearAll();
 	}
 	listPlaces(address, pAddress);
+	sendBut.disabled = false;
 }
 /* Append a pre element to the body containing the given message
  * as its text node. Used to display the results of the API call.

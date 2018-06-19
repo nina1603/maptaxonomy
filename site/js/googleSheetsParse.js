@@ -270,7 +270,7 @@ function parseMarkers() {
                 	    return this.infowindow.open(map, this);
                 	});
 		}
-		 bool = 1;
+		bool = 1;
 	 }
 }
 

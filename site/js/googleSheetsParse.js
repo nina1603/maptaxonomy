@@ -30,7 +30,7 @@ var types = [['genbank', 'gen', 'Genbank'],
 	     ['name', 'Name'], 
 	     ['position', 'Pos', 'loc', 'Location'],
 	     ['lat', 'Lat'],
-	     ['lng', 'Lng'],
+	     ['lng', 'Lng', 'longitude', 'Longitude'],
 	     ['date', 'Date'],
 	     ['int', 'Int', 'Number'],
 	     ['float', 'Float', 'double', 'Double']];

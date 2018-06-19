@@ -14,6 +14,7 @@ var t =  document.createElement("table");
 
 var places;
 var map;
+var bool = True;
 var counter = 0; 
 var latCounter = 0;
 var lngCounter = 0;
@@ -233,6 +234,38 @@ function parseMarkers() {
 	{
 		console.log(froms[j].value, tos[j].value);
 	}
+	
+	 for (var i = 1; i < range.values.length; i++) {
+                var row = range.values[i];
+ 		for (var j = 0; j < names.length; j++)
+		{
+			if ((names[j] == 'genbank') || (names[j] == 'name') || (names[j] == 'position')) {
+				if (froms[j] !== row[j])
+					bool = False;
+			}
+			else {
+			}
+		}
+                if (bool == True)
+		{
+			marker[i - 1] = new google.maps.Marker({
+                    	position: {
+                    	    lat: Number.parseInt(row[latCoords]),
+                    	    lng: Number.parseInt(row[lngCoords])
+                    	},
+                    	map: map,
+                    	title: 'Location №' + i
+                	});
+                	contentString[i] = 'name:' + row[nameCoords] + '<br>' + 'date:' + row[dateCoords];
+                	infowindow[i] = new google.maps.InfoWindow({
+                	    content: contentString[i]
+                	});
+                	marker[i - 1].infowindow = infowindow[i];
+                	marker[i - 1].addListener('click', function() {
+                	    return this.infowindow.open(map, this);
+                	});
+		}
+	 }
 }
 
 

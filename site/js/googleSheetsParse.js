@@ -40,7 +40,6 @@ var types = [['genbank', 'gen', 'Genbank'],
 
 down.onclick = openExtraField;
 up.onclick = closeExtraField;
-apply.onClick = parseMarkers();
 
 function openExtraField(event) {
     up.style.display = 'block';
@@ -195,7 +194,9 @@ function listPlaces(address, pAddress) {
 			t.append(tr);
 	}
 	document.getElementById('table').appendChild(t);
-	
+	apply.onClick = parseMarkers(range);
+		
+		
             for (var i = 1; i < range.values.length; i++) {
                 var row = range.values[i];
                 //appendPre(row[gen_id] + ', ' + row[name_id]);
@@ -228,7 +229,7 @@ function listPlaces(address, pAddress) {
 
 	
 
-function parseMarkers() {
+function parseMarkers(range) {
 	removeMarkers();
 	for (var j = 0; j < names.length; j++)
 	{

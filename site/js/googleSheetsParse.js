@@ -14,7 +14,8 @@ var t =  document.createElement("table");
 
 var places;
 var map;
-var counter = 0;
+var latCounter = 0;
+var lngCounter = 0;
 var latCoords = -1;
 var lngCoords = -1;
 var nameCoords = -1;
@@ -148,14 +149,20 @@ function listPlaces(address, pAddress) {
 	for (var j = 0; j < mainStr.length; j++)
 	{
 		names[j] = getDatatype(mainStr[j]);
-		if (names[j] == 'lat') latCoords = j;
-		if (names[j] == 'lng') lngCoords = j;
+		if (names[j] == 'lat') {
+			latCoords = j;
+			latCounter += 1;
+		}
+		if (names[j] == 'lng') {
+			lngCoords = j;
+			lngCounter += 1;
 		if (names[j] == 'date') dateCoords = j;
 		if (names[j] == 'name') nameCoords = j;
 	}
 	if (latCoords == -1 || lngCoords == -1)
 		alert("Coordinates haven't been given! Cannot print markers");
-
+	if ((latCounter > 1) || (lngCounter > 1))
+		alert("More than one coordinate has been given! Only the last one will be used!");
        	for (var j = 0; j < names.length; j++)
 	{	
 			var tr = document.createElement("tr");
@@ -249,8 +256,6 @@ function getDatatype(str) {
 				counter += 1;
 			}
 		}
-		if ((counter > 1) && ((k == 3) || (k == 4)))
-			alert("More than one coordinate has been given. Only the last one will be used!");
 		if (counter > 0) return types[k][0];
 	}
 }

@@ -14,6 +14,7 @@ var t =  document.createElement("table");
 
 var places;
 var map;
+var counter = 0;
 var latCounter = 0;
 var lngCounter = 0;
 var latCoords = -1;

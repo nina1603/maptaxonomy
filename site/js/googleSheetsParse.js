@@ -244,6 +244,7 @@ function parseMarkers() {
 			if ((names[j] == 'genbank') || (names[j] == 'name') || (names[j] == 'position')) {
 				if (froms[j] !== row[j])
 					bool = 0;
+				console.log(j + ': ' + bool);
 			}
 			else {
 			}

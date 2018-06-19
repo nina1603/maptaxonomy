@@ -180,7 +180,6 @@ function listPlaces(address, pAddress) {
 			t.append(tr);
 	}
 	document.getElementById('table').appendChild(t);
-		console.log(froms, tos);
 	
             for (var i = 1; i < range.values.length; i++) {
                 var row = range.values[i];

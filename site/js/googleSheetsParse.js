@@ -14,6 +14,7 @@ var t =  document.createElement("table");
 
 var places;
 var map;
+var range;
 var bool = 1;
 var counter = 0; 
 var latCounter = 0;
@@ -35,7 +36,7 @@ var types = [['genbank', 'gen', 'Genbank'],
 	     ['lat', 'Lat'],
 	     ['lng', 'Lng', 'longitude', 'Longitude'],
 	     ['date', 'Date'],
-	     ['int', 'Int', 'Number'],
+	     ['int', 'Int', 'Num', 'num'],
 	     ['float', 'Float', 'double', 'Double']];
 
 down.onclick = openExtraField;
@@ -144,7 +145,7 @@ function listPlaces(address, pAddress) {
         spreadsheetId: ref[num], //'1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms',
         range: pAddress, //'Map!A1:G',
     }).then(function(response) {
-        var range = response.result;
+        range = response.result;
         if (range.values.length > 0) {
             var mainStr = range.values[0];
 	for (var j = 0; j < mainStr.length; j++)
@@ -194,7 +195,7 @@ function listPlaces(address, pAddress) {
 			t.append(tr);
 	}
 	document.getElementById('table').appendChild(t);
-	apply.onClick = parseMarkers(range);
+	//apply.onClick = parseMarkers(range);
 		
 		
             for (var i = 1; i < range.values.length; i++) {
@@ -229,7 +230,7 @@ function listPlaces(address, pAddress) {
 
 	
 
-function parseMarkers(range) {
+function parseMarkers() {
 	removeMarkers();
 	for (var j = 0; j < names.length; j++)
 	{

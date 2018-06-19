@@ -213,7 +213,7 @@ function listPlaces(address, pAddress) {
 function parseMarkers() {
 	for (var j = 0; j < names.length; j++)
 	{
-		console.log(froms[j], tos[j]);
+		console.log(froms[j].value, tos[j].value);
 	}
 }
 

@@ -239,7 +239,7 @@ function parseMarkers() {
  		for (var j = 0; j < names.length; j++)
 		{
 			if (((names[j] == 'genbank') || (names[j] == 'name') || (names[j] == 'position') || (names[j] == 'str'))
-			    											&& (names[j] != '')) {
+			    											&& (froms[j] != '')) {
 				if (froms[j] != row[j]) {
 					bool = 0;
 					console.log(j + ': ' + bool);

@@ -300,5 +300,5 @@ function getDatatype(str) {
 		}
 		if (counter > 0) return types[k][0];
 	}
-	return -1;
+	return str;
 }

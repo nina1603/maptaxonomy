@@ -250,7 +250,8 @@ function parseMarkers() {
 		}
                 if (bool == 1)
 		{
-			marker[i - 1] = new google.maps.Marker({
+			counter += 1;
+			marker[counter - 1] = new google.maps.Marker({
                     	position: {
                     	    lat: Number.parseInt(row[latCoords]),
                     	    lng: Number.parseInt(row[lngCoords])
@@ -258,12 +259,12 @@ function parseMarkers() {
                     	map: map,
                     	title: 'Location №' + i
                 	});
-                	contentString[i] = 'name:' + row[nameCoords] + '<br>' + 'date:' + row[dateCoords];
-                	infowindow[i] = new google.maps.InfoWindow({
+                	contentString[counter] = 'name:' + row[nameCoords] + '<br>' + 'date:' + row[dateCoords];
+                	infowindow[counter] = new google.maps.InfoWindow({
                 	    content: contentString[i]
                 	});
-                	marker[i - 1].infowindow = infowindow[i];
-                	marker[i - 1].addListener('click', function() {
+                	marker[counter - 1].infowindow = infowindow[counter];
+                	marker[counter - 1].addListener('click', function() {
                 	    return this.infowindow.open(map, this);
                 	});
 		}

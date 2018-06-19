@@ -180,7 +180,7 @@ function listPlaces(address, pAddress) {
 			var from = froms[j];
 			//var to = document.createElement('input');
 			tos[j] = document.createElement('input');
-			if ((names[j] == 'genbank') || (names[j] == 'name') || (names[j] == 'position'))
+			if ((names[j] == 'genbank') || (names[j] == 'name') || (names[j] == 'position') || (names[j] == 'str'))
 			    tos[j].value = 0;
 			var to = tos[j];
 			from.placeholder = "from:";
@@ -238,7 +238,8 @@ function parseMarkers() {
                 var row = range.values[i];
  		for (var j = 0; j < names.length; j++)
 		{
-			if (((names[j] == 'genbank') || (names[j] == 'name') || (names[j] == 'position')) && (names[j] != '')) {
+			if (((names[j] == 'genbank') || (names[j] == 'name') || (names[j] == 'position') || (names[j] == 'str'))
+			    											&& (names[j] != '')) {
 				if (froms[j] != row[j]) {
 					bool = 0;
 					console.log(j + ': ' + bool);

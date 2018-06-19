@@ -14,7 +14,7 @@ var t =  document.createElement("table");
 
 var places;
 var map;
-var counter = 0;
+var counter = 0; 
 var latCounter = 0;
 var lngCounter = 0;
 var latCoords = -1;
@@ -179,6 +179,7 @@ function listPlaces(address, pAddress) {
 			//var to = document.createElement('input');
 			tos[j] = document.createElement('input');
 			var to = tos[j];
+			
 			from.placeholder = "from:";
 			from.className="from";
 			to.placeholder = "to:";
@@ -226,6 +227,7 @@ function listPlaces(address, pAddress) {
 	
 
 function parseMarkers() {
+	removeMarkers();
 	for (var j = 0; j < names.length; j++)
 	{
 		console.log(froms[j].value, tos[j].value);

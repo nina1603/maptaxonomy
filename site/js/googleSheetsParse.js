@@ -251,6 +251,7 @@ function getDatatype(str) {
 					alert("More than one coordinate has been given. Only the last one will be used!");
 			}
 		}
-		if (counter > 0) return types[k][0] + '_' + counter;
+		if (counter == 1) return types[k][0];
+		if (counter > 1) return types[k][0] + '_' + counter;
 	}
 }

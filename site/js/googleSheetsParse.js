@@ -14,7 +14,7 @@ var t =  document.createElement("table");
 
 var places;
 var map;
-var bool = True;
+var bool = 1;
 var counter = 0; 
 var latCounter = 0;
 var lngCounter = 0;
@@ -241,12 +241,12 @@ function parseMarkers() {
 		{
 			if ((names[j] == 'genbank') || (names[j] == 'name') || (names[j] == 'position')) {
 				if (froms[j] !== row[j])
-					bool = False;
+					bool = 0;
 			}
 			else {
 			}
 		}
-                if (bool == True)
+                if (bool == 1)
 		{
 			marker[i - 1] = new google.maps.Marker({
                     	position: {

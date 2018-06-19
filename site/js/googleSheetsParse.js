@@ -160,7 +160,7 @@ function listPlaces(address, pAddress) {
 	{	
 			var tr = document.createElement("tr");
 			var th = document.createElement("th");
-			th.innerHTML = names[j];
+			th.innerHTML = mainStr[j];
 			tr.append(th);
 			var td1 = document.createElement("td");
 			var td2 = document.createElement("td");
@@ -247,11 +247,10 @@ function getDatatype(str) {
 		for (var h = 0; h < types[k].length; h++) {
 			if (str.search(types[k][h]) != -1) {
 				counter += 1;
-				if ((counter > 1) && ((k == 3) || (k == 4)))
-					alert("More than one coordinate has been given. Only the last one will be used!");
 			}
 		}
-		if (counter == 1) return types[k][0];
-		if (counter > 1) return types[k][0] + '_' + counter;
+		if ((counter > 1) && ((k == 3) || (k == 4)))
+			alert("More than one coordinate has been given. Only the last one will be used!");
+		if (counter > 0) return types[k][0];
 	}
 }

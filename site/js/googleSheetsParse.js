@@ -15,14 +15,23 @@ var t =  document.createElement("table");
 var places;
 var map;
 var counter = 0;
-
+var latCoords = -1;
+var lngCoords = -1;
+var posCoords, dateCoords;
 var marker = [];
 var infowindow = {};
 var contentString = {};
 var names = [];
-var columns = {};
 var froms = [];
 var tos = [];
+var types = [['genbank', 'gen', 'Genbank'], 
+	     ['name', 'Name'], 
+	     ['position', 'Pos', 'loc', 'Location'],
+	     ['lat', 'Lat'],
+	     ['lng', 'Lng'],
+	     ['date', 'Date'],
+	     ['int', 'Int', 'Number'],
+	     ['float', 'Float', 'double', 'Double']];
 
 down.onclick = openExtraField;
 up.onclick = closeExtraField;
@@ -134,25 +143,19 @@ function listPlaces(address, pAddress) {
         var range = response.result;
         if (range.values.length > 0) {
             var mainStr = range.values[0];
-	//mainStr.forEach(function(e, i) { names[i] = e; })
-	names[0] = 'genbank';
-	columns[names[0]] = parser(mainStr, 'genbank', 'Genbank');
-        names[1] = 'name';
-	columns[names[1]] = parser(mainStr, 'name', 'Name');
-        names[2] = 'lat';
-	columns[names[2]] = parser(mainStr, 'latitude', 'Latitude');
-	names[3] = 'lng';
-	columns[names[3]] = parser(mainStr, 'longitude', 'Longitude');
-	names[4] = 'pos';
-	columns[names[4]] = parser(mainStr, 'pos', 'Pos');
-	names[5] = 'date';
-	columns[names[5]] = parser(mainStr, 'date', 'Date');
-	names[6] = 'int';
-	columns[names[6]] = parser(mainStr, 'int', 'Int');
-	names[7] = 'float';
-	columns[names[7]] = parser(mainStr, 'float', 'Float');
+	for (var j = 0; j < mainStr.length; j++)
+	{
+		names[j] = getDatatype(mainStr[j]);
+		if (names[j] == 'lat') latCoords = j;
+		if (names[j] == 'lng') lngCoords = j;
+	}
+	if (latCoords == -1 || lngCoords == -1)
+		alert("Coords haven't been given! Cannot print");
 		
-	//var t = document.getElementById("table");
+	/*names[0] = 'genbank';
+	columns[names[0]] = parser(mainStr, 'genbank', 'Genbank');
+	*/
+
        	for (var j = 0; j < names.length; j++)
 	{	
 			var tr = document.createElement("tr");
@@ -210,12 +213,15 @@ function listPlaces(address, pAddress) {
     });
 }
 
+
+	    
 function parseMarkers() {
 	for (var j = 0; j < names.length; j++)
 	{
 		console.log(froms[j].value, tos[j].value);
 	}
 }
+
 
 function removeMarkers() {
     if (marker) {
@@ -226,10 +232,25 @@ function removeMarkers() {
     }
 }
 
-function parser(str, name1, name2) {
+/*function parser(str, name1, name2) {
     for (var i = 0; i < str.length; i++) {
         if ((str[i].search(name1) != -1) || (str[i].search(name2) != -1))
             return i;
     }
     return -1;
+}*/
+
+function getDatatype(str) {
+	var latCounter = 0;
+	var lngCounter = 0;
+	for (var k = 0; k < types.length; k++) {
+		for (var h = 0; h < types[k].length; h++) {
+			if (str.search(types[k][h]) != -1)
+				if (k == 3) latCounter += 1;
+				if (k == 4) lngCounter += 1;
+				if ((latCounter > 1) || (lngCounter > 1))
+					alert("More than one coordinate has been given. Only the last one will be used!");
+				return types[k][0];
+		}
+	}
 }

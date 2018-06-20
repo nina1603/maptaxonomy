@@ -236,6 +236,7 @@ function listPlaces(address, pAddress) {
 	
 
 function parseMarkers() {
+	console.log('Marker length is ' + marker.length);
 	removeMarkers();
 	
 	 for (var i = 1; i < range.values.length; i++) {
@@ -274,7 +275,6 @@ function parseMarkers() {
 		}
 		bool = 1;
 	 }
-	console.log(marker);
 }
 
 

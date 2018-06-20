@@ -242,10 +242,11 @@ function parseMarkers() {
     for (var i = 1; i < range.values.length; i++) {
         var row = range.values[i];
         for (var j = 0; j < names.length; j++) {
-            if (((names[j] == 'genbank') || (names[j] == 'name') || (names[j] == 'position') || (names[j] == 'str')) &&
-                (froms[j].value != '')) {
-                if (froms[j].value != row[j]) {
-                    bool = 0;
+            if ((names[j] == 'genbank') || (names[j] == 'name') || (names[j] == 'position') || (names[j] == 'str')) {
+                if (froms[j].value != '')) {
+                    if (froms[j].value != row[j]) {
+                        bool = 0;
+                    }
                 }
             } else {
                 if ((names[j] != 'date') && ((froms[j].value != '') || (tos[j].value != ''))) {

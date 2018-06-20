@@ -25,6 +25,7 @@ var nameCoords = -1;
 var dateCoords = -1;
 
 var marker = [];
+var coordsCounter = {};
 var infowindow = {};
 var contentString = {};
 var names = [];
@@ -234,8 +235,7 @@ function listPlaces(address, pAddress) {
 	
 
 function parseMarkers() {
-	if (marker)
-		removeMarkers();
+	removeMarkers();
 	
 	 for (var i = 1; i < range.values.length; i++) {
                 var row = range.values[i];
@@ -274,6 +274,7 @@ function parseMarkers() {
 		}
 		bool = 1;
 	 }
+	console.log(marker);
 }
 
 

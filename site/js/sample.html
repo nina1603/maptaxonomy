@@ -1,55 +1,54 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset='utf-8' />
-	<title>Maptaxonomy</title>
+    <title>Maptaxonomy</title>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-    <link rel = "stylesheet" href = "styles.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
     <div id="map"></div>
-	
-    <div id = "AuthButtons">
-    	<button id="authorize-button" style="display: none;">Authorize</button>
-    	<button id="signout-button" style="display: none;">Sign Out</button>
-</div>
-	
-<pre id="content"></pre>
 
-    <div id = "leftWindow">
-	    <div id = "help" style="text-indent:10px">
-	    <a href="https://nina1603.github.io/maptaxonomy/site/js/helppage/help.html" target = "_blank"
-       title = "First time use? Press here to find out how to do it">Help</a>
-		</div>
-	    	
-	    <br><input placeholder = "web address" type = "text" id = "tableId"></input>
-    	<br> <input placeholder = "page name + range" type = "text" id = "pageId"></input>
-    	<br><br><input type="submit" id = "SendButton" value="Send"></input>
-	<input type="button" id = "ClearButton" value="Clear" onclick = "removeMarkers();"></input>
-	<div id = "icons">
-		<img src = "downTr.jpg" id = "downTriangle">
-		<img src = "upTr.jpg" id = "upTriangle">
-	</div>
-	<div id = "hidden">
-		<div id="table"></div>
-		<input type="button" id = "ApplyButton" value="Apply" onclick = "parseMarkers()"></input>  <!-- onclick = "parseMarkers() -->
-	</div>
-</div>
- 
+    <div id="AuthButtons">
+        <button id="authorize-button" style="display: none;">Authorize</button>
+        <button id="signout-button" style="display: none;">Sign Out</button>
+    </div>
 
- <script type="application/javascript" src = "init.js">
+    <pre id="content"></pre>
+
+    <div id="leftWindow">
+        <div id="help" style="text-indent:10px">
+            <a href="https://nina1603.github.io/maptaxonomy/site/js/helppage/help.html" target="_blank" title="First time use? Press here to find out how to do it">Help</a>
+        </div>
+
+        <br><input placeholder="web address" type="text" id="tableId"></input>
+        <br> <input placeholder="page name + range" type="text" id="pageId"></input>
+        <br><br><input type="submit" id="SendButton" value="Send"></input>
+        <input type="button" id="ClearButton" value="Clear" onclick="removeMarkers();"></input>
+        <div id="icons">
+            <img src="downTr.jpg" id="downTriangle">
+            <img src="upTr.jpg" id="upTriangle">
+        </div>
+        <div id="hidden">
+            <div id="table"></div>
+            <input type="button" id="ApplyButton" value="Apply" onclick="parseMarkers()"></input>
+            <!-- onclick = "parseMarkers() -->
+        </div>
+    </div>
+
+
+    <script type="application/javascript" src="init.js">
     </script>
 
-<script async defer 
-src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDA6tIfdstDmqeKNMhA_tWYo4Xm0oYizc0&callback=initMap&&libraries=geometry">
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDA6tIfdstDmqeKNMhA_tWYo4Xm0oYizc0&callback=initMap&&libraries=geometry">
     </script>
 
-<script type="application/javascript" src = "googleSheetsParse.js">
+    <script type="application/javascript" src="googleSheetsParse.js">
     </script>
 
- <script async defer src="https://apis.google.com/js/api.js" onload="this.onload=function(){}; handleClientLoad()" 
-	onreadystatechange="if (this.readyState === 'complete') this.onload()">
+    <script async defer src="https://apis.google.com/js/api.js" onload="this.onload=function(){}; handleClientLoad()" onreadystatechange="if (this.readyState === 'complete') this.onload()">
     </script>
 
 </body>

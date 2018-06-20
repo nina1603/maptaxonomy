@@ -210,6 +210,7 @@ function listPlaces(address, pAddress) {
                         lat: Number.parseInt(row[latCoords]),
                         lng: Number.parseInt(row[lngCoords])
                     },
+		    label:'1',
                     map: map,
                     title: 'Location №' + i
                 });

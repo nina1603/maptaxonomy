@@ -9,14 +9,14 @@ var down = document.getElementById("downTriangle");
 var up = document.getElementById("upTriangle");
 var hidden = document.getElementById("hidden");
 var map = document.getElementById("map");
-var t =  document.createElement("table");
+var t = document.createElement("table");
 
 
 var places;
 var map;
 var range;
 var bool = 1;
-var counter = 0; 
+var counter = 0;
 var latCounter = 0;
 var lngCounter = 0;
 var latCoords = -1;
@@ -31,15 +31,17 @@ var contentString = {};
 var names = [];
 var froms = [];
 var tos = [];
-var types = [['genbank', 'gen', 'Genbank'], 
-	     ['name', 'Name'], 
-	     ['position', 'Pos', 'loc', 'Location'],
-	     ['lat', 'Lat'],
-	     ['lng', 'Lng', 'longitude', 'Longitude'],
-	     ['date', 'Date'],
-	     ['int', 'Int', 'Num', 'num'],
-	     ['float', 'Float', 'double', 'Double'],
-	     ['str']];
+var types = [
+    ['genbank', 'gen', 'Genbank'],
+    ['name', 'Name'],
+    ['position', 'Pos', 'loc', 'Location'],
+    ['lat', 'Lat'],
+    ['lng', 'Lng', 'longitude', 'Longitude'],
+    ['date', 'Date'],
+    ['int', 'Int', 'Num', 'num'],
+    ['float', 'Float', 'double', 'Double'],
+    ['str']
+];
 
 down.onclick = openExtraField;
 up.onclick = closeExtraField;
@@ -47,7 +49,7 @@ up.onclick = closeExtraField;
 function openExtraField(event) {
     up.style.display = 'block';
     down.style.display = 'none';
-    hidden.style.display = 'block';	
+    hidden.style.display = 'block';
 }
 
 function closeExtraField(event) {
@@ -102,21 +104,22 @@ function updateSigninStatus(isSignedIn) {
 function handleAuthClick(event) {
     gapi.auth2.getAuthInstance().signIn();
 }
+
 function handleSignoutClick(event) {
     gapi.auth2.getAuthInstance().signOut();
 }
 
 
 function handleInputClick(event) {
-	sendBut.disabled = true;
-	counter += 1;
-	var address = v.value;
-	var pAddress = p.value;
-	if (counter > 1) {
-		clearAll();
-	}
-	listPlaces(address, pAddress);
-	sendBut.disabled = false;
+    sendBut.disabled = true;
+    counter += 1;
+    var address = v.value;
+    var pAddress = p.value;
+    if (counter > 1) {
+        clearAll();
+    }
+    listPlaces(address, pAddress);
+    sendBut.disabled = false;
 }
 /* Append a pre element to the body containing the given message
  * as its text node. Used to display the results of the API call.
@@ -131,9 +134,8 @@ function appendPre(message) {
 
 function clearAll(event) {
     removeMarkers();
-	t.innerHTML = [];
+    t.innerHTML = [];
 }
-
 
 
 
@@ -152,56 +154,54 @@ function listPlaces(address, pAddress) {
         range = response.result;
         if (range.values.length > 0) {
             var mainStr = range.values[0];
-	for (var j = 0; j < mainStr.length; j++)
-	{
-		names[j] = getDatatype(mainStr[j]);
-		if (names[j] == 'lat') {
-			latCoords = j;
-			latCounter += 1;
-		}
-		if (names[j] == 'lng') {
-			lngCoords = j;
-			lngCounter += 1;
-		}
-		if (names[j] == 'date') dateCoords = j;
-		if (names[j] == 'name') nameCoords = j;
-	}
-	if ((latCoords == -1) || (lngCoords == -1))
-		alert("Coordinates haven't been given! Cannot print markers");
-	if ((latCounter > 1) || (lngCounter > 1))
-		alert("More than one coordinate has been given! Only the last one will be used!");
-       	for (var j = 0; j < names.length; j++)
-	{	
-			var tr = document.createElement("tr");
-			var th = document.createElement("th");
-			th.innerHTML = mainStr[j];
-			tr.append(th);
-			var td1 = document.createElement("td");
-			var td2 = document.createElement("td");
-			//var from = document.createElement('input');
-			froms[j] = document.createElement('input');
-			var from = froms[j];
-			//var to = document.createElement('input');
-			tos[j] = document.createElement('input');
-			if ((names[j] == 'genbank') || (names[j] == 'name') || (names[j] == 'position') || (names[j] == 'str'))
-			    tos[j].value = 0;
-			var to = tos[j];
-			from.placeholder = "from:";
-			from.className="from";
-			to.placeholder = "to:";
-			to.className="to";
-			from.type = "text";
-			to.type = "text";
-			td1.append(from);
-			td2.append(to);
-			tr.append(td1);
-			tr.append(td2);
-			t.append(tr);
-	}
-	document.getElementById('table').appendChild(t);
-	//apply.onClick = parseMarkers(range);
-		
-		
+            for (var j = 0; j < mainStr.length; j++) {
+                names[j] = getDatatype(mainStr[j]);
+                if (names[j] == 'lat') {
+                    latCoords = j;
+                    latCounter += 1;
+                }
+                if (names[j] == 'lng') {
+                    lngCoords = j;
+                    lngCounter += 1;
+                }
+                if (names[j] == 'date') dateCoords = j;
+                if (names[j] == 'name') nameCoords = j;
+            }
+            if ((latCoords == -1) || (lngCoords == -1))
+                alert("Coordinates haven't been given! Cannot print markers");
+            if ((latCounter > 1) || (lngCounter > 1))
+                alert("More than one coordinate has been given! Only the last one will be used!");
+            for (var j = 0; j < names.length; j++) {
+                var tr = document.createElement("tr");
+                var th = document.createElement("th");
+                th.innerHTML = mainStr[j];
+                tr.append(th);
+                var td1 = document.createElement("td");
+                var td2 = document.createElement("td");
+                //var from = document.createElement('input');
+                froms[j] = document.createElement('input');
+                var from = froms[j];
+                //var to = document.createElement('input');
+                tos[j] = document.createElement('input');
+                if ((names[j] == 'genbank') || (names[j] == 'name') || (names[j] == 'position') || (names[j] == 'str'))
+                    tos[j].value = 0;
+                var to = tos[j];
+                from.placeholder = "from:";
+                from.className = "from";
+                to.placeholder = "to:";
+                to.className = "to";
+                from.type = "text";
+                to.type = "text";
+                td1.append(from);
+                td2.append(to);
+                tr.append(td1);
+                tr.append(td2);
+                t.append(tr);
+            }
+            document.getElementById('table').appendChild(t);
+            //apply.onClick = parseMarkers(range);
+
+
             for (var i = 1; i < range.values.length; i++) {
                 var row = range.values[i];
                 //appendPre(row[gen_id] + ', ' + row[name_id]);
@@ -210,7 +210,7 @@ function listPlaces(address, pAddress) {
                         lat: Number.parseFloat(row[latCoords]),
                         lng: Number.parseFloat(row[lngCoords])
                     },
-		    label: '1',
+                    label: '1',
                     map: map,
                     title: 'Location №' + i
                 });
@@ -233,7 +233,7 @@ function listPlaces(address, pAddress) {
 }
 
 
-	
+
 
 function parseMarkers() {
     console.log('Marker length is ' + marker.length);
@@ -308,14 +308,14 @@ function removeMarkers() {
 }*/
 
 function getDatatype(str) {
-	var counter = 0;
-	for (var k = 0; k < types.length; k++) {
-		for (var h = 0; h < types[k].length; h++) {
-			if (str.search(types[k][h]) != -1) {
-				counter += 1;
-			}
-		}
-		if (counter > 0) return types[k][0];
-	}
-	return types[types.length - 1][0];
+    var counter = 0;
+    for (var k = 0; k < types.length; k++) {
+        for (var h = 0; h < types[k].length; h++) {
+            if (str.search(types[k][h]) != -1) {
+                counter += 1;
+            }
+        }
+        if (counter > 0) return types[k][0];
+    }
+    return types[types.length - 1][0];
 }

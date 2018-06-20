@@ -278,7 +278,7 @@ function parseMarkers() {
 
 
 function removeMarkers() {
-    if (marker) {
+    if (marker.length > 0) {
         for (i = 0; i < marker.length; i++) {
             marker[i].setMap(null);
         }

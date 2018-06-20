@@ -207,8 +207,8 @@ function listPlaces(address, pAddress) {
                 //appendPre(row[gen_id] + ', ' + row[name_id]);
                 marker[i - 1] = new google.maps.Marker({
                     position: {
-                        lat: Number.parseInt(row[latCoords]),
-                        lng: Number.parseInt(row[lngCoords])
+                        lat: Number.parseFloat(row[latCoords]),
+                        lng: Number.parseFloat(row[lngCoords])
                     },
 		    label: '1',
                     map: map,
@@ -250,7 +250,12 @@ function parseMarkers() {
 				}
 			}
 			else {
-				
+				if ((names[j] != 'date') && ((froms[j].value != '') || (tos[j].value != ''))) {
+					if froms[j].value != '' {
+						if Number	
+					}
+					
+				}
 			}
 		}
                 if (bool == 1)
@@ -258,8 +263,8 @@ function parseMarkers() {
 			counter += 1;
 			marker[counter - 1] = new google.maps.Marker({
                     	position: {
-                    	    lat: Number.parseInt(row[latCoords]),
-                    	    lng: Number.parseInt(row[lngCoords])
+                    	    lat: Number.parseFloat(row[latCoords]),
+                    	    lng: Number.parseFloat(row[lngCoords])
                     	},
 			label: '1',
                     	map: map,

@@ -238,7 +238,7 @@ function listPlaces(address, pAddress) {
 function parseMarkers() {
 	console.log('Marker length is ' + marker.length);
 	removeMarkers();
-	
+	var counter = 0;
 	 for (var i = 1; i < range.values.length; i++) {
                 var row = range.values[i];
  		for (var j = 0; j < names.length; j++)
@@ -262,7 +262,7 @@ function parseMarkers() {
                     	    lng: Number.parseInt(row[lngCoords])
                     	},
                     	map: map,
-                    	title: 'Location №' + i
+                    	title: 'Location №' + counter
                 	});
                 	contentString[counter] = 'name:' + row[nameCoords] + '<br>' + 'date:' + row[dateCoords];
                 	infowindow[counter] = new google.maps.InfoWindow({

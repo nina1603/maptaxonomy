@@ -243,7 +243,7 @@ function parseMarkers() {
         var row = range.values[i];
         for (var j = 0; j < names.length; j++) {
             if ((names[j] == 'genbank') || (names[j] == 'name') || (names[j] == 'position') || (names[j] == 'str')) {
-                if (froms[j].value != '')) {
+                if (froms[j].value != '') {
                     if (froms[j].value != row[j]) {
                         bool = 0;
                     }

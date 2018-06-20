@@ -241,8 +241,7 @@ function parseMarkers() {
 	var counter = 0;
 	 for (var i = 1; i < range.values.length; i++) {
                 var row = range.values[i];
- 		for (var j = 0; j < names.length; j++)
-		{
+ 		for (var j = 0; j < names.length; j++) {
 			if (((names[j] == 'genbank') || (names[j] == 'name') || (names[j] == 'position') || (names[j] == 'str'))
 			    										&& (froms[j].value != '')) {
 				if (froms[j].value != row[j]) {
@@ -251,13 +250,21 @@ function parseMarkers() {
 			}
 			else {
 				if ((names[j] != 'date') && ((froms[j].value != '') || (tos[j].value != ''))) {
-					if froms[j].value != '' {
-						if Number	
+					if (froms[j].value != '') {
+						if (Number.parseFloat(froms[j].value) > Number.parseFloat(row[j]))
+							bool = 0;
 					}
-					
+					if (tos[j].value != '') {
+						if (Number.parseFloat(tos[j].value) < Number.parseFloat(row[j]))
+							bool = 0;
+					}
 				}
+				if ((names[j] == 'date') && ((froms[j].value != '') || (tos[j].value != ''))) {
+					
+				}	
 			}
 		}
+	}
                 if (bool == 1)
 		{
 			counter += 1;

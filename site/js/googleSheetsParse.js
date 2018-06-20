@@ -245,11 +245,10 @@ function parseMarkers() {
 			    										&& (froms[j].value != '')) {
 				if (froms[j].value != row[j]) {
 					bool = 0;
-					console.log(j+ ': ' + bool);
 				}
 			}
 			else {
-				console.log(i + 'clumn' + j + "is here!");
+				
 			}
 		}
                 if (bool == 1)

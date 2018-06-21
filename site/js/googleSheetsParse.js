@@ -321,6 +321,7 @@ function removeAll() {
    clearAll();
    v.value = '';
    p.value = '';
+   closeExtraField;
 }
 
 function getDatatype(str) {

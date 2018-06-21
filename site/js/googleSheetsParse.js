@@ -316,7 +316,8 @@ function clearAll(event) {
     t.innerHTML = [];
     coordsCounter = {};
     coordinates = [];
-    latCounter = lngCounter = 0;
+    latCounter = 0;
+    lngCounter = 0;
 }
 
 function removeAll() {

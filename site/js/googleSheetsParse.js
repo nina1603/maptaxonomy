@@ -273,7 +273,14 @@ function parseMarkers() {
                 }
 
                 if ((names[j] == 'date') && ((froms[j].value != '') || (tos[j].value != ''))) {
-                //???????????????????????????????????????????????????????????????????
+                    if (froms[j].value != '') {
+                        if (Date.parse(froms[j].value) > Date.parse(row[j]))
+                            bool = 0;
+                    }
+                    if (tos[j].value != '') {
+                        if (Date.parse(tos[j].value) < Date.parse(row[j]))
+                            bool = 0;
+                    }
                 }
             }
         }

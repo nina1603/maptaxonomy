@@ -167,8 +167,9 @@ function listPlaces(address, pAddress) {
                 if (names[j] == 'name') nameCoords = j;
             }
             
-            console.log(latCoords, lngCoords);
-            
+            console.log('coords: ' + latCoords + lngCoords);
+            console.log('counters: ' + latCounter + lngCounter);
+            console.log('date + name: ' + dateCoords + nameCoords);
             
             if ((latCoords == -1) || (lngCoords == -1))
                 alert("Coordinates haven't been given! Cannot print markers");

@@ -203,30 +203,28 @@ function listPlaces(address, pAddress) {
                 var row = range.values[i];
                 var latLoc = Number.parseFloat(row[latCoords]);
                 var lngLoc = Number.parseFloat(row[lngCoords]);
-                if (coordsCounter[latLoc + ',' + lngLoc] > 0)
+                /*if (coordsCounter[latLoc + ',' + lngLoc] > 0)
                     coordsCounter[latLoc + ',' + lngLoc] += 1;
                 else {
                     coordsCounter[latLoc + ',' + lngLoc] = 1;
                     coordinates[coordsLength] = row;
                     coordsLength += 1;
-                }
+                }*/
+                coordsCounter[latLoc + ',' + lngLoc].push(row);
             }
             console.log(coordsCounter);
-            console.log(coordinates);
             
-            for (var i = 0; i < coordsLength; i++) {
-                //var row = coordinates[i];
-                
+            for (key in coordsCounter) {
                 marker[i] = new google.maps.Marker({
                     position: {
-                        lat:  Number.parseFloat(coordinates[i][latCoords]),
-                        lng:  Number.parseFloat(coordinates[i][lngCoords])
+                        lat:  Number.parseFloat(coordsCounter[key][0][latCoords]),
+                        lng:  Number.parseFloat(coordsCounter[key][0][lngCoords])
                     },
-                    label: coordsCounter[coordinates[i][latCoords] + ',' + coordinates[i][lngCoords]].toString(),
+                    label: coordsCounter[key].length.toString(),
                     map: map,
-                    title: 'Location №' + i
+                    title: 'name:' + coordsCounter[key][0][nameCoords]
                 });
-                contentString[i] = 'name:' + coordinates[i][nameCoords] + '<br>' + 'date:' + Date(Date.parse(coordinates[i][dateCoords]));
+                contentString[i] = 'date:' + Date(Date.parse(coordsCounter[key][0][dateCoords]));
                 infowindow[i] = new google.maps.InfoWindow({
                     content: contentString[i]
                 });
@@ -234,7 +232,6 @@ function listPlaces(address, pAddress) {
                 marker[i].addListener('click', function() {
                     return this.infowindow.open(map, this);
                 });
-
             }
         } else {
             appendPre('No data found.');

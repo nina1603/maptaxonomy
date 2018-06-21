@@ -260,21 +260,18 @@ function parseMarkers() {
             } else {
                 if ((names[j] != 'date') && ((froms[j].value != '') || (tos[j].value != ''))) {
                     if (froms[j].value != '') {
-                        console.log("I'm " + j + ", my from is not empty");
                         if (Number.parseFloat(froms[j].value) > Number.parseFloat(row[j]))
                             bool = 0;
                     }
                     if (tos[j].value != '') {
-                        console.log("I'm " + j + ", my to is not empty");
                         if (Number.parseFloat(tos[j].value) < Number.parseFloat(row[j]))
                             bool = 0;
                     }
                 }
 
                 if ((names[j] == 'date') && ((froms[j].value != '') || (tos[j].value != ''))) {
-
+                //???????????????????????????????????????????????????????????????????
                 }
-
             }
         }
         if (bool == 1) {
@@ -317,6 +314,7 @@ function clearAll(event) {
     t.innerHTML = [];
     coordsCounter = {};
     coordinates = [];
+    latCounter = lngCounter = 0;
 }
 
 function removeAll() {

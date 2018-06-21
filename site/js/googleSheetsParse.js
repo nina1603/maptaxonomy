@@ -137,12 +137,6 @@ function appendPre(message) {
     pre.appendChild(textContent);
 }
 
-function clearAll(event) {
-    removeMarkers();
-    t.innerHTML = [];
-}
-
-
 
 
 function listPlaces(address, pAddress) {
@@ -317,6 +311,17 @@ function removeMarkers() {
     }
 }
 
+
+function clearAll(event) {
+    removeMarkers();
+    t.innerHTML = [];
+}
+
+functionremoveAll() {
+   clearAll();
+   v.value = '';
+   p.value = '';
+}
 
 function getDatatype(str) {
     var counter = 0;

@@ -19,6 +19,7 @@ var map;
 var range;
 var bool = 1;
 var counter = 0;
+var count = 0;
 var latCounter = 0;
 var lngCounter = 0;
 var latCoords = -1;
@@ -117,10 +118,10 @@ function handleSignoutClick(event) {
 
 function handleInputClick(event) {
     sendBut.disabled = true;
-    counter += 1;
+    count += 1;
     var address = v.value;
     var pAddress = p.value;
-    if (counter > 1) {
+    if (count > 1) {
         clearAll();
     }
     listPlaces(address, pAddress);
@@ -326,14 +327,14 @@ function removeAll() {
 }
 
 function getDatatype(str) {
-    var counter = 0;
+    var counter2 = 0;
     for (var k = 0; k < types.length; k++) {
         for (var h = 0; h < types[k].length; h++) {
             if (str.search(types[k][h]) != -1) {
-                counter += 1;
+                counter2 += 1;
             }
         }
-        if (counter > 0) return types[k][0];
+        if (counter2 > 0) return types[k][0];
     }
     return types[types.length - 1][0];
 }

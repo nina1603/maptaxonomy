@@ -209,8 +209,6 @@ function listPlaces(address, pAddress) {
                 else {
                     coordsCounter[latLoc + ',' + lngLoc] = 1;
                     coordinates[coordsLength] = row;
-                    console.log(i, coordinates[coordsLength]);
-                    console.log(row);
                     coordsLength += 1;
                 }
             }
@@ -218,6 +216,7 @@ function listPlaces(address, pAddress) {
             for (var i = 0; i < coordsLength; i++) {
                 var row = coordinates[i];
                 console.log("Now: " + row);
+                console.log(typeof(row));
                 marker[i] = new google.maps.Marker({
                     position: {
                         lat:  Number.parseFloat(row[latCoords]),

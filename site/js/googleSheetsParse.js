@@ -226,7 +226,7 @@ function listPlaces(address, pAddress) {
                     map: map,
                     title: 'Location №' + i
                 });
-                contentString[i] = 'name:' + coordinates[i][nameCoords] + '<br>' + 'date:' + coordinates[i][dateCoords];
+                contentString[i] = 'name:' + coordinates[i][nameCoords] + '<br>' + 'date:' + Date(Date.parse(coordinates[i][dateCoords]));
                 infowindow[i] = new google.maps.InfoWindow({
                     content: contentString[i]
                 });

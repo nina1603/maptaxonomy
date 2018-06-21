@@ -322,7 +322,7 @@ function removeAll() {
    clearAll();
    v.value = '';
    p.value = '';
-   closeExtraField; 
+   closeExtraField(); 
 }
 
 function getDatatype(str) {

@@ -211,6 +211,9 @@ function listPlaces(address, pAddress) {
                     coordsLength += 1;
                 }
             }
+            console.log(coordsCounter);
+            console.log(coordinates);
+            
             for (var i = 0; i < coordsLength; i++) {
                 //var row = coordinates[i];
                 

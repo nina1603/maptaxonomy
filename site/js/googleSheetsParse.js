@@ -217,7 +217,7 @@ function listPlaces(address, pAddress) {
                 marker[i] = new google.maps.Marker({
                     position: {
                         lat:  Number.parseFloat(row[latCoords]),
-                        lng:  Number.parseFloat(ref[lngCoords])
+                        lng:  Number.parseFloat(row[lngCoords])
                     },
                     label: coordsCounter[row[latCoords] + ',' + row[lngCoords]].toString(),
                     map: map,

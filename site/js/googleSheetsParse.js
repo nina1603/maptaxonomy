@@ -216,7 +216,7 @@ function listPlaces(address, pAddress) {
             }
             
             console.log(coordsCounter);
-            var i = 1;
+            var i = 0;
             
             for (key in coordsCounter) {
                 marker[i] = new google.maps.Marker({
@@ -314,7 +314,7 @@ function parseMarkers() {
 
 function removeMarkers() {
     if (marker.length > 0) {
-        for (i = 1; i <= marker.length; i++) {
+        for (i = 0; i < marker.length; i++) {
             marker[i].setMap(null);
         }
         marker = [];

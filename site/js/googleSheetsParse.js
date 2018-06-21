@@ -217,7 +217,7 @@ function listPlaces(address, pAddress) {
                     coordsLength += 1;
                 }
             }
-            
+            console.log("coordsLength is " + coordsLength);
             for (var i = 0; i < coordsLength; i++) {
                 var ref = coordinates[i].split(',');
                 marker[i] = new google.maps.Marker({

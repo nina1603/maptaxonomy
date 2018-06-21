@@ -178,10 +178,8 @@ function listPlaces(address, pAddress) {
                 tr.append(th);
                 var td1 = document.createElement("td");
                 var td2 = document.createElement("td");
-                //var from = document.createElement('input');
                 froms[j] = document.createElement('input');
                 var from = froms[j];
-                //var to = document.createElement('input');
                 tos[j] = document.createElement('input');
                 if ((names[j] == 'genbank') || (names[j] == 'name') || (names[j] == 'position') || (names[j] == 'str'))
                     tos[j].value = 0;

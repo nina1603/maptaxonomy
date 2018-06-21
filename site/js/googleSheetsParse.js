@@ -203,6 +203,8 @@ function listPlaces(address, pAddress) {
                 var row = range.values[i];
                 var latLoc = Number.parseFloat(row[latCoords]);
                 var lngLoc = Number.parseFloat(row[lngCoords]);
+                if (coordsCounter[latLoc + ',' + lngLoc] == undefined)
+                    coordsCounter[latLoc + ',' + lngLoc] = [];
                 /*if (coordsCounter[latLoc + ',' + lngLoc] > 0)
                     coordsCounter[latLoc + ',' + lngLoc] += 1;
                 else {

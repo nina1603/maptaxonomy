@@ -122,7 +122,6 @@ function handleInputClick(event) {
     var address = v.value;
     var pAddress = p.value;
     if (count > 1) {
-        console.log("Cleaning after resending");
         clearAll();
     }
     listPlaces(address, pAddress);
@@ -212,8 +211,6 @@ function listPlaces(address, pAddress) {
                     coordsLength += 1;
                 }
             }
-            console.log(coordsCounter);
-            console.log(coordinates);
             for (var i = 0; i < coordsLength; i++) {
                 //var row = coordinates[i];
                 
@@ -318,7 +315,6 @@ function clearAll(event) {
     coordsCounter = {};
     coordsLength = 0;
     coordinates = [];
-    console.log(coordinates);
     latCounter = 0;
     lngCounter = 0;
 }

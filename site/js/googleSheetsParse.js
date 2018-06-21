@@ -222,8 +222,8 @@ function listPlaces(address, pAddress) {
                 var ref = coordinates[i].split(',');
                 marker[i] = new google.maps.Marker({
                     position: {
-                        lat: ref[0],
-                        lng: ref[1]
+                        lat:  Number.parseFloat(ref[0]),
+                        lng:  Number.parseFloat(ref[1])
                     },
                     label: coordsCounter[coordinates[i]],
                     map: map,

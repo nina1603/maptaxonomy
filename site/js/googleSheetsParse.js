@@ -317,7 +317,7 @@ function clearAll(event) {
     t.innerHTML = [];
 }
 
-functionremoveAll() {
+function removeAll() {
    clearAll();
    v.value = '';
    p.value = '';

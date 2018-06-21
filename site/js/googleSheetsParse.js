@@ -209,7 +209,8 @@ function listPlaces(address, pAddress) {
                 else {
                     coordsCounter[latLoc + ',' + lngLoc] = 1;
                     coordinates[coordsLength] = row;
-                    console.log(coordinates[coordsLength]);
+                    console.log(i, coordinates[coordsLength]);
+                    console.log(row);
                     coordsLength += 1;
                 }
             }

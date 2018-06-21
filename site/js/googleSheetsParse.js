@@ -329,6 +329,7 @@ function parseMarkers() {
 
 
 function removeMarkers() {
+    console.log(marker);
     if (marker.length > 0) {
         for (i = 0; i < marker.length; i++) {
             marker[i].setMap(null);
@@ -342,8 +343,6 @@ function clearAll(event) {
     removeMarkers();
     t.innerHTML = [];
     coordsCounter = {};
-    coordsLength = 0;
-    coordinates = [];
     latCounter = 0;
     lngCounter = 0;
 }

@@ -1,3 +1,6 @@
+body {
+ overflow: scroll;
+}
 #map {
 	    position: fixed;
             height: 100vh;

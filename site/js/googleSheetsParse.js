@@ -213,21 +213,21 @@ function listPlaces(address, pAddress) {
                     coordsCounter[latLoc + ',' + lngLoc] += 1;
                 else {
                     coordsCounter[latLoc + ',' + lngLoc] = 1;
-                    coordinates[coordsLength] = latLoc + ',' + lngLoc;
+                    coordinates[coordsLength] = row;
                     coordsLength += 1;
                 }
             }
             
             for (var i = 0; i < coordsLength; i++) {
-                var ref = coordinates[i].split(',');
+                var row = coordinates[i];
                 marker[i] = new google.maps.Marker({
                     position: {
-                        lat:  Number.parseFloat(ref[0]),
-                        lng:  Number.parseFloat(ref[1])
+                        lat:  Number.parseFloat(row[latCoords]),
+                        lng:  Number.parseFloat(ref[lngCoords])
                     },
-                    label: coordsCounter[coordinates[i]].toString(),
+                    label: coordsCounter[row[latCoords] + ',' + row[lngCoords]],
                     map: map,
-                    title: 'Location №' + i+1
+                    title: 'Location №' + i
                 });
                 contentString[i] = 'name:' + row[nameCoords] + '<br>' + 'date:' + row[dateCoords];
                 infowindow[i] = new google.maps.InfoWindow({

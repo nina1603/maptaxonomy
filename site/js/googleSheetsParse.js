@@ -166,6 +166,10 @@ function listPlaces(address, pAddress) {
                 if (names[j] == 'date') dateCoords = j;
                 if (names[j] == 'name') nameCoords = j;
             }
+            
+            console.log(latCoords, lngCoords);
+            
+            
             if ((latCoords == -1) || (lngCoords == -1))
                 alert("Coordinates haven't been given! Cannot print markers");
             if ((latCounter > 1) || (lngCounter > 1))

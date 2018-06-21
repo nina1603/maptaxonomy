@@ -357,14 +357,14 @@ function removeAll() {
 }
 
 function getDatatype(str) {
-    var counter2 = 0;
+    var counter = 0;
     for (var k = 0; k < types.length; k++) {
         for (var h = 0; h < types[k].length; h++) {
             if (str.search(types[k][h]) != -1) {
-                counter2 += 1;
+                counter += 1;
             }
         }
-        if (counter2 > 0) return types[k][0];
+        if (counter > 0) return types[k][0];
     }
     return types[types.length - 1][0];
 }

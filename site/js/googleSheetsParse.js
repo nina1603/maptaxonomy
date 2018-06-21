@@ -251,8 +251,8 @@ function parseMarkers() {
     console.log('Marker length is ' + marker.length);
     removeMarkers();
     var counter = 0;
-    for (var i = 1; i < range.values.length; i++) {
-        var row = range.values[i];
+    for (var i = 0; i < coordsLength; i++) {
+        var row = coordinates[i];
         for (var j = 0; j < names.length; j++) {
             if ((names[j] == 'genbank') || (names[j] == 'name') || (names[j] == 'position') || (names[j] == 'str')) {
                 if (froms[j].value != '') {
@@ -278,6 +278,26 @@ function parseMarkers() {
             }
         }
         if (bool == 1) {
+                marker[i] = new google.maps.Marker({
+                    position: {
+                        lat:  Number.parseFloat(row[latCoords]),
+                        lng:  Number.parseFloat(row[lngCoords])
+                    },
+                    label: coordsCounter[row[latCoords] + ',' + row[lngCoords]].toString(),
+                    map: map,
+                    title: 'Location №' + i
+                });
+                contentString[i] = 'name:' + row[nameCoords] + '<br>' + 'date:' + row[dateCoords];
+                infowindow[i] = new google.maps.InfoWindow({
+                    content: contentString[i]
+                });
+                marker[i].infowindow = infowindow[i];
+                marker[i].addListener('click', function() {
+                    return this.infowindow.open(map, this);
+                });
+
+                
+                
             counter += 1;
             marker[counter - 1] = new google.maps.Marker({
                 position: {

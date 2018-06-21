@@ -315,7 +315,7 @@ function clearAll(event) {
     coordsCounter = {};
     coordinates = [];
     latCounter = lngCounter = 0;
-    latCoords = lngCoords = -1;
+    latCoords = lngCoords = nameCoords = dateCoords = -1;
 }
 
 function removeAll() {

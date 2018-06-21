@@ -2,12 +2,14 @@ var v = document.getElementById("tableId");
 var p = document.getElementById("pageId");
 var inputs = document.getElementById("leftWindow");
 var sendBut = document.getElementById("SendButton");
+
 var authorizeButton = document.getElementById('authorize-button');
 var signoutButton = document.getElementById('signout-button');
-var apply = document.getElementById('ApplyButton');
+
 var down = document.getElementById("downTriangle");
 var up = document.getElementById("upTriangle");
 var hidden = document.getElementById("hidden");
+
 var map = document.getElementById("map");
 var t = document.createElement("table");
 
@@ -26,6 +28,9 @@ var dateCoords = -1;
 
 var marker = [];
 var coordsCounter = {};
+var coordsLength = 0;
+var coordinates = [];
+
 var infowindow = {};
 var contentString = {};
 var names = [];
@@ -199,18 +204,28 @@ function listPlaces(address, pAddress) {
                 t.append(tr);
             }
             document.getElementById('table').appendChild(t);
-            //apply.onClick = parseMarkers(range);
-
 
             for (var i = 1; i < range.values.length; i++) {
                 var row = range.values[i];
-                var lat = 
-                marker[i - 1] = new google.maps.Marker({
+                var latLoc = Number.parseFloat(row[latCoords]);
+                var lngLoc = Number.parseFloat(row[lngCoords]);
+                if (coordsCounter[latLoc + ',' + lngLoc] > 0)
+                    coordsCounter[latLoc + ',' + lngLoc] += 1;
+                else {
+                    coordsCounter[latLoc + ',' + lngLoc] = 1;
+                    coordinates[coordsLength] = latLoc + ',' + lngLoc;
+                    coordsLength += 1;
+                }
+            }
+            
+            for (var i = 0; i < coordsLength; i++) {
+                var ref = coordinates[i].split(',');
+                marker[i] = new google.maps.Marker({
                     position: {
-                        lat: Number.parseFloat(row[latCoords]),
-                        lng: Number.parseFloat(row[lngCoords])
+                        lat: ref[0],
+                        lng: ref[1]
                     },
-                    label: '1',
+                    label: coordsCounter[coordinates[i]],
                     map: map,
                     title: 'Location №' + i
                 });

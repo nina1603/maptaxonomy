@@ -316,6 +316,7 @@ function clearAll(event) {
     removeMarkers();
     t.innerHTML = [];
     coordsCounter = {};
+    coordsLength = 0;
     coordinates = [];
     console.log(coordinates);
     latCounter = 0;

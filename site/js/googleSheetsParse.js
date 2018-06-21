@@ -219,6 +219,7 @@ function listPlaces(address, pAddress) {
             
             for (var i = 0; i < coordsLength; i++) {
                 var row = coordinates[i];
+                console.log(row);
                 marker[i] = new google.maps.Marker({
                     position: {
                         lat:  Number.parseFloat(row[latCoords]),

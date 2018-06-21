@@ -210,11 +210,13 @@ function listPlaces(address, pAddress) {
                     coordsLength += 1;
                 }
             }
-            
+            console.log(coordsCounter);
             for (var i = 0; i < coordsLength; i++) {
                 var row = coordinates[i];
+                
                 console.log("Now: " + row);
                 console.log(typeof(row));
+                
                 marker[i] = new google.maps.Marker({
                     position: {
                         lat:  Number.parseFloat(row[latCoords]),
@@ -314,7 +316,7 @@ function clearAll(event) {
     removeMarkers();
     t.innerHTML = [];
     coordsCounter = {};
-    //coordinates = [];
+    coordinates = [];
     latCounter = lngCounter = 0;
 }
 

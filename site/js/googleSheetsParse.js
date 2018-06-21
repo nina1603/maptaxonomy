@@ -214,10 +214,11 @@ function listPlaces(address, pAddress) {
                 }*/
                 coordsCounter[latLoc + ',' + lngLoc].push(row);
             }
+            
             console.log(coordsCounter);
+            var i = 1;
             
             for (key in coordsCounter) {
-                var i = 1;
                 marker[i] = new google.maps.Marker({
                     position: {
                         lat:  Number.parseFloat(coordsCounter[key][0][latCoords]),

@@ -214,18 +214,18 @@ function listPlaces(address, pAddress) {
             console.log(coordsCounter);
             console.log(coordinates);
             for (var i = 0; i < coordsLength; i++) {
-                var row = coordinates[i];
+                //var row = coordinates[i];
                 
                 marker[i] = new google.maps.Marker({
                     position: {
-                        lat:  Number.parseFloat(row[latCoords]),
-                        lng:  Number.parseFloat(row[lngCoords])
+                        lat:  Number.parseFloat(coordinates[i][latCoords]),
+                        lng:  Number.parseFloat(coordinates[i][lngCoords])
                     },
-                    label: coordsCounter[row[latCoords] + ',' + row[lngCoords]].toString(),
+                    label: coordsCounter[coordinates[i][latCoords] + ',' + coordinates[i][lngCoords]].toString(),
                     map: map,
                     title: 'Location №' + i
                 });
-                contentString[i] = 'name:' + row[nameCoords] + '<br>' + 'date:' + row[dateCoords];
+                contentString[i] = 'name:' + coordinates[i][nameCoords] + '<br>' + 'date:' + coordinates[i][dateCoords];
                 infowindow[i] = new google.maps.InfoWindow({
                     content: contentString[i]
                 });

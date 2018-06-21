@@ -225,7 +225,7 @@ function listPlaces(address, pAddress) {
                         lat:  Number.parseFloat(row[latCoords]),
                         lng:  Number.parseFloat(ref[lngCoords])
                     },
-                    label: coordsCounter[row[latCoords] + ',' + row[lngCoords]],
+                    label: coordsCounter[row[latCoords] + ',' + row[lngCoords]].toString(),
                     map: map,
                     title: 'Location №' + i
                 });

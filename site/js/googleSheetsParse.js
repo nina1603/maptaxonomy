@@ -211,11 +211,9 @@ function listPlaces(address, pAddress) {
                 }
             }
             console.log(coordsCounter);
+            console.log(coordinates);
             for (var i = 0; i < coordsLength; i++) {
                 var row = coordinates[i];
-                
-                console.log("Now: " + row);
-                console.log(typeof(row));
                 
                 marker[i] = new google.maps.Marker({
                     position: {

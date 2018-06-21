@@ -122,6 +122,7 @@ function handleInputClick(event) {
     var address = v.value;
     var pAddress = p.value;
     if (count > 1) {
+        console.log("Cleaning after resending");
         clearAll();
     }
     listPlaces(address, pAddress);

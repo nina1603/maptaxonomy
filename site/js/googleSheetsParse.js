@@ -217,6 +217,7 @@ function listPlaces(address, pAddress) {
             console.log(coordsCounter);
             
             for (key in coordsCounter) {
+                var i = 1;
                 marker[i] = new google.maps.Marker({
                     position: {
                         lat:  Number.parseFloat(coordsCounter[key][0][latCoords]),
@@ -234,6 +235,7 @@ function listPlaces(address, pAddress) {
                 marker[i].addListener('click', function() {
                     return this.infowindow.open(map, this);
                 });
+                i++;
             }
         } else {
             appendPre('No data found.');

@@ -250,86 +250,66 @@ function parseMarkers() {
     console.log('Marker length is ' + marker.length);
     removeMarkers();
     var counter = 0;
-    for (var i = 0; i < coordsLength; i++) {
-        var row = coordinates[i];
+    for (key in coordsCounter) {
+        var conter = 1;
+        array = coordsCounter[key];
         for (var j = 0; j < names.length; j++) {
             if ((names[j] == 'genbank') || (names[j] == 'name') || (names[j] == 'position') || (names[j] == 'str')) {
                 if (froms[j].value != '') {
-                    if (froms[j].value != row[j]) {
+                    if (froms[j].value != array[0][j]) {
                         bool = 0;
                     }
                 }
             } else {
                 if ((names[j] != 'date') && ((froms[j].value != '') || (tos[j].value != ''))) {
                     if (froms[j].value != '') {
-                        if (Number.parseFloat(froms[j].value) > Number.parseFloat(row[j]))
+                        if (Number.parseFloat(froms[j].value) > Number.parseFloat(array[0][j]))
                             bool = 0;
                     }
                     if (tos[j].value != '') {
-                        if (Number.parseFloat(tos[j].value) < Number.parseFloat(row[j]))
+                        if (Number.parseFloat(tos[j].value) < Number.parseFloat(array[0][j]))
                             bool = 0;
                     }
                 }
 
                 if ((names[j] == 'date') && ((froms[j].value != '') || (tos[j].value != ''))) {
                     if (froms[j].value != '') {
-                        if (Date.parse(froms[j].value) > Date.parse(row[j]))
+                        if (Date.parse(froms[j].value) > Date.parse(array[0][j]))
                             bool = 0;
                     }
                     if (tos[j].value != '') {
-                        if (Date.parse(tos[j].value) < Date.parse(row[j]))
+                        if (Date.parse(tos[j].value) < Date.parse(array[0][j]))
                             bool = 0;
                     }
                 }
             }
         }
         if (bool == 1) {
-                marker[i] = new google.maps.Marker({
+                marker[conter] = new google.maps.Marker({
                     position: {
-                        lat:  Number.parseFloat(row[latCoords]),
-                        lng:  Number.parseFloat(row[lngCoords])
+                        lat:  Number.parseFloat(array[0][latCoords]),
+                        lng:  Number.parseFloat(array[0][lngCoords])
                     },
-                    label: coordsCounter[row[latCoords] + ',' + row[lngCoords]].toString(),
+                    label: coordsCounter[array[0][latCoords] + ',' + array[0][lngCoords]].toString(),
                     map: map,
-                    title: 'Location №' + i
+                    title: 'Location №' + conter
                 });
-                contentString[i] = 'name:' + row[nameCoords] + '<br>' + 'date:' + row[dateCoords];
-                infowindow[i] = new google.maps.InfoWindow({
-                    content: contentString[i]
+                contentString[conter] = 'name:' + array[0][nameCoords] + '<br>' + 'date:' + array[0][dateCoords];
+                infowindow[conter] = new google.maps.InfoWindow({
+                    content: contentString[conter]
                 });
-                marker[i].infowindow = infowindow[i];
-                marker[i].addListener('click', function() {
+                marker[conter].infowindow = infowindow[conter];
+                marker[conter].addListener('click', function() {
                     return this.infowindow.open(map, this);
                 });
-
-                
-                
-            counter += 1;
-            marker[counter - 1] = new google.maps.Marker({
-                position: {
-                    lat: Number.parseFloat(row[latCoords]),
-                    lng: Number.parseFloat(row[lngCoords])
-                },
-                label: '1',
-                map: map,
-                title: 'Location №' + counter
-            });
-            contentString[counter] = 'name:' + row[nameCoords] + '<br>' + 'date:' + row[dateCoords];
-            infowindow[counter] = new google.maps.InfoWindow({
-                content: contentString[i]
-            });
-            marker[counter - 1].infowindow = infowindow[counter];
-            marker[counter - 1].addListener('click', function() {
-                return this.infowindow.open(map, this);
-            });
         }
         bool = 1;
+        conter++;
     }
 }
 
 
 function removeMarkers() {
-    console.log('marker: ' + marker);
     if (marker.length > 0) {
         for (i = 0; i < marker.length; i++) {
             marker[i].setMap(null);

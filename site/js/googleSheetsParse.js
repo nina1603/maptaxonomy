@@ -217,7 +217,7 @@ function listPlaces(address, pAddress) {
                     coordsLength += 1;
                 }
             }
-            console.log("coordsLength is " + coordsLength);
+            
             for (var i = 0; i < coordsLength; i++) {
                 var ref = coordinates[i].split(',');
                 marker[i] = new google.maps.Marker({
@@ -227,14 +227,14 @@ function listPlaces(address, pAddress) {
                     },
                     label: coordsCounter[coordinates[i]].toString(),
                     map: map,
-                    title: 'Location №' + i
+                    title: 'Location №' + i+1
                 });
                 contentString[i] = 'name:' + row[nameCoords] + '<br>' + 'date:' + row[dateCoords];
                 infowindow[i] = new google.maps.InfoWindow({
                     content: contentString[i]
                 });
-                marker[i - 1].infowindow = infowindow[i];
-                marker[i - 1].addListener('click', function() {
+                marker[i].infowindow = infowindow[i];
+                marker[i].addListener('click', function() {
                     return this.infowindow.open(map, this);
                 });
 

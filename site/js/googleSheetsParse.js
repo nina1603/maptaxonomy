@@ -305,9 +305,9 @@ function parseMarkers() {
             sum += bool[k];
             if (bool[k] == 1) {
                 if (contentString[conter] == [])
-                    contentString[conter] = (c + 1).toString() + '. Date:' + new Date(Date.parse(coordsCounter[key][k][dateCoords])) + '<br/>;
+                    contentString[conter] = (c + 1).toString() + '. Date:' + new Date(Date.parse(coordsCounter[key][k][dateCoords])) + '<br/>';
                 else
-                    contentString[conter] += (c + 1).toString() + '. Date:' + new Date(Date.parse(coordsCounter[key][k][dateCoords])) + '<br/>;
+                    contentString[conter] += (c + 1).toString() + '. Date:' + new Date(Date.parse(coordsCounter[key][k][dateCoords])) + '<br/>';
                 if (title[conter] == [])
                     title[conter] = (c + 1).toString() + '. Name:' + coordsCounter[key][k][nameCoords] + '\n';
                 else

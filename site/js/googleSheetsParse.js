@@ -141,9 +141,6 @@ function appendPre(message) {
 
 
 function listPlaces(address, pAddress) {
-    
-    console.log(t);
-    
     address.replace('//', '/');
     var ref = address.split('/');
     for (var j = 0; j < 6; j++) {
@@ -198,7 +195,9 @@ function listPlaces(address, pAddress) {
                 td2.append(to);
                 tr.append(td1);
                 tr.append(td2);
-                t.append(tr);
+                console.log(tr);
+                consoole.log(t);
+                //t.append(tr);
             }
             document.getElementById('table').appendChild(t);
 

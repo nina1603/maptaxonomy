@@ -297,7 +297,7 @@ function parseMarkers() {
                     contentString[conter] += (n + 1).toString() + '. Date:' + Date(Date.parse(coordsCounter[key][n][dateCoords]));
                     title[conter] += (n + 1).toString() + '. Name:' + coordsCounter[key][n][nameCoords];
                     if (n < coordsCounter[key].length - 1) {
-                        contentString[conter] += '<br/>';
+                        contentString[conter] += '\n';
                         title[conter] += '\n';
                     }
                 }

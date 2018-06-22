@@ -254,9 +254,8 @@ function listPlaces(address, pAddress) {
 
 function parseMarkers() {
     removeMarkers();
-    var conter = 1;
     for (key in coordsCounter) {
-        array = coordsCounter[key];
+        var array = coordsCounter[key];
         for (var j = 0; j < names.length; j++) {
             if ((names[j] == 'genbank') || (names[j] == 'name') || (names[j] == 'position') || (names[j] == 'str')) {
                 if (froms[j].value != '') {
@@ -288,6 +287,7 @@ function parseMarkers() {
                 }
             }
         }
+        var conter = 1;
         if (bool == 1) {
             contentString[conter] = '';
             title[conter] = '';

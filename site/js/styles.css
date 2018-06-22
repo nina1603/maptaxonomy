@@ -1,4 +1,4 @@
-#map {
+	#map {
 	    position: fixed;
             height: 100vh;
             width: 100vw;
@@ -76,6 +76,13 @@
 			position: relative;
 			width: 90%;
 			height: 8%;
-			padding:2%;
+			padding: 2%;
+		}
+		.infowindow {
+			position: relative;
+			width: 20%;
+			height: 20%;
+			overflow: scroll;
+			padding: 2%;
 		}
 	    }    

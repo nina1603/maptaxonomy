@@ -196,7 +196,7 @@ function listPlaces(address, pAddress) {
                 tr.append(td1);
                 tr.append(td2);
                 console.log(tr);
-                consoole.log(t);
+                console.log(t);
                 //t.append(tr);
             }
             document.getElementById('table').appendChild(t);

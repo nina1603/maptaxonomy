@@ -212,6 +212,12 @@ function listPlaces(address, pAddress) {
             var i = 0;
             
             for (key in coordsCounter) {
+                contentString[i] = '';
+                var title = '';
+                for (var t = 0; t < coordsCounter[key].length; t++) {
+                contentString[i] += 'date:' + Date(Date.parse(coordsCounter[key][t][dateCoords]));
+                title += 'name:' + coordsCounter[key][t][nameCoords]
+                }
                 marker[i] = new google.maps.Marker({
                     position: {
                         lat:  Number.parseFloat(coordsCounter[key][0][latCoords]),
@@ -219,12 +225,8 @@ function listPlaces(address, pAddress) {
                     },
                     label: coordsCounter[key].length.toString(),
                     map: map,
-                    title: 'name:' + coordsCounter[key][0][nameCoords]
+                    title: title
                 });
-                contentString[i] = '';
-                for (var t = 0; t < coordsCounter[key].length; t++) {
-                contentString[i] += 'date:' + Date(Date.parse(coordsCounter[key][t][dateCoords]));
-                }
                 infowindow[i] = new google.maps.InfoWindow({
                     content: contentString[i]
                 });

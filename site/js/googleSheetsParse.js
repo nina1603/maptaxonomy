@@ -287,7 +287,7 @@ function parseMarkers() {
                 }
             }
         }
-        var conter = 1;
+        var conter = 0;
         if (bool == 1) {
             contentString[conter] = '';
             title[conter] = '';

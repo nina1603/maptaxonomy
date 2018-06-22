@@ -252,7 +252,6 @@ function listPlaces(address, pAddress) {
 
 function parseMarkers() {
     removeMarkers();
-    var conter = 0;
     var bool = [];
     for (key in coordsCounter) {
         for (var k = 0; k < coordsCounter[key].length; k++) {
@@ -299,7 +298,8 @@ function parseMarkers() {
                 }
             }
         }
-        var c = 1;
+        var c = 0;
+        var conter = 0;
         var sum = 0;
         for (var k = 0; k < coordsCounter[key].length; k++) {
             sum += bool[k];
@@ -332,8 +332,8 @@ function parseMarkers() {
             marker[conter].addListener('click', function() {
                 return this.infowindow.open(map, this);
             });
+            conter++;
         }
-        conter++;
     }
 }
 

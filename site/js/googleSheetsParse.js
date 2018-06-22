@@ -300,10 +300,10 @@ function parseMarkers() {
             }
             marker[conter] = new google.maps.Marker({
                 position: {
-                    lat: Number.parseFloat(array[0][latCoords]),
-                    lng: Number.parseFloat(array[0][lngCoords])
+                    lat: Number.parseFloat(coordsCounter[key][0][latCoords]),
+                    lng: Number.parseFloat(coordsCounter[key][0][lngCoords])
                 },
-                label: coordsCounter[array[0][latCoords] + ',' + array[0][lngCoords]].toString(),
+                label: coordsCounter[key].length.toString(),
                 map: map,
                 title: title[conter]
             });

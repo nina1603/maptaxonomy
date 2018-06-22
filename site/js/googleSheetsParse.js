@@ -219,8 +219,8 @@ function listPlaces(address, pAddress) {
                     contentString[i] += 'date:' + Date(Date.parse(coordsCounter[key][n][dateCoords]));
                     title += 'name:' + coordsCounter[key][n][nameCoords];
                     if (n < coordsCounter[key].length - 1) {
-                        contentString[i] += <br>;
-                        title += <br>;
+                        contentString[i] += '<br>';
+                        title += '<br>';
                     }
                 }
                 marker[i] = new google.maps.Marker({

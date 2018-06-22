@@ -291,7 +291,7 @@ function parseMarkers() {
             contentString[conter] = '';
             title[conter] = '';
             for (var n = 0; n < coordsCounter[key].length; n++) {
-                contentString[conter] += (n + 1).toString() + '. Date:' + Date(Date.parse(coordsCounter[key][n][dateCoords]));
+                contentString[conter] += (n + 1).toString() + '. Date:' + new Date(Date.parse(coordsCounter[key][n][dateCoords]));
                 title[conter] += (n + 1).toString() + '. Name:' + coordsCounter[key][n][nameCoords];
                 if (n < coordsCounter[key].length - 1) {
                     contentString[conter] += '<br/>';

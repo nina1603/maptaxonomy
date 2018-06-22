@@ -254,7 +254,7 @@ function listPlaces(address, pAddress) {
 
 function parseMarkers() {
     removeMarkers();
-    var counter = 1;
+    var conter = 1;
     for (key in coordsCounter) {
         array = coordsCounter[key];
         for (var j = 0; j < names.length; j++) {

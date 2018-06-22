@@ -250,7 +250,6 @@ function listPlaces(address, pAddress) {
 
 
 
-
 function parseMarkers() {
     removeMarkers();
     var conter = 0;
@@ -300,40 +299,45 @@ function parseMarkers() {
                 }
             }
         }
-        contentString[conter] = '';
-        title[conter] = '';
+
+        var c = 1;
+        var sum = 0;
         for (var k = 0; k < coordsCounter[key].length; k++) {
-            if (bool[k] == 
-                ъ1) {
-                
-                contentString[conter] += (n + 1).toString() + '. Date:' + new Date(Date.parse(coordsCounter[key][n][dateCoords]));
-                    title[conter] += (n + 1).toString() + '. Name:' + coordsCounter[key][n][nameCoords];
-                    if (n < coordsCounter[key].length - 1) {
-                        contentString[conter] += '<br/>';
-                        title[conter] += '\n';
-                    }
-                }
-                marker[conter] = new google.maps.Marker({
-                    position: {
-                        lat: Number.parseFloat(coordsCounter[key][0][latCoords]),
-                        lng: Number.parseFloat(coordsCounter[key][0][lngCoords])
-                    },
-                    label: coordsCounter[key].length.toString(),
-                    map: map,
-                    title: title[conter]
-                });
-                infowindow[conter] = new google.maps.InfoWindow({
-                    content: contentString[conter]
-                });
-                marker[conter].infowindow = infowindow[conter];
-                marker[conter].addListener('click', function() {
-                    return this.infowindow.open(map, this);
-                });
-                conter++;
+            sum += bool[k];
+            if (bool[k] == 1) {
+                if (contentString[conter] == [])
+                    contentString[conter] = (c + 1).toString() + '. Date:' + new Date(Date.parse(coordsCounter[key][k][dateCoords])) + '<br/>;
+                else
+                    contentString[conter] += (c + 1).toString() + '. Date:' + new Date(Date.parse(coordsCounter[key][k][dateCoords])) + '<br/>;
+                if (title[conter] == [])
+                    title[conter] = (c + 1).toString() + '. Name:' + coordsCounter[key][k][nameCoords] + '\n';
+                else
+                    title[conter] += (c + 1).toString() + '. Name:' + coordsCounter[key][k][nameCoords] + '\n';
+                c++;
             }
         }
+        if (sum > 0) {
+            marker[conter] = new google.maps.Marker({
+                position: {
+                    lat: Number.parseFloat(coordsCounter[key][0][latCoords]),
+                    lng: Number.parseFloat(coordsCounter[key][0][lngCoords])
+                },
+                label: coordsCounter[key].length.toString(),
+                map: map,
+                title: title[conter]
+            });
+            infowindow[conter] = new google.maps.InfoWindow({
+                content: contentString[conter]
+            });
+            marker[conter].infowindow = infowindow[conter];
+            marker[conter].addListener('click', function() {
+                return this.infowindow.open(map, this);
+            });
+        }
+        conter++;
     }
 }
+
 
 
 function removeMarkers() {

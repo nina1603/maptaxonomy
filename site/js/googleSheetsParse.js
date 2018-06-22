@@ -314,8 +314,8 @@ function parseMarkers() {
             marker[conter].addListener('click', function() {
                 return this.infowindow.open(map, this);
             });
+            conter++;
         }
-        conter++;
         bool = 1;
     }
 }

@@ -11,7 +11,7 @@ var up = document.getElementById("upTriangle");
 var hidden = document.getElementById("hidden");
 
 var map = document.getElementById("map");
-var t = document.createElement("table");
+//var t = document.createElement("table");
 
 
 var places;
@@ -141,6 +141,7 @@ function appendPre(message) {
 
 
 function listPlaces(address, pAddress) {
+    var t = document.createElement("table");
     address.replace('//', '/');
     var ref = address.split('/');
     for (var j = 0; j < 6; j++) {

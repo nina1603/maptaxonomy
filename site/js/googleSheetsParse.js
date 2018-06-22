@@ -208,10 +208,8 @@ function listPlaces(address, pAddress) {
                     coordsCounter[latLoc + ',' + lngLoc] = [];
                 coordsCounter[latLoc + ',' + lngLoc].push(row);
             }
-
-            console.log(coordsCounter);
+            
             var i = 0;
-
             for (key in coordsCounter) {
                 contentString[i] = '';
                 title[i] = '';
@@ -220,7 +218,7 @@ function listPlaces(address, pAddress) {
                     title[i] += (n + 1).toString() + '. Name:' + coordsCounter[key][n][nameCoords];
                     if (n < coordsCounter[key].length - 1) {
                         contentString[i] += '<br/>';
-                        title[i] += '<br/>';
+                        title[i] += '\n';
                     }
                 }
                 marker[i] = new google.maps.Marker({

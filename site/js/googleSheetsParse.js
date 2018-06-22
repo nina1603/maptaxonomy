@@ -225,7 +225,7 @@ function listPlaces(address, pAddress) {
                         lng:  Number.parseFloat(coordsCounter[key][0][lngCoords])
                     },
                     label: coordsCounter[key].length.toString(),
-                    map: map,
+                    setMap: map,
                     title: 'name:' + coordsCounter[key][0][nameCoords]
                 });
                 contentString[i] = 'date:' + Date(Date.parse(coordsCounter[key][0][dateCoords]));
@@ -294,7 +294,7 @@ function parseMarkers() {
                         lng:  Number.parseFloat(array[0][lngCoords])
                     },
                     label: coordsCounter[array[0][latCoords] + ',' + array[0][lngCoords]].toString(),
-                    map: map,
+                    setMap: map,
                     title: 'Location №' + conter
                 });
                 contentString[conter] = 'name:' + array[0][nameCoords] + '<br>' + 'date:' + array[0][dateCoords];

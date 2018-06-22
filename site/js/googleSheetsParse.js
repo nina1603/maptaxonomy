@@ -195,7 +195,6 @@ function listPlaces(address, pAddress) {
                 td2.append(to);
                 tr.append(td1);
                 tr.append(td2);
-                console.log(tr);
                 console.log(t);
                 t.append(tr);
             }

@@ -34,7 +34,7 @@ var coordinates = [];
 
 var infowindow = [];
 var title = [];
-var contentString = {};
+var contentString = [];
 var names = [];
 var froms = [];
 var tos = [];

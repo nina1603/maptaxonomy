@@ -253,76 +253,90 @@ function listPlaces(address, pAddress) {
 
 function parseMarkers() {
     removeMarkers();
-    var bool = 1;
     var conter = 0;
+    var bool = [];
     for (key in coordsCounter) {
+        for (var k = 0; k < coordsCounter[key].length; k++) {
+            bool[k] = 1;
+        }
         for (var j = 0; j < names.length; j++) {
             if ((names[j] == 'genbank') || (names[j] == 'name') || (names[j] == 'position') || (names[j] == 'str')) {
                 if (froms[j].value != '') {
-                    if (froms[j].value != coordsCounter[key][0][j]) {
-                        bool = 0;
+                    for (var k = 0; k < coordsCounter[key].length; k++) {
+                        if (froms[j].value != coordsCounter[key][k][j]) {
+                            bool[k] = 0;
+                        }
                     }
                 }
             } else {
                 if ((names[j] != 'date') && ((froms[j].value != '') || (tos[j].value != ''))) {
                     if (froms[j].value != '') {
-                        if (Number.parseFloat(froms[j].value) > Number.parseFloat(coordsCounter[key][0][j]))
-                            bool = 0;
+                        for (var k = 0; k < coordsCounter[key].length; k++) {
+                            if (Number.parseFloat(froms[j].value) > Number.parseFloat(coordsCounter[key][k][j]))
+                                bool[k] = 0;
+                        }
                     }
                     if (tos[j].value != '') {
-                        if (Number.parseFloat(tos[j].value) < Number.parseFloat(coordsCounter[key][0][j]))
-                            bool = 0;
+                        for (var k = 0; k < coordsCounter[key].length; k++) {
+                            if (Number.parseFloat(tos[j].value) < Number.parseFloat(coordsCounter[key][k][j]))
+                                bool[k] = 0;
+                        }
                     }
                 }
 
                 if ((names[j] == 'date') && ((froms[j].value != '') || (tos[j].value != ''))) {
                     if (froms[j].value != '') {
-                        if (Date.parse(froms[j].value) > Date.parse(coordsCounter[key][0][j]))
-                            bool = 0;
+                        for (var k = 0; k < coordsCounter[key].length; k++) {
+                            if (Date.parse(froms[j].value) > Date.parse(coordsCounter[key][k][j]))
+                                bool[k] = 0;
+                        }
                     }
                     if (tos[j].value != '') {
-                        if (Date.parse(tos[j].value) < Date.parse(coordsCounter[key][0][j]))
-                            bool = 0;
+                        for (var k = 0; k < coordsCounter[key].length; k++) {
+                            if (Date.parse(tos[j].value) < Date.parse(coordsCounter[key][k][j]))
+                                bool[k] = 0;
+                        }
                     }
                 }
             }
         }
-        if (bool == 1) {
-            contentString[conter] = '';
-            title[conter] = '';
-            for (var n = 0; n < coordsCounter[key].length; n++) {
+        contentString[conter] = '';
+        title[conter] = '';
+        for (var k = 0; k < coordsCounter[key].length; k++) {
+            if (bool[k] == 
+                ъ1) {
+                
                 contentString[conter] += (n + 1).toString() + '. Date:' + new Date(Date.parse(coordsCounter[key][n][dateCoords]));
-                title[conter] += (n + 1).toString() + '. Name:' + coordsCounter[key][n][nameCoords];
-                if (n < coordsCounter[key].length - 1) {
-                    contentString[conter] += '<br/>';
-                    title[conter] += '\n';
+                    title[conter] += (n + 1).toString() + '. Name:' + coordsCounter[key][n][nameCoords];
+                    if (n < coordsCounter[key].length - 1) {
+                        contentString[conter] += '<br/>';
+                        title[conter] += '\n';
+                    }
                 }
+                marker[conter] = new google.maps.Marker({
+                    position: {
+                        lat: Number.parseFloat(coordsCounter[key][0][latCoords]),
+                        lng: Number.parseFloat(coordsCounter[key][0][lngCoords])
+                    },
+                    label: coordsCounter[key].length.toString(),
+                    map: map,
+                    title: title[conter]
+                });
+                infowindow[conter] = new google.maps.InfoWindow({
+                    content: contentString[conter]
+                });
+                marker[conter].infowindow = infowindow[conter];
+                marker[conter].addListener('click', function() {
+                    return this.infowindow.open(map, this);
+                });
+                conter++;
             }
-            marker[conter] = new google.maps.Marker({
-                position: {
-                    lat: Number.parseFloat(coordsCounter[key][0][latCoords]),
-                    lng: Number.parseFloat(coordsCounter[key][0][lngCoords])
-                },
-                label: coordsCounter[key].length.toString(),
-                map: map,
-                title: title[conter]
-            });
-            infowindow[conter] = new google.maps.InfoWindow({
-                content: contentString[conter]
-            });
-            marker[conter].infowindow = infowindow[conter];
-            marker[conter].addListener('click', function() {
-                return this.infowindow.open(map, this);
-            });
-            conter++;
         }
-        bool = 1;
     }
 }
 
 
 function removeMarkers() {
-    console.log("markers: ", marker);
     if (marker.length > 0) {
         for (i = 0; i < marker.length; i++) {
             marker[i].setMap(null);

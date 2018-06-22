@@ -17,7 +17,6 @@ var t = document.createElement("table");
 var places;
 var map;
 var range;
-var bool = 1;
 var counter = 0;
 var count = 0;
 var latCounter = 0;
@@ -315,9 +314,9 @@ function parseMarkers() {
             marker[conter].addListener('click', function() {
                 return this.infowindow.open(map, this);
             });
-            conter++;
-            bool = 1;
         }
+        conter++;
+        bool = 1;
     }
 }
 

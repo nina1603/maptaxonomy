@@ -227,7 +227,7 @@ function listPlaces(address, pAddress) {
                 infowindow[i] = new google.maps.InfoWindow({
                     content: contentString[i]
                 });
-                infowindow[i].className = "infowindow";
+                //infowindow[i].className = "infowindow";
                 
                 marker[i].infowindow = infowindow[i];
                 marker[i].addListener('click', function() {

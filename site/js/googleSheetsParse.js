@@ -196,7 +196,6 @@ function listPlaces(address, pAddress) {
                 td2.append(to);
                 tr.append(td1);
                 tr.append(td2);
-                console.log(t);
                 t.append(tr);
             }
             document.getElementById('table').appendChild(t);
@@ -256,11 +255,9 @@ function listPlaces(address, pAddress) {
 
 
 function parseMarkers() {
-    console.log('Marker length is ' + marker.length);
     removeMarkers();
-    var counter = 0;
+    var counter = 1;
     for (key in coordsCounter) {
-        var conter = 1;
         array = coordsCounter[key];
         for (var j = 0; j < names.length; j++) {
             if ((names[j] == 'genbank') || (names[j] == 'name') || (names[j] == 'position') || (names[j] == 'str')) {
@@ -294,6 +291,16 @@ function parseMarkers() {
             }
         }
         if (bool == 1) {
+                contentString[conter] = '';
+                title[conter] = '';
+                for (var n = 0; n < coordsCounter[key].length; n++) {
+                    contentString[conter] += (n + 1).toString() + '. Date:' + Date(Date.parse(coordsCounter[key][n][dateCoords]));
+                    title[conter] += (n + 1).toString() + '. Name:' + coordsCounter[key][n][nameCoords];
+                    if (n < coordsCounter[key].length - 1) {
+                        contentString[conter] += '<br/>';
+                        title[conter] += '\n';
+                    }
+                }
                 marker[conter] = new google.maps.Marker({
                     position: {
                         lat:  Number.parseFloat(array[0][latCoords]),
@@ -301,9 +308,8 @@ function parseMarkers() {
                     },
                     label: coordsCounter[array[0][latCoords] + ',' + array[0][lngCoords]].toString(),
                     map: map,
-                    title: 'Location №' + conter
+                    title: title[conter]
                 });
-                contentString[conter] = 'name:' + array[0][nameCoords] + '<br>' + 'date:' + array[0][dateCoords];
                 infowindow[conter] = new google.maps.InfoWindow({
                     content: contentString[conter]
                 });

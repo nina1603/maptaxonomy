@@ -217,8 +217,8 @@ function listPlaces(address, pAddress) {
                 contentString[i] = '';
                 title[i] = '';
                 for (var n = 0; n < coordsCounter[key].length; n++) {
-                    contentString[i] += n + '. Date:' + Date(Date.parse(coordsCounter[key][n][dateCoords]));
-                    title[i] += n + '. Name:' + coordsCounter[key][n][nameCoords];
+                    contentString[i] += (n + 1).toString() + '. Date:' + Date(Date.parse(coordsCounter[key][n][dateCoords]));
+                    title[i] += (n + 1).toString() + '. Name:' + coordsCounter[key][n][nameCoords];
                     if (n < coordsCounter[key].length - 1) {
                         contentString[i] += '<br/>';
                         title[i] += '<br/>';

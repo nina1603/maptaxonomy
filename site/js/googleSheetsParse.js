@@ -141,6 +141,9 @@ function appendPre(message) {
 
 
 function listPlaces(address, pAddress) {
+    
+    console.log(t);
+    
     address.replace('//', '/');
     var ref = address.split('/');
     for (var j = 0; j < 6; j++) {

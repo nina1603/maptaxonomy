@@ -214,7 +214,7 @@ function listPlaces(address, pAddress) {
             
             for (key in coordsCounter) {
                 contentString[i] = '';
-                var title = '';
+                var title = [];
                 for (var n = 0; n < coordsCounter[key].length; n++) {
                     contentString[i] += n + '. Date:' + Date(Date.parse(coordsCounter[key][n][dateCoords]));
                     title += n + '. Name:' + coordsCounter[key][n][nameCoords];
@@ -235,7 +235,7 @@ function listPlaces(address, pAddress) {
                 infowindow[i] = new google.maps.InfoWindow({
                     content: contentString[i]
                 });
-                //infowindow[i].className = "infowindow";
+                infowindow[i].className = "infowindow";
                 
                 marker[i].infowindow = infowindow[i];
                 marker[i].addListener('click', function() {

@@ -221,6 +221,7 @@ function listPlaces(address, pAddress) {
                     map: map,
                     title: 'name:' + coordsCounter[key][0][nameCoords]
                 });
+                contentString[i] = '';
                 for (var t = 0; t < coordsCounter[key].length; t++) {
                 contentString[i] += 'date:' + Date(Date.parse(coordsCounter[key][t][dateCoords]));
                 }

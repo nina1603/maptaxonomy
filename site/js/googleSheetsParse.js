@@ -231,7 +231,7 @@ function listPlaces(address, pAddress) {
                     },
                     label: coordsCounter[key].length.toString(),
                     map: map,
-                    title: title
+                    title: title[i]
                 });
                 infowindow[i] = new google.maps.InfoWindow({
                     content: contentString[i]

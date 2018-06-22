@@ -255,33 +255,32 @@ function listPlaces(address, pAddress) {
 function parseMarkers() {
     removeMarkers();
     for (key in coordsCounter) {
-        var array = coordsCounter[key];
         for (var j = 0; j < names.length; j++) {
             if ((names[j] == 'genbank') || (names[j] == 'name') || (names[j] == 'position') || (names[j] == 'str')) {
                 if (froms[j].value != '') {
-                    if (froms[j].value != array[0][j]) {
+                    if (froms[j].value != coordsCounter[key][0][j]) {
                         bool = 0;
                     }
                 }
             } else {
                 if ((names[j] != 'date') && ((froms[j].value != '') || (tos[j].value != ''))) {
                     if (froms[j].value != '') {
-                        if (Number.parseFloat(froms[j].value) > Number.parseFloat(array[0][j]))
+                        if (Number.parseFloat(froms[j].value) > Number.parseFloat(coordsCounter[key][0][j]))
                             bool = 0;
                     }
                     if (tos[j].value != '') {
-                        if (Number.parseFloat(tos[j].value) < Number.parseFloat(array[0][j]))
+                        if (Number.parseFloat(tos[j].value) < Number.parseFloat(coordsCounter[key][0][j]))
                             bool = 0;
                     }
                 }
 
                 if ((names[j] == 'date') && ((froms[j].value != '') || (tos[j].value != ''))) {
                     if (froms[j].value != '') {
-                        if (Date.parse(froms[j].value) > Date.parse(array[0][j]))
+                        if (Date.parse(froms[j].value) > Date.parse(coordsCounter[key][0][j]))
                             bool = 0;
                     }
                     if (tos[j].value != '') {
-                        if (Date.parse(tos[j].value) < Date.parse(array[0][j]))
+                        if (Date.parse(tos[j].value) < Date.parse(coordsCounter[key][0][j]))
                             bool = 0;
                     }
                 }
@@ -315,9 +314,9 @@ function parseMarkers() {
             marker[conter].addListener('click', function() {
                 return this.infowindow.open(map, this);
             });
+            conter++;
+            bool = 1;
         }
-        bool = 1;
-        conter++;
     }
 }
 

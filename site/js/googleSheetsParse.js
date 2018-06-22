@@ -205,13 +205,6 @@ function listPlaces(address, pAddress) {
                 var lngLoc = Number.parseFloat(row[lngCoords]);
                 if (coordsCounter[latLoc + ',' + lngLoc] == undefined)
                     coordsCounter[latLoc + ',' + lngLoc] = [];
-                /*if (coordsCounter[latLoc + ',' + lngLoc] > 0)
-                    coordsCounter[latLoc + ',' + lngLoc] += 1;
-                else {
-                    coordsCounter[latLoc + ',' + lngLoc] = 1;
-                    coordinates[coordsLength] = row;
-                    coordsLength += 1;
-                }*/
                 coordsCounter[latLoc + ',' + lngLoc].push(row);
             }
             
@@ -228,10 +221,14 @@ function listPlaces(address, pAddress) {
                     map: map,
                     title: 'name:' + coordsCounter[key][0][nameCoords]
                 });
-                contentString[i] = 'date:' + Date(Date.parse(coordsCounter[key][0][dateCoords]));
+                for (var t = 0; t < coordsCounter[key].length; t++) {
+                contentString[i] += 'date:' + Date(Date.parse(coordsCounter[key][t][dateCoords]));
+                }
                 infowindow[i] = new google.maps.InfoWindow({
                     content: contentString[i]
                 });
+                infowindow[i].className = "infowindow";
+                
                 marker[i].infowindow = infowindow[i];
                 marker[i].addListener('click', function() {
                     return this.infowindow.open(map, this);

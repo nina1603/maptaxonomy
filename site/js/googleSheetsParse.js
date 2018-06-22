@@ -197,7 +197,7 @@ function listPlaces(address, pAddress) {
                 tr.append(td2);
                 console.log(tr);
                 console.log(t);
-                //t.append(tr);
+                t.append(tr);
             }
             document.getElementById('table').appendChild(t);
 
@@ -216,9 +216,9 @@ function listPlaces(address, pAddress) {
             for (key in coordsCounter) {
                 contentString[i] = '';
                 var title = '';
-                for (var t = 0; t < coordsCounter[key].length; t++) {
-                contentString[i] += 'date:' + Date(Date.parse(coordsCounter[key][t][dateCoords]));
-                title += 'name:' + coordsCounter[key][t][nameCoords]
+                for (var n = 0; n < coordsCounter[key].length; n++) {
+                contentString[i] += 'date:' + Date(Date.parse(coordsCounter[key][n][dateCoords]));
+                title += 'name:' + coordsCounter[key][n][nameCoords]
                 }
                 marker[i] = new google.maps.Marker({
                     position: {

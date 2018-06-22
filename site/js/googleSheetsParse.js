@@ -199,8 +199,48 @@ function listPlaces(address, pAddress) {
                 t.append(tr);
             }
             document.getElementById('table').appendChild(t);
-            parseMarkers();
 
+            for (var i = 1; i < range.values.length; i++) {
+                var row = range.values[i];
+                var latLoc = Number.parseFloat(row[latCoords]);
+                var lngLoc = Number.parseFloat(row[lngCoords]);
+                if (coordsCounter[latLoc + ',' + lngLoc] == undefined)
+                    coordsCounter[latLoc + ',' + lngLoc] = [];
+                coordsCounter[latLoc + ',' + lngLoc].push(row);
+            }
+
+            var i = 0;
+            for (key in coordsCounter) {
+                contentString[i] = '';
+                title[i] = '';
+                for (var n = 0; n < coordsCounter[key].length; n++) {
+                    contentString[i] += (n + 1).toString() + '. Date:' + Date(Date.parse(coordsCounter[key][n][dateCoords]));
+                    title[i] += (n + 1).toString() + '. Name:' + coordsCounter[key][n][nameCoords];
+                    if (n < coordsCounter[key].length - 1) {
+                        contentString[i] += '<br/>';
+                        title[i] += '\n';
+                    }
+                }
+                marker[i] = new google.maps.Marker({
+                    position: {
+                        lat: Number.parseFloat(coordsCounter[key][0][latCoords]),
+                        lng: Number.parseFloat(coordsCounter[key][0][lngCoords])
+                    },
+                    label: coordsCounter[key].length.toString(),
+                    map: map,
+                    title: title[i]
+                });
+                infowindow[i] = new google.maps.InfoWindow({
+                    content: contentString[i]
+                });
+                infowindow[i].className = "infowindow";
+
+                marker[i].infowindow = infowindow[i];
+                marker[i].addListener('click', function() {
+                    return this.infowindow.open(map, this);
+                });
+                i++;
+            }
         } else {
             appendPre('No data found.');
         }
@@ -210,94 +250,80 @@ function listPlaces(address, pAddress) {
 }
 
 
-function parseMarkers() {
-    for (var i = 1; i < range.values.length; i++) {
-        var row = range.values[i];
-        var latLoc = Number.parseFloat(row[latCoords]);
-        var lngLoc = Number.parseFloat(row[lngCoords]);
-        if (coordsCounter[latLoc + ',' + lngLoc] == undefined)
-            coordsCounter[latLoc + ',' + lngLoc] = [];
-        coordsCounter[latLoc + ',' + lngLoc].push(row);
-    }
-    var i = 0;
-    var bool = 1;
-    for (key in coordsCounter) {
-        array = coordsCounter[key];
-        if (froms != [] || tos != []) {
-            for (var j = 0; j < names.length; j++) {
-                if ((names[j] == 'genbank') || (names[j] == 'name') || (names[j] == 'position') || (names[j] == 'str')) {
-                    if (froms[j].value != '') {
-                        if (froms[j].value != array[0][j]) {
-                            bool = 0;
-                        }
-                    }
-                } else {
-                    if ((names[j] != 'date') && ((froms[j].value != '') || (tos[j].value != ''))) {
-                        if (froms[j].value != '') {
-                            if (Number.parseFloat(froms[j].value) > Number.parseFloat(array[0][j]))
-                                bool = 0;
-                        }
-                        if (tos[j].value != '') {
-                            if (Number.parseFloat(tos[j].value) < Number.parseFloat(array[0][j]))
-                                bool = 0;
-                        }
-                    }
 
-                    if ((names[j] == 'date') && ((froms[j].value != '') || (tos[j].value != ''))) {
-                        if (froms[j].value != '') {
-                            if (Date.parse(froms[j].value) > Date.parse(array[0][j]))
-                                bool = 0;
-                        }
-                        if (tos[j].value != '') {
-                            if (Date.parse(tos[j].value) < Date.parse(array[0][j]))
-                                bool = 0;
-                        }
+
+function parseMarkers() {
+    removeMarkers();
+    for (key in coordsCounter) {
+        var array = coordsCounter[key];
+        for (var j = 0; j < names.length; j++) {
+            if ((names[j] == 'genbank') || (names[j] == 'name') || (names[j] == 'position') || (names[j] == 'str')) {
+                if (froms[j].value != '') {
+                    if (froms[j].value != array[0][j]) {
+                        bool = 0;
+                    }
+                }
+            } else {
+                if ((names[j] != 'date') && ((froms[j].value != '') || (tos[j].value != ''))) {
+                    if (froms[j].value != '') {
+                        if (Number.parseFloat(froms[j].value) > Number.parseFloat(array[0][j]))
+                            bool = 0;
+                    }
+                    if (tos[j].value != '') {
+                        if (Number.parseFloat(tos[j].value) < Number.parseFloat(array[0][j]))
+                            bool = 0;
+                    }
+                }
+
+                if ((names[j] == 'date') && ((froms[j].value != '') || (tos[j].value != ''))) {
+                    if (froms[j].value != '') {
+                        if (Date.parse(froms[j].value) > Date.parse(array[0][j]))
+                            bool = 0;
+                    }
+                    if (tos[j].value != '') {
+                        if (Date.parse(tos[j].value) < Date.parse(array[0][j]))
+                            bool = 0;
                     }
                 }
             }
         }
+        var conter = 0;
         if (bool == 1) {
-            contentString[i] = '';
-            title[i] = '';
+            contentString[conter] = '';
+            title[conter] = '';
             for (var n = 0; n < coordsCounter[key].length; n++) {
-                contentString[i] += (n + 1).toString() + '. Date:' + Date(Date.parse(coordsCounter[key][n][dateCoords]));
-                title[i] += (n + 1).toString() + '. Name:' + coordsCounter[key][n][nameCoords];
+                contentString[conter] += (n + 1).toString() + '. Date:' + Date(Date.parse(coordsCounter[key][n][dateCoords]));
+                title[conter] += (n + 1).toString() + '. Name:' + coordsCounter[key][n][nameCoords];
                 if (n < coordsCounter[key].length - 1) {
-                    contentString[i] += '\n';
-                    title[i] += '\n';
+                    contentString[conter] += '<br/>';
+                    title[conter] += '\n';
                 }
             }
-            marker[i] = new google.maps.Marker({
+            marker[conter] = new google.maps.Marker({
                 position: {
-                    lat: Number.parseFloat(coordsCounter[key][0][latCoords]),
-                    lng: Number.parseFloat(coordsCounter[key][0][lngCoords])
+                    lat: Number.parseFloat(array[0][latCoords]),
+                    lng: Number.parseFloat(array[0][lngCoords])
                 },
-                label: coordsCounter[key].length.toString(),
+                label: coordsCounter[array[0][latCoords] + ',' + array[0][lngCoords]].toString(),
                 map: map,
-                title: title[i]
+                title: title[conter]
             });
-            infowindow[i] = new google.maps.InfoWindow({
-                content: contentString[i]
+            infowindow[conter] = new google.maps.InfoWindow({
+                content: contentString[conter]
             });
-            infowindow[i].className = "infowindow";
-
-            marker[i].infowindow = infowindow[i];
-            marker[i].addListener('click', function() {
+            marker[conter].infowindow = infowindow[conter];
+            marker[conter].addListener('click', function() {
                 return this.infowindow.open(map, this);
             });
-            i++;
         }
+        bool = 1;
+        conter++;
     }
-    bool = 1;
 }
 
-
-function applyMarkers() {
-    removeMarkers();
-    parseMarkers();
-}
 
 function removeMarkers() {
+    console.log("markers: ", marker);
     if (marker.length > 0) {
         for (i = 0; i < marker.length; i++) {
             marker[i].setMap(null);

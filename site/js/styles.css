@@ -81,4 +81,10 @@ body {
 			height: 8%;
 			padding:2%;
 		}
+		.infowindow {
+			position: relative;
+			width: 20%;
+			height: 20%;
+			padding: 2%;
+		}
 	    }    

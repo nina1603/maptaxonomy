@@ -32,7 +32,8 @@ var coordsCounter = {};
 var coordsLength = 0;
 var coordinates = [];
 
-var infowindow = {};
+var infowindow = [];
+var title = [];
 var contentString = {};
 var names = [];
 var froms = [];
@@ -182,6 +183,7 @@ function listPlaces(address, pAddress) {
                 froms[j] = document.createElement('input');
                 var from = froms[j];
                 tos[j] = document.createElement('input');
+                tos[j].className = 
                 if ((names[j] == 'genbank') || (names[j] == 'name') || (names[j] == 'position') || (names[j] == 'str'))
                     tos[j].value = 0;
                 var to = tos[j];
@@ -214,13 +216,13 @@ function listPlaces(address, pAddress) {
             
             for (key in coordsCounter) {
                 contentString[i] = '';
-                var title = [];
+                title[i] = '';
                 for (var n = 0; n < coordsCounter[key].length; n++) {
                     contentString[i] += n + '. Date:' + Date(Date.parse(coordsCounter[key][n][dateCoords]));
-                    title += n + '. Name:' + coordsCounter[key][n][nameCoords];
+                    title[i] += n + '. Name:' + coordsCounter[key][n][nameCoords];
                     if (n < coordsCounter[key].length - 1) {
                         contentString[i] += '<br/>';
-                        title += '<br/>';
+                        title[i] += '<br/>';
                     }
                 }
                 marker[i] = new google.maps.Marker({

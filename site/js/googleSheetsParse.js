@@ -32,9 +32,9 @@ var coordsCounter = {};
 var coordsLength = 0;
 var coordinates = [];
 
-var infowindow = [];
+var infowindow = {};
 var title = [];
-var contentString = [];
+var contentString = {};
 var names = [];
 var froms = [];
 var tos = [];
@@ -183,7 +183,6 @@ function listPlaces(address, pAddress) {
                 froms[j] = document.createElement('input');
                 var from = froms[j];
                 tos[j] = document.createElement('input');
-                tos[j].className = 
                 if ((names[j] == 'genbank') || (names[j] == 'name') || (names[j] == 'position') || (names[j] == 'str'))
                     tos[j].value = 0;
                 var to = tos[j];

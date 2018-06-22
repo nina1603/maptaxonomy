@@ -299,7 +299,6 @@ function parseMarkers() {
                 }
             }
         }
-
         var c = 1;
         var sum = 0;
         for (var k = 0; k < coordsCounter[key].length; k++) {

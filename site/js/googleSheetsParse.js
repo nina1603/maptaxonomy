@@ -343,8 +343,9 @@ function parseMarkers() {
             var ar = title[conter].split('\n');
             title[conter] = '';
             for (var f = 0; f < 15; f++) {
-                title[conter] += ar[f];
+                title[conter] += ar[f] + '\n';
             }
+           title[conter] += '...'; 
         }
         if (sum > 0) {
             marker[conter] = new google.maps.Marker({

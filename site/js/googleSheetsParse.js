@@ -311,9 +311,9 @@ function parseMarkers() {
                     contentString[conter] += (c + 1).toString() + coordsCounter[key][k] + '<br/>';
                 if (title[conter] == [])
                     //coordsCounter[key][k][nameCoords]
-                    title[conter] = (c + 1).toString() + '. Name:' + coordsCounter[key][k] + '\n';
+                    title[conter] = (c + 1).toString() + '. Name:' + coordsCounter[key][k][nameCoords] + '\n';
                 else
-                    title[conter] += (c + 1).toString() + '. Name:' + coordsCounter[key][k] + '\n';
+                    title[conter] += (c + 1).toString() + '. Name:' + coordsCounter[key][k][nameCoords] + '\n';
                 c++;
             }
         }

@@ -185,6 +185,10 @@ function listPlaces(address, pAddress) {
                 if ((names[j] == 'genbank') || (names[j] == 'name') || (names[j] == 'position') || (names[j] == 'str'))
                     tos[j].value = 0;
                 var to = tos[j];
+                if (names[j] == 'date') {
+                    to.className = ".date";
+                    from.className = ".date";
+                }
                 from.placeholder = "from:";
                 from.className = "from";
                 to.placeholder = "to:";
@@ -383,3 +387,10 @@ function getDatatype(str) {
     }
     return types[types.length - 1][0];
 }
+
+
+$(".date").datepicker({
+    yearRange: "c-10:c+10",
+    changeMonth: true,
+    changeYear: true
+});

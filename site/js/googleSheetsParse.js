@@ -209,7 +209,7 @@ function listPlaces(address, pAddress) {
                 yearRange: "c-10:c+10",
                 changeMonth: true,
                 changeYear: true,
-                dateFormat: "yyyy-mm-dd"
+                dateFormat: "yy-mm-dd"
             });
             
             for (var i = 1; i < range.values.length; i++) {

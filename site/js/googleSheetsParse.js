@@ -229,7 +229,7 @@ function listPlaces(address, pAddress) {
                 contentString[i] = '';
                 title[i] = '';
                 for (var n = 0; n < coordsCounter[key].length; n++) {
-                    contentString[i] += (n + 1).toString() + '. Date:' + Date(Date.parse(coordsCounter[key][n][dateCoords]));
+                    contentString[i] += (n + 1).toString() + '. Date:' + new Date(Date.parse(coordsCounter[key][n][dateCoords]));
                     title[i] += (n + 1).toString() + '. Name:' + coordsCounter[key][n][nameCoords];
                     if (n < coordsCounter[key].length - 1) {
                         contentString[i] += '<br/>';

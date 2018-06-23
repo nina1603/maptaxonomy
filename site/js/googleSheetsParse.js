@@ -229,7 +229,7 @@ function listPlaces(address, pAddress) {
                 contentString[i] = '';
                 title[i] = '';
                 for (var n = 0; n < coordsCounter[key].length; n++) {
-                    contentString[i] += (n + 1).toString() + '. ' + new Date(Date.parse(coordsCounter[key][n]));
+                    contentString[i] += (n + 1).toString() + '. ' + coordsCounter[key][n];
                     title[i] += (n + 1).toString() + '. Name:' + coordsCounter[key][n][nameCoords];
                     if (n < coordsCounter[key].length - 1) {
                         contentString[i] += '<br/>';
@@ -336,9 +336,9 @@ function parseMarkers() {
             sum += bool[k];
             if (bool[k] == 1) {
                 if (contentString[conter] != [])
-                    contentString[conter] += (c + 1).toString() + '. Date:' + new Date(Date.parse(coordsCounter[key][k][dateCoords])) + '<br/>';
+                    contentString[conter] += (c + 1).toString() + '. ' + coordsCounter[key][k] + '<br/>';
                 else
-                    contentString[conter] = (c + 1).toString() + '. Date:' + new Date(Date.parse(coordsCounter[key][k][dateCoords])) + '<br/>';
+                    contentString[conter] = (c + 1).toString() + '. ' + coordsCounter[key][k] + '<br/>';
                 if (title[conter] != [])
                     title[conter] += (c + 1).toString() + '. Name:' + coordsCounter[key][k][nameCoords] + '\n';
                 else

@@ -182,8 +182,6 @@ function listPlaces(address, pAddress) {
                 froms[j] = document.createElement('input');
                 var from = froms[j];
                 tos[j] = document.createElement('input');
-                if ((names[j] == 'genbank') || (names[j] == 'name') || (names[j] == 'position') || (names[j] == 'str'))
-                    tos[j].display = 'none';
                 var to = tos[j];
                 from.placeholder = "from:";
                 to.placeholder = "to:";
@@ -197,6 +195,11 @@ function listPlaces(address, pAddress) {
                 }
                 from.type = "text";
                 to.type = "text";
+                if ((names[j] == 'genbank') || (names[j] == 'name') || (names[j] == 'position') || (names[j] == 'str')) {
+                    tos[j].display = 'none';
+                    froms[j].placeholder = names[j];
+                }
+                
                 td1.append(from);
                 td2.append(to);
                 tr.append(td1);

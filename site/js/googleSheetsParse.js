@@ -186,12 +186,14 @@ function listPlaces(address, pAddress) {
                     tos[j].value = 0;
                 var to = tos[j];
                 from.placeholder = "from:";
-                from.className = "from";
                 to.placeholder = "to:";
-                to.className = "to";
                 if (names[j] == 'date') {
-                    to.className += " date";
-                    from.className += " date";
+                    to.className = "date from";
+                    from.className = "date to";
+                }
+                else {
+                    from.className = "from";
+                    to.className = "to";
                 }
                 from.type = "text";
                 to.type = "text";

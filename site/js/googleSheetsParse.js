@@ -306,16 +306,16 @@ function parseMarkers() {
         }
         var c = 0;
         var sum = 0;
+        contentString[conter] = '';
+        title[conter] = '';
         for (var k = 0; k < coordsCounter[key].length; k++) {
             sum += bool[k];
             if (bool[k] == 1) {
                 if (contentString[conter] != [])
-                    //'. Date:' + new Date(Date.parse(coordsCounter[key][k][dateCoords]))
                     contentString[conter] += (c + 1).toString() + '. Date:' + new Date(Date.parse(coordsCounter[key][k][dateCoords])) + '<br/>';
                 else
                     contentString[conter] = (c + 1).toString() + '. Date:' + new Date(Date.parse(coordsCounter[key][k][dateCoords])) + '<br/>';
                 if (title[conter] != [])
-                    //coordsCounter[key][k][nameCoords]
                     title[conter] += (c + 1).toString() + '. Name:' + coordsCounter[key][k][nameCoords] + '\n';
                 else
                     title[conter] = (c + 1).toString() + '. Name:' + coordsCounter[key][k][nameCoords] + '\n';

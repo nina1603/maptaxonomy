@@ -338,6 +338,14 @@ function parseMarkers() {
                 c++;
             }
         }
+        console.log(title[conter]);
+        if (title[conter].split('\n').length > 15) {
+            var ar = title[conter].split('\n');
+            title[conter] = '';
+            for (var f = 0; f < 15; f++) {
+                title[conter] += ar[f];
+            }
+        }
         if (sum > 0) {
             marker[conter] = new google.maps.Marker({
                 position: {

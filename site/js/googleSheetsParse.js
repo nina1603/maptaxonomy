@@ -261,8 +261,9 @@ function parseMarkers() {
         for (var j = 0; j < names.length; j++) {
             if ((names[j] == 'genbank') || (names[j] == 'name') || (names[j] == 'position') || (names[j] == 'str')) {
                 if (froms[j].value != '') {
+                    var str = froms[j].value;
                     for (var k = 0; k < coordsCounter[key].length; k++) {
-                        if (froms[j].value != coordsCounter[key][k][j]) {
+                        if (str != coordsCounter[key][k][j]) {
                             bool[k] = 0;
                         }
                     }
@@ -270,14 +271,16 @@ function parseMarkers() {
             } else {
                 if ((names[j] != 'date') && ((froms[j].value != '') || (tos[j].value != ''))) {
                     if (froms[j].value != '') {
+                        var number = Number.parseFloat(froms[j].value);
                         for (var k = 0; k < coordsCounter[key].length; k++) {
-                            if (Number.parseFloat(froms[j].value) > Number.parseFloat(coordsCounter[key][k][j]))
+                            if (number > Number.parseFloat(coordsCounter[key][k][j]))
                                 bool[k] = 0;
                         }
                     }
                     if (tos[j].value != '') {
+                        var number = Number.parseFloat(tos[j].value);
                         for (var k = 0; k < coordsCounter[key].length; k++) {
-                            if (Number.parseFloat(tos[j].value) < Number.parseFloat(coordsCounter[key][k][j]))
+                            if (number < Number.parseFloat(coordsCounter[key][k][j]))
                                 bool[k] = 0;
                         }
                     }
@@ -285,14 +288,16 @@ function parseMarkers() {
 
                 if ((names[j] == 'date') && ((froms[j].value != '') || (tos[j].value != ''))) {
                     if (froms[j].value != '') {
+                        var date = Date.parse(froms[j].value);
                         for (var k = 0; k < coordsCounter[key].length; k++) {
-                            if (Date.parse(froms[j].value) > Date.parse(coordsCounter[key][k][j]))
+                            if (date > Date.parse(coordsCounter[key][k][j]))
                                 bool[k] = 0;
                         }
                     }
                     if (tos[j].value != '') {
+                        var date = Date.parse(tos[j].value);
                         for (var k = 0; k < coordsCounter[key].length; k++) {
-                            if (Date.parse(tos[j].value) < Date.parse(coordsCounter[key][k][j]))
+                            if (date < Date.parse(coordsCounter[key][k][j]))
                                 bool[k] = 0;
                         }
                     }

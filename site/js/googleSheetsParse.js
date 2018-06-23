@@ -305,13 +305,15 @@ function parseMarkers() {
             sum += bool[k];
             if (bool[k] == 1) {
                 if (contentString[conter] == [])
-                    contentString[conter] = (c + 1).toString() + '. Date:' + new Date(Date.parse(coordsCounter[key][k][dateCoords])) + '<br/>';
+                    //'. Date:' + new Date(Date.parse(coordsCounter[key][k][dateCoords]))
+                    contentString[conter] = (c + 1).toString() + coordsCounter[key][k] + '<br/>';
                 else
-                    contentString[conter] += (c + 1).toString() + '. Date:' + new Date(Date.parse(coordsCounter[key][k][dateCoords])) + '<br/>';
+                    contentString[conter] += (c + 1).toString() + coordsCounter[key][k] + '<br/>';
                 if (title[conter] == [])
-                    title[conter] = (c + 1).toString() + '. Name:' + coordsCounter[key][k][nameCoords] + '\n';
+                    //coordsCounter[key][k][nameCoords]
+                    title[conter] = (c + 1).toString() + '. Name:' + coordsCounter[key][k] + '\n';
                 else
-                    title[conter] += (c + 1).toString() + '. Name:' + coordsCounter[key][k][nameCoords] + '\n';
+                    title[conter] += (c + 1).toString() + '. Name:' + coordsCounter[key][k] + '\n';
                 c++;
             }
         }

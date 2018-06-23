@@ -190,8 +190,8 @@ function listPlaces(address, pAddress) {
                 to.placeholder = "to:";
                 to.className = "to";
                 if (names[j] == 'date') {
-                    to.className += "date";
-                    from.className += "date";
+                    to.className += " date";
+                    from.className += " date";
                 }
                 from.type = "text";
                 to.type = "text";

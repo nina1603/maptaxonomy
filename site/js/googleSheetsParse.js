@@ -205,6 +205,12 @@ function listPlaces(address, pAddress) {
             }
             document.getElementById('table').appendChild(t);
 
+            $(".date").datepicker({
+                yearRange: "c-10:c+10",
+                changeMonth: true,
+                changeYear: true
+            });
+            
             for (var i = 1; i < range.values.length; i++) {
                 var row = range.values[i];
                 var latLoc = Number.parseFloat(row[latCoords]);
@@ -389,10 +395,3 @@ function getDatatype(str) {
     }
     return types[types.length - 1][0];
 }
-
-
-$(".date").datepicker({
-    yearRange: "c-10:c+10",
-    changeMonth: true,
-    changeYear: true
-});

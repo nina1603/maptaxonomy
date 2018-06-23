@@ -236,6 +236,14 @@ function listPlaces(address, pAddress) {
                         title[i] += '\n';
                     }
                 }
+                if (title[i].split('\n').length > 15) {
+                    var ar = title[i].split('\n');
+                    title[i] = '';
+                    for (var f = 0; f < 15; f++) {
+                        title[i] += ar[f] + '\n';
+                    }
+                    title[i] += '...'; 
+                }
                 marker[i] = new google.maps.Marker({
                     position: {
                         lat: Number.parseFloat(coordsCounter[key][0][latCoords]),

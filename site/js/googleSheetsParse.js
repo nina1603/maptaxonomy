@@ -196,8 +196,8 @@ function listPlaces(address, pAddress) {
                 from.type = "text";
                 to.type = "text";
                 if ((names[j] == 'genbank') || (names[j] == 'name') || (names[j] == 'position') || (names[j] == 'str')) {
-                    tos[j].display = 'none';
-                    froms[j].placeholder = names[j];
+                    tos[j].style.display = 'none';
+                    froms[j].placeholder = "...";
                 }
                 
                 td1.append(from);

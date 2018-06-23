@@ -183,7 +183,7 @@ function listPlaces(address, pAddress) {
                 var from = froms[j];
                 tos[j] = document.createElement('input');
                 if ((names[j] == 'genbank') || (names[j] == 'name') || (names[j] == 'position') || (names[j] == 'str'))
-                    tos[j].value = 0;
+                    tos[j].display = 'none';
                 var to = tos[j];
                 from.placeholder = "from:";
                 to.placeholder = "to:";

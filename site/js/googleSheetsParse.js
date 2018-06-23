@@ -208,7 +208,8 @@ function listPlaces(address, pAddress) {
             $(".date").datepicker({
                 yearRange: "c-10:c+10",
                 changeMonth: true,
-                changeYear: true
+                changeYear: true,
+                dateFormat: "yyyy-mm-dd"
             });
             
             for (var i = 1; i < range.values.length; i++) {

@@ -321,7 +321,7 @@ function parseMarkers() {
                     lat: Number.parseFloat(coordsCounter[key][0][latCoords]),
                     lng: Number.parseFloat(coordsCounter[key][0][lngCoords])
                 },
-                label: coordsCounter[key].length.toString(),
+                label: c.toString(),
                 map: map,
                 title: title[conter]
             });

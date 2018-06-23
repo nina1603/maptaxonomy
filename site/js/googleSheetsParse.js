@@ -185,14 +185,14 @@ function listPlaces(address, pAddress) {
                 if ((names[j] == 'genbank') || (names[j] == 'name') || (names[j] == 'position') || (names[j] == 'str'))
                     tos[j].value = 0;
                 var to = tos[j];
-                if (names[j] == 'date') {
-                    to.className = "date";
-                    from.className = "date";
-                }
                 from.placeholder = "from:";
                 from.className = "from";
                 to.placeholder = "to:";
                 to.className = "to";
+                if (names[j] == 'date') {
+                    to.className += "date";
+                    from.className += "date";
+                }
                 from.type = "text";
                 to.type = "text";
                 td1.append(from);

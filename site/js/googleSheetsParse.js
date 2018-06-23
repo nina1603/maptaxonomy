@@ -253,6 +253,7 @@ function listPlaces(address, pAddress) {
 function parseMarkers() {
     removeMarkers();
     var bool = [];
+    var conter = 0;
     for (key in coordsCounter) {
         for (var k = 0; k < coordsCounter[key].length; k++) {
             bool[k] = 1;
@@ -299,7 +300,6 @@ function parseMarkers() {
             }
         }
         var c = 0;
-        var conter = 0;
         var sum = 0;
         for (var k = 0; k < coordsCounter[key].length; k++) {
             sum += bool[k];

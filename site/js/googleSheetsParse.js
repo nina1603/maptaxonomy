@@ -287,8 +287,10 @@ function parseMarkers() {
                 if (froms[j].value != '') {
                     var str = froms[j].value;
                     for (var k = 0; k < coordsCounter[key].length; k++) {
-                        if (str != coordsCounter[key][k][j]) {
-                            bool[k] = 0;
+                        if (bool[k] == 1) {
+                            if (str != coordsCounter[key][k][j]) {
+                                bool[k] = 0;
+                            }
                         }
                     }
                 }
@@ -297,15 +299,19 @@ function parseMarkers() {
                     if (froms[j].value != '') {
                         var number = Number.parseFloat(froms[j].value);
                         for (var k = 0; k < coordsCounter[key].length; k++) {
-                            if (number > Number.parseFloat(coordsCounter[key][k][j]))
-                                bool[k] = 0;
+                            if (bool[k] == 1) {
+                                if (number > Number.parseFloat(coordsCounter[key][k][j]))
+                                    bool[k] = 0;
+                            }
                         }
                     }
                     if (tos[j].value != '') {
                         var number = Number.parseFloat(tos[j].value);
                         for (var k = 0; k < coordsCounter[key].length; k++) {
-                            if (number < Number.parseFloat(coordsCounter[key][k][j]))
-                                bool[k] = 0;
+                            if (bool[k] == 1) {
+                                if (number < Number.parseFloat(coordsCounter[key][k][j]))
+                                    bool[k] = 0;
+                            }
                         }
                     }
                 }
@@ -314,13 +320,15 @@ function parseMarkers() {
                     if (froms[j].value != '') {
                         var date = Date.parse(froms[j].value);
                         for (var k = 0; k < coordsCounter[key].length; k++) {
-                            if (date > Date.parse(coordsCounter[key][k][j]))
-                                bool[k] = 0;
+                            if (bool[k] == 1) {
+                                if (date > Date.parse(coordsCounter[key][k][j]))
+                                    bool[k] = 0;
+                            }
                         }
                     }
                     if (tos[j].value != '') {
                         var date = Date.parse(tos[j].value);
-                        for (var k = 0; k < coordsCounter[key].length; k++) {
+                        if (bool[k] == 1) {
                             if (date < Date.parse(coordsCounter[key][k][j]))
                                 bool[k] = 0;
                         }
@@ -353,7 +361,7 @@ function parseMarkers() {
             for (var f = 0; f < 15; f++) {
                 title[conter] += ar[f] + '\n';
             }
-           title[conter] += '...'; 
+            title[conter] += '...';
         }
         if (sum > 0) {
             marker[conter] = new google.maps.Marker({
@@ -376,7 +384,6 @@ function parseMarkers() {
         }
     }
 }
-
 
 
 function removeMarkers() {

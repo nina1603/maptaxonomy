@@ -228,12 +228,20 @@ function listPlaces(address, pAddress) {
             for (key in coordsCounter) {
                 contentString[i] = '';
                 title[i] = '';
-                for (var n = 0; n < coordsCounter[key].length; n++) {
+                if (coordsCounter[key].length == 1)
+                {
+                    contentString[i] += coordsCounter[key][0];
+                    title[i] += 'Name:' + coordsCounter[key][0][nameCoords];
+                }
+                else
+                {
+                    for (var n = 0; n < coordsCounter[key].length; n++) {
                     contentString[i] += (n + 1).toString() + '. ' + coordsCounter[key][n];
                     title[i] += (n + 1).toString() + '. Name:' + coordsCounter[key][n][nameCoords];
                     if (n < coordsCounter[key].length - 1) {
                         contentString[i] += '<br/>';
                         title[i] += '\n';
+                        }
                     }
                 }
                 if (title[i].split('\n').length > 15) {
